@@ -1,0 +1,7 @@
+
+.inner_checkbox_area {
+	padding-left: 1.6em;
+}
+.inner_checkbox_area > p.description {
+	margin-top: 0px;
+}
