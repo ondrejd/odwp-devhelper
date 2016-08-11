@@ -1,23 +1,23 @@
 <div id="screen-options-wrap" class="hidden" aria-label="<?php esc_html_e( 'Screen Options Tab', DevHelper::SLUG ); ?>">
-    <form name="<?php echo $form_prefix; ?>-form" method="post">
-        <?php echo wp_nonce_field( -1, $form_prefix . '-nonce', true, false); ?>
+    <form name="<?php echo $slug; ?>-form" method="post">
+        <?php echo wp_nonce_field( -1, $slug . '-nonce', true, false); ?>
         <input type="hidden" name="screen_name" value="<?php echo $screen->id; ?>" />
         <fieldset>
             <legend><?php esc_html_e( 'Display detail description', DevHelper::SLUG ); ?></legend>
-            <label for="<?php echo $form_prefix; ?>-checkbox1" title="<?php esc_html_e( 'Show detail description by default.', DevHelper::SLUG ); ?>">
-                <input type="checkbox" name="<?php echo $form_prefix; ?>-checkbox1" id="<?php echo $form_prefix; ?>-checkbox1" <?php echo checked( $display_description ); ?>/>
+            <label for="<?php echo $slug; ?>-checkbox1" title="<?php esc_html_e( 'Show detail description by default.', DevHelper::SLUG ); ?>">
+                <input type="checkbox" name="<?php echo $slug; ?>-checkbox1" id="<?php echo $slug; ?>-checkbox1" <?php checked( $display_description ); ?>/>
                 <?php esc_html_e( 'Check if you want see detailed description.', DevHelper::SLUG ); ?>
             </label>
         </fieldset>
         <fieldset>
             <legend><?php esc_html_e( 'Select source code template' ); ?></legend>
-            <label for="<?php echo $form_prefix; ?>-select1" title="<?php esc_html_e( 'Select source code template', DevHelper::SLUG ); ?>"><?php esc_html_e( 'Used template:', DevHelper::SLUG ); ?></label>
-            <select name="<?php echo $form_prefix; ?>-select1" id="<?php echo $form_prefix; ?>-select1">
+            <label for="<?php echo $slug; ?>-select1" title="<?php esc_html_e( 'Select source code template', DevHelper::SLUG ); ?>"><?php esc_html_e( 'Used template:', DevHelper::SLUG ); ?></label>
+            <select name="<?php echo $slug; ?>-select1" id="<?php echo $slug; ?>-select1">
                 <option value="default"<?php selected( $used_template, 'default' ); ?>><?php esc_html_e( 'Default', DevHelper::SLUG ); ?></option>
             </select>
         </fieldset>
         <p class="submit">
-            <input type="submit" name="<?php echo $form_prefix; ?>-submit" value="<?php esc_html_e( 'Apply', DevHelper::SLUG ); ?>" class="button button-primary" />
+            <input type="submit" name="<?php echo $slug; ?>-submit" value="<?php esc_html_e( 'Apply', DevHelper::SLUG ); ?>" class="button button-primary" />
         </p>
     </form>
 </div>
