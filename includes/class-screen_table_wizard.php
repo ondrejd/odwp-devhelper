@@ -10,6 +10,7 @@ if ( ! class_exists( 'Screen_Table_Wizard' ) ):
  */
 class Screen_Table_Wizard extends DevHelper_Screen_Prototype {
 	/**
+	 * Constructor.
 	 * @param WP_Screen $screen Optional.
 	 * @since 0.0.1
 	 */
@@ -18,7 +19,7 @@ class Screen_Table_Wizard extends DevHelper_Screen_Prototype {
 		$this->menu_title = __( 'New table', DevHelper::SLUG );
 		$this->page_title = __( 'Table list wizard', DevHelper::SLUG );
 		$this->help_tabs[] = array(
-				'id'      => 'wpsg_tables_help_tab',
+				'id'      => $this->slug . '-help_tab',
 				'title'   => __( 'Tables', DevHelper::SLUG ),
 				'content' => __( '<p style"colof: #f30;"><code>XXX</code> Fill this screen help!<p>', DevHelper::SLUG ),
 		);
@@ -57,7 +58,7 @@ class Screen_Table_Wizard extends DevHelper_Screen_Prototype {
 endif;
 
 /**
- * @var Screen_Table_Wizard $odwpdevhelper_screen_table
+ * @var Screen_Table_Wizard $odwpdevhelper_screen_table_wizard
  */
-$odwpdevhelper_screen_table = new Screen_Table_Wizard();
-DevHelper::add_screen( $odwpdevhelper_screen_table );
+$odwpdevhelper_screen_table_wizard = new Screen_Table_Wizard();
+DevHelper::add_screen( $odwpdevhelper_screen_table_wizard );

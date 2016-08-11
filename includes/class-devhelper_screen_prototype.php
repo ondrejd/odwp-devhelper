@@ -113,7 +113,7 @@ class DevHelper_Screen_Prototype {
 
 		$display_description = get_user_meta( $user, $this->slug . '-display_description', true );
 		if ( strlen( $display_description ) == 0 ) {
-	    $display_description = $screen->get_option( $this->slug . '-display_description', 'default' );
+			$display_description = $screen->get_option( $this->slug . '-display_description', 'default' );
 		}
 
 		$used_template = get_user_meta( $user, $this->slug . '-used_template', true );
