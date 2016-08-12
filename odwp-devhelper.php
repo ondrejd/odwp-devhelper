@@ -92,6 +92,7 @@ class DevHelper {
 			$this->plugin_path( 'includes/class-screen_plugin_wizard.php' ),
 			$this->plugin_path( 'includes/class-screen_theme_wizard.php' ),
 			$this->plugin_path( 'includes/class-screen_table_wizard.php' ),
+			$this->plugin_path( 'includes/class-screen_cpt_wizard.php' ),
 		);
 
 		// Load all files (it throws error when file failed to be included but
