@@ -1,12 +1,29 @@
-<div class="wrap">
+<?php
+/**
+ * Page "Custom Post Type Wizard".
+ *
+ * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @package odwp-devhelper
+ * @since 0.1.0
+ */
+?><div class="wrap">
 
 	<?php screen_icon(); ?>
 
-	<h1><?= __( 'Custom Post Type wizard', DevHelper::SLUG )?></h1>
+	<h2>
+		<?php _e( 'Custom Post Type Wizard', DevHelper::SLUG ); ?>
+		<small><?php printf(
+			__( 'Generator for <a href="%1$s" target="blank">custom post type</a>.', DevHelper::SLUG ),
+			'https://codex.wordpress.org/Post_Types#Custom_Post_Types'
+		); ?></small>
+	</h2>
 
 	<form id="cpt-wizard">
 		<table class="form-table">
 		</table>
-		<input type="submit" name="wiazrd-submit" value="<?= __( 'Generate post type', DevHelper::SLUG )?>" class="button-primary">
+		<!-- TODO Add spinner and make this works via AJAX (with safe-fall to plain POST and PHP) -->
+		<input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DevHelper::SLUG ); ?>" class="button-primary">
+		<input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DevHelper::SLUG ); ?>" class="button">
+		<input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DevHelper::SLUG ); ?>" class="button">
 	</form>
 </div>

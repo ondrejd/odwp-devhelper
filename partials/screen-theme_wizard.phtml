@@ -1,12 +1,26 @@
-<div class="wrap">
+<?php
+/**
+ * Page "Theme Wizard".
+ *
+ * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @package odwp-devhelper
+ * @since 0.0.1
+ */
+?><div class="wrap">
 
 	<?php screen_icon(); ?>
 
-	<h1><?= __( 'Wizards - Theme Wizard', DevHelper::SLUG )?></h1>
+	<h2>
+		<?php _e( 'Theme Wizard', DevHelper::SLUG ); ?>
+		<small><?php _e( 'Generator for WordPress themes.', DevHelper::SLUG ); ?></small>
+	</h2>
 
 	<form id="theme-wizard">
 		<table class="form-table">
 		</table>
-		<input type="submit" name="wizard-submit" value="<?= __( 'Generate theme', DevHelper::SLUG )?>" class="button-primary">
+		<!-- TODO Add spinner and make this works via AJAX (with safe-fall to plain POST and PHP) -->
+		<input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DevHelper::SLUG ); ?>" class="button-primary">
+		<input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DevHelper::SLUG ); ?>" class="button">
+		<input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DevHelper::SLUG ); ?>" class="button">
 	</form>
 </div>
