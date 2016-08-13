@@ -2,7 +2,7 @@
 
 Plugin that helps with development for [WordPress](https://wordpress.org/).
 
-__Note__: This plugin uses [PrismJs](http://prismjs.com) library for syntax highlighting. Thans!
+__Note__: This plugin uses excelent [PrismJs](http://prismjs.com) library for syntax highlighting. Thanks!
 
 ## Description
 
