@@ -338,15 +338,14 @@
 									<?= sprintf( __( '<a href="%s" target="blank">WordPress Plugin Boilerplate</a> by <a href="%s" target="blank">Devin Devinson</a>', DevHelper::SLUG ), '', '' ) ?>
 								</label>
 							</div>
-
 						</fieldset>
 					</td>
 				</tr>
+				<!-- Advanced options -->
+				<?php echo odwpdh_render_advanced_options_form( $slug, $display_description ); ?>
 			</tbody>
 		</table>
-		<!-- TODO Add spinner and make this works via AJAX (with safe-fall to plain POST and PHP) -->
-		<input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DevHelper::SLUG ); ?>" class="button-primary">
-		<input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DevHelper::SLUG ); ?>" class="button">
-		<input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DevHelper::SLUG ); ?>" class="button">
+		<!-- Submit buttons -->
+		<?php echo odwpdh_render_form_submit_buttons( $slug ); ?>
 	</form>
 </div>

@@ -87,6 +87,7 @@ class DevHelper {
 		 * @var array $files Array with paths of all required source files.
 		 */
 		$files = array(
+			$this->plugin_path( 'includes/functions-wizard_form.php' ),
 			$this->plugin_path( 'includes/class-devhelper_screen_prototype.php' ),
 			$this->plugin_path( 'includes/class-wizard_post_type.php' ),
 			$this->plugin_path( 'includes/class-screen_plugin_wizard.php' ),
