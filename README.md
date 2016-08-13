@@ -28,7 +28,7 @@ _Note_: Versions are sorted from the newest to the oldest.
 
 - Code moved on __GitHub__ to the repository [ondrejd/odwp-devhelper](https://github.com/ondrejd/odwp-devhelper).
 - Code clean-up.
-- Improved [`DevHelper_Screen_Prototype`](https://github.com/ondrejd/odwp-devhelper/blob/master/includes/class-devhelper_screen_prototype.php) class.
+- Improved [`DevHelper_Screen_Prototype`](https://github.com/ondrejd/odwp-devhelper/blob/master/includes/class-devhelper_screen_prototype.php) class (newly implemented screen options, all is now extendable using [filters](https://codex.wordpress.org/Plugin_API#Filters)).
 - Initial version of new plugin wizard.
 - Initial version of new table wizard.
 - Initial version of new theme wizard.
