@@ -255,14 +255,42 @@ class DevHelper_Screen_Prototype {
 	 * @since 0.1.0
 	 * @uses plugin_dir_path()
 	 * @uses update_option()
+	 *
+	 * @todo Enable filter (using {@see apply_filters()}) on rendered output.
 	 */
 	public function screen_options() {
 		// These are used in the template:
 		$slug = $this->slug;
 		$screen = $this->get_screen();
 		extract( $this->get_screen_options() );
+		$templates = $this->get_source_templates();
 
 		include_once( DevHelper::plugin_path( 'partials/screen_options-wizard.php' ) );
+	}
+
+	/**
+	 * Returns array with available source code templates.
+	 * @return array
+	 * @since 0.1.0
+	 * @uses apply_filters()
+	 */
+	public function get_source_templates() {
+		$templates = array(
+			'default' => __( 'Default', DevHelper::SLUG ),
+		);
+
+		/**
+		 * Filter the templates used for the DevHelper wizard.
+		 *
+		 * Name of filter corresponds with slug of the particular wizard.
+		 * For example for `Custom Post Type wizard` is filter name
+		 * "devhelper_cpt_wizard_templates".
+		 *
+		 * @since 0.1.0
+		 *
+		 * @param array $templates Array with templates provided by DevHelper.
+		 */
+		return apply_filters( "devhelper_{$this->slug}_templates", $templates );
 	}
 
 	/**
@@ -294,6 +322,8 @@ class DevHelper_Screen_Prototype {
 	/**
 	 * Render page self.
 	 * @since 0.1.0
+	 *
+	 * @todo Enable filter (using {@see apply_filters()}) on rendered output.
 	 */
 	public function render() {
 		// These are used in the template:
