@@ -13,12 +13,15 @@ Plugin is not just for administrators but can be used by any registered user of 
 ## TODO
 
 - [x] screen options cannot be saved on page __New table__.
+- [x] available templates in screen option __Used template__ should be extendable via [`apply_filters`](https://developer.wordpress.org/reference/functions/apply_filters/) so each wizard could easily set up own templates.
 - [ ] finish __New table__ wizard.
 - [ ] finish __New plugin__ wizard.
 - [ ] finish __New theme__ wizard.
 - [ ] finish __Custom post type__ wizard.
 - [ ] update version to __0.1.0__.
 - [ ] make this plugin extendable by using [`apply_filters`](https://developer.wordpress.org/reference/functions/apply_filters/) and [`do_action`](https://developer.wordpress.org/reference/functions/do_action/).
+- [ ] forms have to be _AJAXish_ if possible (i.e. if browser supports JavaScript) - generated code snippets should be updated on fly (after any input is changed).
+- [ ] add Czech translation
 
 ## Changelog
 
