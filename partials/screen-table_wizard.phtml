@@ -24,10 +24,10 @@
 				<!-- Class name -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-classname"><?= __( 'Class name', DevHelper::SLUG ) ?></label>
+						<label for="plugin-classname"><?php _e( 'Class name', DevHelper::SLUG ) ?></label>
 					</th>
 					<td>
-						<input type="text" name="classname" id="plugin-classname" class="regular-text" placeholder="<?= __( 'My_Example_List', DevHelper::SLUG ) ?>">
+						<input type="text" name="classname" id="plugin-classname" class="regular-text" placeholder="<?php _e( 'My_Example_List', DevHelper::SLUG ) ?>">
 						<?php if ( $display_description === true ): ?>
 						<p id="classname_description" class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. \'My_Example_List\'.', DevHelper::SLUG ); ?></p>
 						<?php endif;?>
@@ -44,7 +44,7 @@
 							<label for="plugin-set_plural">
 								<input type="checkbox" name="plugin-set_plural" id="plugin-set_plural">
 								<?php _e( 'Plural label:', DevHelper::SLUG ); ?>
-								<input type="text" name="plural" id="plugin-plural" placeholder="<?= __( 'examples', DevHelper::SLUG ) ?>" disabled="disabled">
+								<input type="text" name="plural" id="plugin-plural" placeholder="<?php _e( 'examples', DevHelper::SLUG ) ?>" disabled="disabled">
 							</label>
 							<?php if ( $display_description === true ): ?>
 							<p id="set_plural_description" class="description"><?php _e( 'Plural value used for labels and the objects being listed. This affects things such as CSS class-names and nonces used in the list table, e.g. \'posts\'. Default empty.', DevHelper::SLUG ); ?></p>
@@ -107,7 +107,7 @@
 				<!-- Views -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-use_views"><?= __( 'Views', DevHelper::SLUG ) ?></label>
+						<label for="plugin-use_views"><?php _e( 'Views', DevHelper::SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
@@ -117,7 +117,7 @@
 							</label>
 							<?php if ( $display_description === true ): ?>
 							<p id="use_views_description" class="description">
-								<?= __( 'Views are used as a main data filtres - commonly there are views <b>All</b> and <b>Deleted</b> which means one view with all not-deleted items and other with deleted items (trash).', DevHelper::SLUG ) ?></p>
+								<?php _e( 'Views are used as a main data filtres - commonly there are views <b>All</b> and <b>Deleted</b> which means one view with all not-deleted items and other with deleted items (trash).', DevHelper::SLUG ) ?></p>
 							<?php endif;?>
 							<div id="use_views_area" class="wp-pattern-example">
 								<p><b><?php _e( 'Specify all views:', DevHelper::SLUG ); ?></b></p>
@@ -152,7 +152,7 @@
 				<!-- Bulk actions -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-use_bulkactions"><?= __( 'Bulk actions', DevHelper::SLUG ) ?></label>
+						<label for="plugin-use_bulkactions"><?php _e( 'Bulk actions', DevHelper::SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
@@ -162,7 +162,7 @@
 							</label>
 							<?php if ( $display_description === true ): ?>
 							<p id="use_bulkactions_description" class="description">
-								<?= __( 'Bulk actions are pre-defined operations over selected items in the table. Are used for setting values for multiple items. Commonly is one of actions <b>Trash</b>.', DevHelper::SLUG ) ?></p>
+								<?php _e( 'Bulk actions are pre-defined operations over selected items in the table. Are used for setting values for multiple items. Commonly is one of actions <b>Trash</b>.', DevHelper::SLUG ) ?></p>
 							<?php endif;?>
 							<div id="use_bulkactions_area" class="wp-pattern-example">
 								<p><b><?php _e( 'Specify bulk actions:', DevHelper::SLUG ); ?></b></p>
@@ -296,7 +296,7 @@ return array(
 				<!-- Columns -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-columns"><?= __( 'Columns', DevHelper::SLUG ) ?></label>
+						<label for="plugin-columns"><?php _e( 'Columns', DevHelper::SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
@@ -335,10 +335,10 @@ return array(
 									<tfoot>
 										<tr>
 											<td style="width: 35%;">
-												<input type="text" name="plugin-new_columns_key" id="plugin-new_columns_key" class="regular-text" placeholder="<?= __( 'Enter key', DevHelper::SLUG ) ?>" style="width: 100%;">
+												<input type="text" name="plugin-new_columns_key" id="plugin-new_columns_key" class="regular-text" placeholder="<?php _e( 'Enter key', DevHelper::SLUG ) ?>" style="width: 100%;">
 											</td>
 											<td style="width: 35%;">
-												<input type="text" name="plugin-new_columns_label" id="plugin-new_columns_label" class="regular-text" placeholder="<?= __( 'Enter label', DevHelper::SLUG ) ?>" style="width: 100%;">
+												<input type="text" name="plugin-new_columns_label" id="plugin-new_columns_label" class="regular-text" placeholder="<?php _e( 'Enter label', DevHelper::SLUG ) ?>" style="width: 100%;">
 											</td>
 											<td style="width: 10%;"><input type="checkbox" title="<?php _e( 'Make it sortable?', DevHelper::SLUG ); ?>" checked="checked"></td>
 											<td style="width: 20%;"><span title="<?php _e( 'Add column', DevHelper::SLUG ); ?>"><span class="wp-ui-text-highlight dashicons dashicons-plus"></span></span> / <span title="<?php _e( 'Clear values', DevHelper::SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>

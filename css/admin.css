@@ -5,3 +5,16 @@
 .inner_checkbox_area > p.description {
 	margin-top: 0px;
 }
+.static-label {
+	width: 130px;
+}
+
+/*
+ * There are two different descriptions:
+ */
+form p.description {
+	font-size: 1.1em;
+}
+form .form-table td p.description {
+	font-size: 0.9em;
+}
