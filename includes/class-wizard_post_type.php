@@ -1,6 +1,10 @@
 <?php
 /**
+ * Custom post type "Wizard".
+ *
+ * @author Ondřej Doněk <ondrejd@gmail.com>
  * @package odwp-devhelper
+ * @since 0.0.1
  */
 
 if ( ! class_exists( 'Wizard_Post_Type' ) ):
@@ -11,12 +15,13 @@ if ( ! class_exists( 'Wizard_Post_Type' ) ):
  */
 class Wizard_Post_Type {
 	/**
-	 * @const string
+	 * @var string
 	 * @since 0.0.1
 	 */
 	const SLUG = 'wizard';
 
 	/**
+	 * Holds instance of self (part of singleton implementation).
 	 * @access private
 	 * @since 0.0.1
 	 * @var Wizard_Post_Type $instance
@@ -24,21 +29,23 @@ class Wizard_Post_Type {
 	private static $instance;
 
 	/**
+	 * Returns instance of self (part of singleton implementation).
 	 * @return Wizard_Post_Type
 	 * @since 0.0.1
 	 */
 	public static function get_instance() {
-		if ( ! ( self::$instance instanceof Wizard_Post_Type ) ) {
-			self::$instance = new Wizard_Post_Type();
+		if ( ! ( self::$instance instanceof self ) ) {
+			self::$instance = new self();
 		}
 
 		return self::$instance;
 	}
 
 	/**
+	 * Constructor.
 	 * @access private
 	 * @since 0.0.1
-	 * @uses plugin_dir_path()
+	 * @uses apply_filters()
 	 * @uses register_post_type()
 	 */
 	private function __construct() {
@@ -70,6 +77,15 @@ class Wizard_Post_Type {
 			'taxonomies' => array(),
 			'has_archive' => true
 		);
+
+		/**
+		 * Filter wizard post type arguments.
+		 *
+		 * @since 0.1.0
+		 *
+		 * @param array $arguments Wizard post type arguments.
+		 */
+		$args = apply_filters( 'devhelper_' . self::SLUG . '_post_type_arguments', $args );
 
 		register_post_type( self::SLUG, $args );
 	}
