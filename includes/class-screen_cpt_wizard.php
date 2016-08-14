@@ -1,6 +1,10 @@
 <?php
 /**
+ * Screen for Custom Post Type wizard.
+ *
+ * @author Ondřej Doněk <ondrejd@gmail.com>
  * @package odwp-devhelper
+ * @since 0.1.0
  */
 
 if ( ! class_exists( 'Screen_Cpt_Wizard' ) ):
@@ -24,22 +28,23 @@ class Screen_Cpt_Wizard extends DevHelper_Screen_Prototype {
 
 		// Specify help tabs
 		$this->help_tabs[] = array(
-			'id'      => $this->slug . '-help_tab',
+			'id'      => $this->slug . '-main_help_tab',
 			'title'   => __( 'CPT Wizard', DevHelper::SLUG ),
-			'content' => __( '<p style"colof: #f30;"><code>XXX</code> Fill this screen help!<p>', DevHelper::SLUG ),
+			'content' => __( '<p><code>XXX</code> Finish this screen help!<p>', DevHelper::SLUG )
 		);
 
 		// Specify help sidebars
 		$this->help_sidebars[] = sprintf(
-			__( '<b>Usefull links</b><p><a href="%1$s" target="blank">Post Types</a> on <b>WordPress Codex</b>.</p>', DevHelper::SLUG ),
-			'https://codex.wordpress.org/Post_Types'
+			__( '<b>Usefull links</b><p><a href="%1$s" target="blank">Post Types</a> on <b>WordPress Codex</b> especially part about <a href="%2$s" target="blank">Custom Post Types</a>.</p>', DevHelper::SLUG ),
+			'https://codex.wordpress.org/Post_Types',
+			'https://codex.wordpress.org/Post_Types#Custom_Post_Types'
 		);
 
 		// Overwrite available templates in screen options
 		add_filter( "devhelper_{$this->slug}_templates", function( $templates ) {
 			return array(
-				'simple' => __( 'Simple', DevHelper::SLUG ),
-				'class'  => __( 'Full class', DevHelper::SLUG ),
+				'simple' => __( 'Simple function', DevHelper::SLUG ),
+				'class'  => __( 'Singleton class', DevHelper::SLUG ),
 			);
 		} );
 
