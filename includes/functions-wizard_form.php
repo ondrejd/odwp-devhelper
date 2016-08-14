@@ -60,33 +60,33 @@ endif;
 if ( ! function_exists( 'odwpdh_render_form_submit_buttons' ) ) :
 
 /**
-* Render wizard form submit buttons.
-* @param string $wizard_slug
-* @return string
-* @since 0.1.0
-*/
+ * Render wizard form submit buttons.
+ * @param string $wizard_slug
+ * @return string
+ * @since 0.1.0
+ */
 function odwpdh_render_form_submit_buttons( $wizard_slug ) {
- ob_start();
+  ob_start();
 ?>
 <!-- TODO Add spinner and make this works via AJAX (with safe-fall to plain POST and PHP) -->
 <input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DevHelper::SLUG ); ?>" class="button-primary">
 <input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DevHelper::SLUG ); ?>" class="button">
 <input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DevHelper::SLUG ); ?>" class="button">
 <?php
- $output = ob_get_clean();
+  $output = ob_get_clean();
 
- /**
-  * Filter wizard form submit buttons.
-  *
-  * Name of filter corresponds with slug of the particular wizard.
-  * For example for `Custom Post Type wizard` is filter name
-  * "devhelper_cpt_wizard_form_submit_buttons".
-  *
-  * @since 0.1.0
-  *
-  * @param string $output Rendered HTML.
-  */
- return apply_filters( "devhelper_{$wizard_slug}_form_submit_buttons", $output );
+  /**
+   * Filter wizard form submit buttons.
+   *
+   * Name of filter corresponds with slug of the particular wizard.
+   * For example for `Custom Post Type wizard` is filter name
+   * "devhelper_cpt_wizard_form_submit_buttons".
+   *
+   * @since 0.1.0
+   *
+   * @param string $output Rendered HTML.
+   */
+  return apply_filters( "devhelper_{$wizard_slug}_form_submit_buttons", $output );
 }
 
 endif;
