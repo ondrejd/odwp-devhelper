@@ -24,7 +24,9 @@ Plugin is not just for administrators but can be used by any registered user of 
 - [ ] add Czech translation
 - [ ] add these plugin's options:
   - [ ] chooser for [PrismJs](http://prismjs.com) color scheme
-  - [ ] checkbox if user wants to generate full-plugin code or just classes or functions (this will be apply for __Table List__ or __Custom Post Type__ wizards). _Think about placing this option into particular screen options._
+  - [ ] checkbox if user wants to generate full-plugin code or just classes or functions. This will be applied for __Table List__ or __Custom Post Type__ wizards. _Think about placing this option into particular screen options._
+  - [ ] add mention about [Code Snippets](https://wordpress.org/plugins/code-snippets/) plugin which can help with extending __DevHelper__ without need of new plugin.
+- [ ] Finish `README.txt` file.
 
 ## Changelog
 
