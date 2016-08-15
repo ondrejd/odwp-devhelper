@@ -22,6 +22,9 @@ Plugin is not just for administrators but can be used by any registered user of 
 - [ ] make this plugin extendable by using [`apply_filters`](https://developer.wordpress.org/reference/functions/apply_filters/) and [`do_action`](https://developer.wordpress.org/reference/functions/do_action/).
 - [ ] forms have to be _AJAXish_ if possible (i.e. if browser supports JavaScript) - generated code snippets should be updated on fly (after any input is changed).
 - [ ] add Czech translation
+- [ ] add these plugin's options:
+  - [ ] chooser for [PrismJs](http://prismjs.com) color scheme
+  - [ ] checkbox if user wants to generate full-plugin code or just classes or functions (this will be apply for __Table List__ or __Custom Post Type__ wizards). _Think about placing this option into particular screen options._
 
 ## Changelog
 
