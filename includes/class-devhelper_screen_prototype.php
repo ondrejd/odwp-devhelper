@@ -273,7 +273,7 @@ class DevHelper_Screen_Prototype {
 		extract( $this->get_screen_options() );
 		$templates = $this->get_source_templates();
 
-		include_once( DevHelper::plugin_path( 'partials/screen_options-wizard.php' ) );
+		include( DevHelper::plugin_path( 'partials/screen_options-wizard.php' ) );
 	}
 
 	/**
@@ -337,9 +337,59 @@ class DevHelper_Screen_Prototype {
 		// These are used in the template:
 		$slug = $this->slug;
 		$screen = $this->get_screen();
+		$wizard = $this;
 		extract( $this->get_screen_options() );
 
-		require_once DevHelper::plugin_path( 'partials/screen-' . $this->slug . '.phtml' );
+		include( DevHelper::plugin_path( 'partials/screen-' . $this->slug . '.phtml' ) );
+	}
+
+	/**
+	 * Render common advanced options.
+	 * @param boolean $display_description
+	 * @return string
+	 * @since 0.1.0
+	 */
+	public function render_advanced_options( $display_description ) {
+		ob_start();
+		include( DevHelper::plugin_path( 'partials/wizard-advanced_options.phtml' ) );
+		$output = ob_get_clean();
+
+		/**
+		 * Filter wizard advanced options (HTML with part of form in <tr> element).
+		 *
+		 * Name of filter corresponds with slug of the particular wizard.
+		 * For example for `Custom Post Type wizard` is filter name
+		 * "devhelper_cpt_wizard_advanced_options_form".
+		 *
+		 * @since 0.1.0
+		 *
+		 * @param string $output Rendered HTML.
+		 */
+		return apply_filters( "devhelper_{$this->slug}_advanced_options_form", $output );
+	}
+
+	/**
+	 * Render wizard form submit buttons.
+	 * @return string
+	 * @since 0.1.0
+	 */
+	public function render_submit_buttons() {
+		ob_start();
+		include( DevHelper::plugin_path( 'partials/wizard-submit_buttons.phtml' ) );
+		$output = ob_get_clean();
+
+		/**
+		 * Filter wizard form submit buttons.
+		 *
+		 * Name of filter corresponds with slug of the particular wizard.
+		 * For example for `Custom Post Type wizard` is filter name
+		 * "devhelper_cpt_wizard_form_submit_buttons".
+		 *
+		 * @since 0.1.0
+		 *
+		 * @param string $output Rendered HTML.
+		 */
+		return apply_filters( "devhelper_{$this->slug}_form_submit_buttons", $output );
 	}
 }
 

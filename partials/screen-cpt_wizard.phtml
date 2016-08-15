@@ -23,18 +23,33 @@
 		<table class="form-table">
 			<!-- Class name -->
 			<!-- TODO According to used template we need either class name or function name. -->
+			<?php if ( $used_template == 'simple' ) : ?>
 			<tr>
 				<th scope="row">
-					<label for="cpt-classname"><?php _e( 'Class name', DevHelper::SLUG ); ?></label>
+					<label for="cpt-functionname"><?php _e( 'Function name', DevHelper::SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="classname" id="cpt-classname" class="text" placeholder="<?php _e( 'Wizard_Post_Type', DevHelper::SLUG ); ?>">
+					<input type="text" name="functionname" id="cpt-function_name" class="text" placeholder="<?php _e( 'register_wizard_post_type', DevHelper::SLUG ); ?>">
 					<?php if ( $display_description === true ): ?>
-					<p id="classname-description" class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. \'Wizard_Post_Type\'.', DevHelper::SLUG ); ?></p>
+					<p class="description"><?php _e( 'Name of the PHP function that will be generated, e.g. <code>Wizard_Post_Type</code>.', DevHelper::SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
+			<?php else/*if ( $used_template == 'class' )*/ : ?>
+			<tr>
+				<th scope="row">
+					<label for="cpt-class_name"><?php _e( 'Class name', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="class_name" id="cpt-class_name" class="text" placeholder="<?php _e( 'Wizard_Post_Type', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. <code>Wizard_Post_Type</code>.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<?php endif; ?>
 		</table>
+
 
 	<!--
 	'label' - A plural descriptive name for the post type marked for translation. Default: Value of $labels['name']
@@ -334,10 +349,10 @@
 						<!-- ... -->
 
 			<!-- Advanced options -->
-			<?php echo odwpdh_render_advanced_options_form( $slug, $display_description ); ?>
+			<?php echo $wizard->render_advanced_options( $display_description ); ?>
 		</table>
 		<!-- Submit buttons -->
-		<?php echo odwpdh_render_form_submit_buttons( $slug ); ?>
+		<?php echo $wizard->render_submit_buttons(); ?>
 	</form>
 
 	<hr>

@@ -20,63 +20,62 @@
 
 	<form id="list_table-wizard">
 		<table class="form-table">
-			<tbody>
-				<!-- Class name -->
-				<tr>
-					<th scope="row">
-						<label for="plugin-classname"><?php _e( 'Class name', DevHelper::SLUG ) ?></label>
-					</th>
-					<td>
-						<input type="text" name="classname" id="plugin-classname" class="regular-text" placeholder="<?php _e( 'My_Example_List', DevHelper::SLUG ) ?>">
+			<!-- Class name -->
+			<tr>
+				<th scope="row">
+					<label for="plugin-classname"><?php _e( 'Class name', DevHelper::SLUG ) ?></label>
+				</th>
+				<td>
+					<input type="text" name="classname" id="plugin-classname" class="regular-text" placeholder="<?php _e( 'My_Example_List', DevHelper::SLUG ) ?>">
+					<?php if ( $display_description === true ): ?>
+					<p id="classname_description" class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. \'My_Example_List\'.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<!-- WP_List_Table Arguments -->
+			<tr>
+				<th scope="row">
+					<label for="plugin-arguments"><?php _e( 'Arguments', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<p class="description"><?php _e( 'Arguments for <a href="https://developer.wordpress.org/reference/classes/wp_list_table/__construct/" target="blank">constructor</a> of <code>WP_List_Table</code> class.', DevHelper::SLUG ); ?></p>
+					<fieldset>
+						<label for="plugin-set_plural">
+							<input type="checkbox" name="plugin-set_plural" id="plugin-set_plural">
+							<?php _e( 'Plural label:', DevHelper::SLUG ); ?>
+							<input type="text" name="plural" id="plugin-plural" placeholder="<?php _e( 'examples', DevHelper::SLUG ) ?>" disabled="disabled">
+						</label>
 						<?php if ( $display_description === true ): ?>
-						<p id="classname_description" class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. \'My_Example_List\'.', DevHelper::SLUG ); ?></p>
+						<p id="set_plural_description" class="description"><?php _e( 'Plural value used for labels and the objects being listed. This affects things such as CSS class-names and nonces used in the list table, e.g. \'posts\'. Default empty.', DevHelper::SLUG ); ?></p>
 						<?php endif;?>
-					</td>
-				</tr>
-				<!-- WP_List_Table Arguments -->
-				<tr>
-					<th scope="row">
-						<label for="plugin-arguments"><?php _e( 'Arguments', DevHelper::SLUG ); ?></label>
-					</th>
-					<td>
-						<p class="description"><?php _e( 'Arguments for <a href="https://developer.wordpress.org/reference/classes/wp_list_table/__construct/" target="blank">constructor</a> of <code>WP_List_Table</code> class.', DevHelper::SLUG ); ?></p>
-						<fieldset>
-							<label for="plugin-set_plural">
-								<input type="checkbox" name="plugin-set_plural" id="plugin-set_plural">
-								<?php _e( 'Plural label:', DevHelper::SLUG ); ?>
-								<input type="text" name="plural" id="plugin-plural" placeholder="<?php _e( 'examples', DevHelper::SLUG ) ?>" disabled="disabled">
-							</label>
-							<?php if ( $display_description === true ): ?>
-							<p id="set_plural_description" class="description"><?php _e( 'Plural value used for labels and the objects being listed. This affects things such as CSS class-names and nonces used in the list table, e.g. \'posts\'. Default empty.', DevHelper::SLUG ); ?></p>
-							<?php endif;?>
-							<label for="plugin-set_singular">
-								<input type="checkbox" name="plugin-set_singular" id="plugin-set_singular">
-								<?php _e( 'Singular label:', DevHelper::SLUG ); ?>
-								<input type="text" name="singular" id="plugin-singular" placeholder="<?php _e( 'example', DevHelper::SLUG ); ?>" disabled="disabled">
-							</label>
-							<?php if ( $display_description === true ): ?>
-							<p id="set_singular_description" class="description"><?php _e( 'Singular label for an object being listed, e.g. \'post\'. Default empty.', DevHelper::SLUG ); ?></p>
-							<?php endif;?>
-							<label for="plugin-use_ajax">
-								<input type="checkbox" name="use_ajax" id="plugin-use_ajax">
-								Use AJAX?
-							</label>
-							<?php if ( $display_description === true ): ?>
-							<p id="use_ajax_description" class="description">
-								<?php _e( 'Whether the list table supports AJAX. This includes loading and sorting data, for example. If true, the class will call the <code><a href="https://developer.wordpress.org/reference/classes/wp_list_table/_js_vars/" target="blank">_js_vars()</a></code> method  in the footer to provide variables to any scripts handling AJAX events. Default false.', DevHelper::SLUG ); ?>
-							<?php endif;?>
-							</p>
-							<label for="plugin-set_screen">
-								<input type="checkbox" name="plugin-set_screen" id="plugin-set_screen">
-								<?php _e( 'Screen:', DevHelper::SLUG ); ?>
-								<input type="text" name="screen" id="plugin-screen" placeholder="<?php _e( 'example', DevHelper::SLUG ); ?>" disabled="disabled">
-							</label>
-							<?php if ( $display_description === true ): ?>
-							<p id="set_screen_description" class="description"><?php _e( 'String containing the hook name used to determine the current screen. If left null, the current screen will be automatically set. Default null.', DevHelper::SLUG ); ?></p>
-							<?php endif;?>
-						</fieldset>
-					</td>
-				</tr>
+						<label for="plugin-set_singular">
+							<input type="checkbox" name="plugin-set_singular" id="plugin-set_singular">
+							<?php _e( 'Singular label:', DevHelper::SLUG ); ?>
+							<input type="text" name="singular" id="plugin-singular" placeholder="<?php _e( 'example', DevHelper::SLUG ); ?>" disabled="disabled">
+						</label>
+						<?php if ( $display_description === true ): ?>
+						<p id="set_singular_description" class="description"><?php _e( 'Singular label for an object being listed, e.g. \'post\'. Default empty.', DevHelper::SLUG ); ?></p>
+						<?php endif;?>
+						<label for="plugin-use_ajax">
+							<input type="checkbox" name="use_ajax" id="plugin-use_ajax">
+							Use AJAX?
+						</label>
+						<?php if ( $display_description === true ): ?>
+						<p id="use_ajax_description" class="description">
+							<?php _e( 'Whether the list table supports AJAX. This includes loading and sorting data, for example. If true, the class will call the <code><a href="https://developer.wordpress.org/reference/classes/wp_list_table/_js_vars/" target="blank">_js_vars()</a></code> method  in the footer to provide variables to any scripts handling AJAX events. Default false.', DevHelper::SLUG ); ?>
+						<?php endif;?>
+						</p>
+						<label for="plugin-set_screen">
+							<input type="checkbox" name="plugin-set_screen" id="plugin-set_screen">
+							<?php _e( 'Screen:', DevHelper::SLUG ); ?>
+							<input type="text" name="screen" id="plugin-screen" placeholder="<?php _e( 'example', DevHelper::SLUG ); ?>" disabled="disabled">
+						</label>
+						<?php if ( $display_description === true ): ?>
+						<p id="set_screen_description" class="description"><?php _e( 'String containing the hook name used to determine the current screen. If left null, the current screen will be automatically set. Default null.', DevHelper::SLUG ); ?></p>
+						<?php endif;?>
+					</fieldset>
+				</td>
+			</tr>
 				<!-- Other options -->
 				<tr>
 					<th scope="row">
@@ -350,11 +349,10 @@ return array(
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo odwpdh_render_advanced_options_form( $slug, $display_description ); ?>
-			</tbody>
-		</table>
-		<!-- Submit buttons -->
-		<?php echo odwpdh_render_form_submit_buttons( $slug ); ?>
+				<?php echo $wizard->render_advanced_options( $display_description ); ?>
+			</table>
+			<!-- Submit buttons -->
+			<?php echo $wizard->render_submit_buttons(); ?>
 	</form>
 
 	<hr>

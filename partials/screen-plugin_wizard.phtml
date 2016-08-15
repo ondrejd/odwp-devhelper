@@ -17,7 +17,6 @@
 
 	<form id="plugin-wizard">
 		<table class="form-table">
-			<tbody>
 				<!-- Name -->
 				<tr>
 					<th scope="row">
@@ -342,10 +341,9 @@
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo odwpdh_render_advanced_options_form( $slug, $display_description ); ?>
-			</tbody>
-		</table>
-		<!-- Submit buttons -->
-		<?php echo odwpdh_render_form_submit_buttons( $slug ); ?>
+				<?php echo $wizard->render_advanced_options( $display_description ); ?>
+			</table>
+			<!-- Submit buttons -->
+			<?php echo $wizard->render_submit_buttons(); ?>
 	</form>
 </div>

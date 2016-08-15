@@ -9,6 +9,9 @@
 	width: 130px;
 }
 
+input[type="text"].short-text { width: 270px; }
+input[type="text"].extrashort-text { width: 170px; }
+
 /*
  * There are two different descriptions:
  */
@@ -17,4 +20,11 @@ form p.description {
 }
 form .form-table td p.description {
 	font-size: 0.9em;
+}
+
+/*
+ * Sometimes there were a lot of empty space (see `odwpdh_render_advanced_options_form()`)...
+ */
+.form-table td fieldset label {
+	margin: 0 0 0 0px !important;
 }
