@@ -29,7 +29,7 @@
 					<label for="cpt-functionname"><?php _e( 'Function name', DevHelper::SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="functionname" id="cpt-function_name" class="text" placeholder="<?php _e( 'register_wizard_post_type', DevHelper::SLUG ); ?>">
+					<input type="text" name="function_name" id="cpt-function_name" class="text" placeholder="<?php _e( 'register_wizard_post_type', DevHelper::SLUG ); ?>">
 					<?php if ( $display_description === true ): ?>
 					<p class="description"><?php _e( 'Name of the PHP function that will be generated, e.g. <code>Wizard_Post_Type</code>.', DevHelper::SLUG ); ?></p>
 					<?php endif;?>
@@ -48,42 +48,354 @@
 				</td>
 			</tr>
 			<?php endif; ?>
+			<tr>
+				<th scope="row">
+					<label for="cpt-label"><?php _e( 'Label', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="label" id="cpt-label" class="text" placeholder="<?php _e( 'Wizards', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'A plural descriptive name for the post type marked for translation. Default: Value of <code>$labels[\'name\']</code>.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-description"><?php _e( 'Description', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="description" id="cpt-description" class="regular-text" placeholder="<?php _e( 'Wizards custom post type.', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'A short descriptive summary of what the post type is. Default: blank.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-public"><?php _e( 'Visibility', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<fieldset>
+						<div class="fildset-row">
+							<label for="cpt-public">
+								<input type="checkbox" name="public" id="cpt-public">
+								<?php _e( 'Make this post type public?', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'Controls how the type is visible to authors (<b>Show in nav menus</b>, <b>Show UI</b>) and readers (<b>Exclude from search</b>, <b>Publicly queryable</b>). Default: <b>false</b>.', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						<div class="fildset-row">
+							<label for="cpt-exclude_from_search">
+								<input type="checkbox" name="exclude_from_search" id="cpt-exclude_from_search">
+								<?php _e( 'Exclude from search?', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'Whether to exclude posts with this post type from front end search results. Default: value of the opposite of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						<div class="fildset-row">
+							<label for="cpt-publicly_queryable">
+								<input type="checkbox" name="publicly_queryable" id="cpt-publicly_queryable">
+								<?php _e( 'Publicly queryable?', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'Whether queries can be performed on the front end as part of <code>parse_request()</code>. Default: value of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						<div class="fildset-row">
+							<label for="cpt-show_ui">
+								<input type="checkbox" name="show_ui" id="cpt-show_ui">
+								<?php _e( 'Show <abbr title="User Interface">UI</abbr>?', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'Whether to generate a default UI for managing this post type in the admin. Default: value of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						<div class="fildset-row">
+							<label for="cpt-show_in_nav_menus">
+								<input type="checkbox" name="show_in_nav_menus" id="cpt-show_in_nav_menus">
+								<?php _e( 'Show in navigation menus?', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'Whether post_type is available for selection in navigation menus. Default: value of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						<div class="fildset-row">
+							<label for="cpt-show_in_menu">
+								<input type="checkbox" name="show_in_menu" id="cpt-show_in_menu">
+								<?php _e( 'Show in admin menu?', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'Where to show the post type in the admin menu. <b>Show UI</b> must be <b>true</b>. Default: value of <b>Show UI</b>.', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						<div class="fildset-row">
+							<label for="cpt-show_in_admin_bar">
+								<input type="checkbox" name="show_in_admin_bar" id="cpt-show_in_admin_bar">
+								<?php _e( 'Show in admin bar?', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'Whether to make this post type available in the WordPress admin bar. Default: value of the <b>Show in menu</b>.', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						<!--
+						<div class="fildset-row">
+							<label for="cpt-xxx">
+								<input type="checkbox" name="xxx" id="cpt-xxx">
+								<?php _e( 'XXX', DevHelper::SLUG ); ?>
+							</label>
+							<?php if ( $display_description === true ): ?>
+							<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
+							<?php endif;?>
+						</div>
+						-->
+					</fieldset>
+				</td>
+			</tr>
+			<!-- TODO `Menu position`, `Menu icon` should be in one section "Visibility" (Rename this section to "UI"?)! -->
+			<tr>
+				<th scope="row">
+					<label for="cpt-menu_position"><?php _e( 'Menu position', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<!-- TODO This select should be disabled when `show_in_menu` is not checked.
+					   - TODO Add number input left to the select with currently selected value.
+					   -      This value should changed when selected value is changed.
+						 -      Also this will be used for entering very own value.
+					   -->
+					<select name="menu_position" id="cpt-menu_position">
+				    <option value="5"><?php _e( 'Below Posts', DevHelper::SLUG ); ?></option>
+				    <option value="10"><?php _e( 'Below Media', DevHelper::SLUG ); ?></option>
+				    <option value="15"><?php _e( 'Below Links', DevHelper::SLUG ); ?></option>
+				    <option value="20"><?php _e( 'Below Pages', DevHelper::SLUG ); ?></option>
+				    <option value="25"><?php _e( 'Below comments', DevHelper::SLUG ); ?></option>
+				    <option value="60"><?php _e( 'Below first separator', DevHelper::SLUG ); ?></option>
+				    <option value="65"><?php _e( 'Below Plugins', DevHelper::SLUG ); ?></option>
+				    <option value="70"><?php _e( 'Below Users', DevHelper::SLUG ); ?></option>
+				    <option value="75"><?php _e( 'Below Tools', DevHelper::SLUG ); ?></option>
+				    <option value="80"><?php _e( 'Below Settings', DevHelper::SLUG ); ?></option>
+				    <option value="100"><?php _e( 'Below second separator', DevHelper::SLUG ); ?></option>
+					</select>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'The position in the menu order the post type should appear. <b>Show in menu</b> must be <b>true</b>. Default: <code>null</code> - defaults to below <b>Comments</b>.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-menu_icon"><?php _e( 'Menu icon', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="menu_icon" id="cpt-menu_icon" class="text" placeholder="<?php _e( 'dashicons-media-default', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php printf(
+						__( 'The url to the icon to be used for this menu or the name of the icon from the <a href="%1$s" target="blank">iconfont</a>. Default: <code>null</code> - defaults to the posts icon.', DevHelper::SLUG ),
+						'https://developer.wordpress.org/resource/dashicons'
+					); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<!-- TODO `Capability type`, `Capabilities`, `Map Meta Cap` should be in one section "Capabilities"! -->
+			<tr>
+				<th scope="row">
+					<label for="cpt-capability_type"><?php _e( 'Capability Type', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="capability_type" id="cpt-capability_type" class="text" placeholder="<?php _e( 'post', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php printf(
+						_e( 'The string to use to build the read, edit, and delete capabilities. May be passed as an array to allow for alternative plurals when using this argument as a base to construct the capabilities, e.g. <code>array( \'story\', \'stories\' )</code> the first array element will be used for the singular capabilities and the second array element for the plural capabilities, this is instead of the auto generated version if no array is given which would be "storys". The <b>Capability Type</b> parameter is used as a base to construct capabilities unless they are explicitly set with the <b>Capabilities</b> parameter. It seems that <b>Map Meta Cap</b> needs to be set to <code>false</code> or <code>null</code>, to make this work. Default: <b>post</b>. For more details see <a href="%1$s" target="blank">documentation on WordPress Codex</a>.', DevHelper::SLUG ),
+						'https://codex.wordpress.org/Function_Reference/register_post_type#capability_type'
+					); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-capabilities"><?php _e( 'Capabilities', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<!-- TODO Construct value of `capabilities` via JavaScript when `capability_type` is set!
+						 - TODO There should be textarea instad of plain text input!
+						 -->
+					<textarea name="capabilities" id="cpt-capabilities" class="large-text code" cols="50" rows="5" placeholder="<?php _e( 'array( \'edit_post\' => \'edit_wizard\', \'read_post\' => \'read_wizard\', \'delete_post\' => \'delete_wizard\', \'edit_others_posts\' => \'edit_others_wizards\', \'publish_posts\' => \'publish_wizards\', \'edit_posts\' => \'edit_wizards\', \'read_private_posts\' => \'read_private_wizards\', \'create_posts\' => \'edit_wizards\' )', DevHelper::SLUG ); ?>"></textarea>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'An array of the capabilities for this post type. Default: <b>Capability type</b> is used to construct.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-map_meta_cap"><?php _e( 'Map Meta Cap', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-map_meta_cap">
+						<input type="checkbox" name="map_meta_cap" id="cpt-map_meta_cap">
+						<?php _e( 'Map default meta capability?', DevHelper::SLUG ); ?>
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'Whether to use the internal default meta capability handling. Default: <code>null</code>.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-hierarchical"><?php _e( 'Hierarchical', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-hierarchical">
+						<input type="checkbox" name="hierarchical" id="cpt-hierarchical">
+						<?php _e( 'Is this post type hierarchical?', DevHelper::SLUG ); ?>
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'Whether the post type is hierarchical (e.g. page). Allows Parent to be specified. The <b>Supports</b> parameter should contain <code>page-attributes</code> to show the parent select box on the editor page. Default: <b>false</b>.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-supports"><?php _e( 'Supports', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<select name="supports" id="cpt-supports" multiple="multiple">
+				    <option value="title" selected="selected"><?php _e( 'title', DevHelper::SLUG ); ?></option>
+				    <option value="editor" selected="selected"><?php _e( 'editor (content)', DevHelper::SLUG ); ?></option>
+				    <option value="author"><?php _e( 'author', DevHelper::SLUG ); ?></option>
+				    <option value="thumbnail"><?php _e( 'thumbnail', DevHelper::SLUG ); ?></option>
+				    <option value="excerpt"><?php _e( 'excerpt', DevHelper::SLUG ); ?></option>
+				    <option value="trackbacks"><?php _e( 'trackbacks', DevHelper::SLUG ); ?></option>
+				    <option value="custom-fields"><?php _e( 'custom-fields', DevHelper::SLUG ); ?></option>
+				    <option value="comments"><?php _e( 'comments', DevHelper::SLUG ); ?></option>
+				    <option value="revisions"><?php _e( 'revisions', DevHelper::SLUG ); ?></option>
+				    <option value="page-attributes"><?php _e( 'page-attributes', DevHelper::SLUG ); ?></option>
+				    <option value="post-formats"><?php _e( 'post-formats', DevHelper::SLUG ); ?></option>
+					</select>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php printf(
+						__( 'An alias for calling <code><a href="%1$s" target="blank">add_post_type_support()</a></code> directly. As of <ver>3.5</ver>, <b>false</b> can be passed as value instead of an array to prevent default behavior. Default: <code>array( \'title\', \'editor\' )</code>.', DevHelper::SLUG ),
+						'https://developer.wordpress.org/reference/functions/add_post_type_support/'
+					); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-register_meta_box_cb"><?php _e( 'Register meta box callback', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="register_meta_box_cb" id="cpt-register_meta_box_cb" class="text" placeholder="">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php printf(
+						__( 'Provide a callback function that will be called when setting up the meta boxes for the edit form. The callback function takes one argument $post, which contains the WP_Post object for the currently edited post. Do <code><a href="%1$s" target="blank">remove_meta_box()</a></code> and <code><a href="%2$s" target="blank">add_meta_box()</a></code> calls in the callback. Default: <b>None</b>.', DevHelper::SLUG ),
+						'https://developer.wordpress.org/reference/functions/remove_meta_box/',
+						'https://developer.wordpress.org/reference/functions/add_meta_box/'
+					); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-taxonomies"><?php _e( 'Taxonomies', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="taxonomies" id="cpt-taxonomies" class="regular-text" placeholder="<?php _e( '', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php printf(
+						__( 'An comma-separated array of registered taxonomies like <code>category</code> or <code>post_tag</code> that will be used with this post type. This can be used in lieu of calling <code><a href="%1$s" target="blank">register_taxonomy_for_object_type()</a></code> directly. Custom taxonomies still need to be registered with <code><a href="%2$s" target="blank">register_taxonomy()</a></code>. Default: <b>No taxonomies</b>.', DevHelper::SLUG ),
+						'https://developer.wordpress.org/reference/functions/register_taxonomy_for_object_type/',
+						'https://developer.wordpress.org/reference/functions/register_taxonomy/'
+					); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-has_archive"><?php _e( 'Archive', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-has_archive">
+						<input type="checkbox" name="has_archive" id="cpt-has_archive">
+						<?php _e( 'Has archive?', DevHelper::SLUG ); ?>
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'Enables post type archives. Will use <code>$post_type</code> as archive slug by default. Default: <b>false</b*.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<!--
+			<tr>
+				<th scope="row">
+					<label for="cpt-xxx"><?php _e( 'XXX', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="xxx" id="cpt-xxx" class="text" placeholder="<?php _e( 'XXX', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-xxx"><?php _e( 'XXX', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-xxx">
+						<input type="checkbox" name="xxx" id="cpt-xxx">
+						<?php _e( 'XXX', DevHelper::SLUG ); ?>
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			-->
+			<tr>
+				<th scope="row">
+					<label for="cpt-can_export"><?php _e( 'Export', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-can_export">
+						<input type="checkbox" name="can_export" id="cpt-can_export">
+						<?php _e( 'Can export?', DevHelper::SLUG ); ?>
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'Can this post type be exported. Default: <b>true</b>.', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-show_in_rest"><?php _e( 'REST API', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-show_in_rest">
+						<input type="checkbox" name="show_in_rest" id="cpt-show_in_rest">
+						<?php _e( 'Show in REST API?', DevHelper::SLUG ); ?>
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php printf(
+						__( 'Whether to expose this post type in the <a href="%1$s" target="blank">REST API</a>. Default: <b>false</b>.', DevHelper::SLUG ),
+						'http://wp-api.org/'
+					); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
 		</table>
-
-
-	<!--
-	'label' - A plural descriptive name for the post type marked for translation. Default: Value of $labels['name']
-	'description' - A short descriptive summary of what the post type is. Default: blank
-	'public' - Controls how the type is visible to authors (show_in_nav_menus, show_ui) and readers (exclude_from_search, publicly_queryable). Default: false
-	'exclude_from_search' - Whether to exclude posts with this post type from front end search results. Default: value of the opposite of public argument
-	'publicly_queryable' - Whether queries can be performed on the front end as part of parse_request(). Default: value of public argument
-	'show_ui' - Whether to generate a default UI for managing this post type in the admin. Default: value of public argument.
-	'show_in_nav_menus' - Whether post_type is available for selection in navigation menus. Default: value of public argument.
-	'show_in_menu' - Where to show the post type in the admin menu. show_ui must be true. Default: value of show_ui argument.
-	'show_in_admin_bar' - Whether to make this post type available in the WordPress admin bar. Default: value of the show_in_menu argument.
-	'menu_position' - The position in the menu order the post type should appear. show_in_menu must be true. Default: null - defaults to below Comments.
-	'menu_icon' - The url to the icon to be used for this menu or the name of the icon from the iconfont. Default: null - defaults to the posts icon
-	'capability_type' - The string to use to build the read, edit, and delete capabilities. May be passed as an array to allow for alternative plurals when using this argument as a base to construct the capabilities, e.g. array('story', 'stories') the first array element will be used for the singular capabilities and the second array element for the plural capabilities, this is instead of the auto generated version if no array is given which would be "storys". The 'capability_type' parameter is used as a base to construct capabilities unless they are explicitly set with the 'capabilities' parameter. It seems that `map_meta_cap` needs to be set to false or null, to make this work. Default: "post".
-	'capabilities' - An array of the capabilities for this post type. Default: capability_type is used to construct
-	'map_meta_cap' - Whether to use the internal default meta capability handling. Default: null.
-	'hierarchical' - Whether the post type is hierarchical (e.g. page). Allows Parent to be specified. The 'supports' parameter should contain 'page-attributes' to show the parent select box on the editor page. Default: false.
-	'supports' - An alias for calling add_post_type_support() directly. As of 3.5, boolean false can be passed as value instead of an array to prevent default (title and editor) behavior. Default: title and editor.
-	'register_meta_box_cb' - Provide a callback function that will be called when setting up the meta boxes for the edit form. The callback function takes one argument $post, which contains the WP_Post object for the currently edited post. Do remove_meta_box() and add_meta_box() calls in the callback. Default: None.
-	'taxonomies' - An array of registered taxonomies like category or post_tag that will be used with this post type. This can be used in lieu of calling register_taxonomy_for_object_type() directly. Custom taxonomies still need to be registered with register_taxonomy(). Default: no taxonomies.
-	'has_archive' - Enables post type archives. Will use $post_type as archive slug by default. Default: false.
-	'permalink_epmask' - The default rewrite endpoint bitmasks. For more info see Trac Ticket 12605 and this Make WordPress Plugins summary of endpoints. Default: EP_PERMALINK.
-	'rewrite' - Triggers the handling of rewrites for this post type. To prevent rewrites, set to false. Default: true and use $post_type as slug.
-	'query_var' - Sets the query_var key for this post type. Default: true - set to $post_type.
-	'can_export' - Can this post_type be exported. Default: true.
-	'show_in_rest' - Whether to expose this post type in the REST API. Default: false.
-	'rest_base' - The base slug that this post type will use when accessed using the REST API. Default: $post_type.
-	'rest_controller_class' - An optional custom controller to use instead of WP_REST_Posts_Controller. Must be a subclass of WP_REST_Controller. Default: WP_REST_Posts_Controller.
-	'_builtin' - Whether this post type is a native or "built-in" post_type. Note: this Codex entry is for documentation - core developers recommend you don't use this when registering your own post type Default: false.
-	'_edit_link' - Link to edit an entry with this post type. Note: this Codex entry is for documentation - core developers recommend you don't use this when registering your own post type. Default: 'post.php?post=%d'.
-	-->
+<!--
+'permalink_epmask' - The default rewrite endpoint bitmasks. For more info see Trac Ticket 12605 and this Make WordPress Plugins summary of endpoints. Default: EP_PERMALINK.
+'rewrite' - Triggers the handling of rewrites for this post type. To prevent rewrites, set to false. Default: true and use $post_type as slug.
+'query_var' - Sets the <code>query_var</code> key for this post type. Default: <b>true</b> - set to <code>$post_type</code>.
+'' -
+'' -
+'rest_base' - The base slug that this post type will use when accessed using the REST API. Default: $post_type.
+'rest_controller_class' - An optional custom controller to use instead of WP_REST_Posts_Controller. Must be a subclass of WP_REST_Controller. Default: WP_REST_Posts_Controller.
+'_builtin' - Whether this post type is a native or "built-in" post_type. Note: this Codex entry is for documentation - core developers recommend you don't use this when registering your own post type Default: false.
+'_edit_link' - Link to edit an entry with this post type. Note: this Codex entry is for documentation - core developers recommend you don't use this when registering your own post type. Default: 'post.php?post=%d'.
+-->
 
 		<h3><?php _e( 'Labels', DevHelper::SLUG ); ?></h3>
-		<p class="description"><?php _e ( 'An array of labels for this post type. By default, post labels are used for non-hierarchical post types and page labels for hierarchical ones.<br>Default: if empty, \'name\' is set to value of \'label\', and \'singular_name\' is set to value of \'name\'.', DevHelper::SLUG ); ?></p>
+		<p class="description"><?php _e ( 'An array of labels for this post type. By default, post labels are used for non-hierarchical post types and page labels for hierarchical ones.<br>Default: if empty, <b>Name</b> is set to value of <b>Label</b>, and <b>Singular Name</b> is set to value of <b>Name</b>.', DevHelper::SLUG ); ?></p>
 		<table class="form-table">
 			<tr>
 				<th scope="row">

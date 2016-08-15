@@ -25,6 +25,13 @@ form .form-table td p.description {
 /*
  * Sometimes there were a lot of empty space (see `odwpdh_render_advanced_options_form()`)...
  */
-.form-table td fieldset label {
-	margin: 0 0 0 0px !important;
+.form-table td fieldset .fildset-row label {
+	margin: 10px 0 0px 0px !important;
+}
+.form-table td fieldset .fildset-row:first-of-type label {
+	margin: 0px 0 0px 0px !important;
+}
+
+select[name="supports"] {
+	width: 200px;
 }
