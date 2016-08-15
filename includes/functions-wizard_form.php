@@ -15,29 +15,12 @@ if ( ! function_exists( 'odwpdh_render_advanced_options_form' ) ) :
  * @param boolean $display_description
  * @return string
  * @since 0.1.0
+ *
+ * @todo Move the function self into {@see DevHelper_Screen_Prototype::render_advanced_options()}.
  */
-function odwpdh_render_advanced_options_form( $wizard_slug, $display_description ) {
+function render_advanced_options_form( $wizard_slug, $display_description ) {
   ob_start();
-?>
-<tr>
-  <th scope="row">
-    <label for="plugin-advanced"><?php _e( 'Advanced', DevHelper::SLUG ); ?></label>
-  </th>
-  <td>
-    <fieldset id="plugin-advanced">
-      <label for="plugin-use_textdomain">
-        <input type="checkbox" name="use_textdomain" id="plugin-use_textdomain">
-        <?php _e( 'Use textdomain', DevHelper::SLUG ); ?>
-        <input type="text" name="textdomain" id="plugin-textdomain" class="short-text" placeholder="<?php esc_html_e( 'Enter textdomain', DevHelper::SLUG ); ?>" disabled="disabled">
-      </label>
-      <?php if ( $display_description === true ): ?>
-      <p id="use_textdomain_description" class="description">
-        <?php _e( '<code>XXX</code> Add detail description (with screenshot)!', DevHelper::SLUG ); ?></p>
-      <?php endif;?>
-    </fieldset>
-  </td>
-</tr>
-<?php
+  include( DevHelper::plugin_path( 'partials/wizard-advanced_options.phtml' ) );
   $output = ob_get_clean();
 
   /**
@@ -64,15 +47,12 @@ if ( ! function_exists( 'odwpdh_render_form_submit_buttons' ) ) :
  * @param string $wizard_slug
  * @return string
  * @since 0.1.0
+ *
+ * @todo Move the function self into {@see DevHelper_Screen_Prototype::render_submit_buttons()}.
  */
 function odwpdh_render_form_submit_buttons( $wizard_slug ) {
   ob_start();
-?>
-<!-- TODO Add spinner and make this works via AJAX (with safe-fall to plain POST and PHP) -->
-<input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DevHelper::SLUG ); ?>" class="button-primary">
-<input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DevHelper::SLUG ); ?>" class="button">
-<input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DevHelper::SLUG ); ?>" class="button">
-<?php
+  include( DevHelper::plugin_path( 'partials/wizard-submit_buttons.phtml' ) );
   $output = ob_get_clean();
 
   /**

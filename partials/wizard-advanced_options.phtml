@@ -1,0 +1,28 @@
+<?php
+/**
+ * Part of common wizard.
+ *
+ * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @package odwp-devhelper
+ * @since 0.1.0
+ */
+?><tr>
+  <th scope="row">
+    <label for="plugin-advanced"><?php _e( 'Advanced', DevHelper::SLUG ); ?></label>
+  </th>
+  <td>
+    <fieldset id="plugin-advanced">
+      <label for="plugin-use_textdomain">
+        <input type="checkbox" name="use_textdomain" id="plugin-use_textdomain">
+        <?php printf(
+          __( 'Use textdomain (as a string %1$s or PHP expression %2$s ).', DevHelper::SLUG ),
+          '<input type="text" name="textdomain" id="plugin-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DevHelper::SLUG ) . '" disabled="disabled">',
+          '<input type="text" name="textdomain_php" id="plugin-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DevHelper::SLUG ) . '" disabled="disabled">'
+        ); ?>
+      </label>
+      <?php if ( $display_description === true ): ?>
+      <p class="description"><?php _e( 'All strings in generated code will be ready for translation. You can choose either insert textdomain as a normal string (e.g. <code>my_textdomain</code>) which will be encapsulated by double-quotes or as a PHP expression (e.g. <code>DevHelper::SLUG</code>) which will be inserted into code without any quotes.', DevHelper::SLUG ); ?></p>
+      <?php endif;?>
+    </fieldset>
+  </td>
+</tr>
