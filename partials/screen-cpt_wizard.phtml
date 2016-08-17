@@ -323,33 +323,22 @@
 					<?php endif;?>
 				</td>
 			</tr>
-			<!--
 			<tr>
 				<th scope="row">
-					<label for="cpt-xxx"><?php _e( 'XXX', DevHelper::SLUG ); ?></label>
+					<label for="cpt-permalink_epmask"><?php _e( 'Permalink epmask', DevHelper::SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="xxx" id="cpt-xxx" class="text" placeholder="<?php _e( 'XXX', DevHelper::SLUG ); ?>">
+					<input type="text" name="permalink_epmask" id="cpt-permalink_epmask" class="text" placeholder="<?php _e( 'XXX', DevHelper::SLUG ); ?>">
 					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
+					<p class="description"><?php printf(
+						__( 'The default rewrite endpoint bitmasks. For more info see <a href="%1$s" target="blank">Trac Ticket 12605</a> and this <a href="%1$s" target="blank">Make WordPress Plugins summary of endpoints</a>. Default: <code>EP_PERMALINK</code>.', DevHelper::SLUG ),
+						'http://core.trac.wordpress.org/ticket/12605',
+						'http://make.wordpress.org/plugins/2012/06/07/rewrite-endpoints-api/'
+					); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
-			<tr>
-				<th scope="row">
-					<label for="cpt-xxx"><?php _e( 'XXX', DevHelper::SLUG ); ?></label>
-				</th>
-				<td>
-					<label for="cpt-xxx">
-						<input type="checkbox" name="xxx" id="cpt-xxx">
-						<?php _e( 'XXX', DevHelper::SLUG ); ?>
-					</label>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
-					<?php endif;?>
-				</td>
-			</tr>
-			-->
+			<!-- ... -->
 			<tr>
 				<th scope="row">
 					<label for="cpt-can_export"><?php _e( 'Export', DevHelper::SLUG ); ?></label>
@@ -381,9 +370,35 @@
 					<?php endif;?>
 				</td>
 			</tr>
+			<!--
+			<tr>
+				<th scope="row">
+					<label for="cpt-xxx"><?php _e( 'XXX', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="xxx" id="cpt-xxx" class="text" placeholder="<?php _e( 'XXX', DevHelper::SLUG ); ?>">
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-xxx"><?php _e( 'XXX', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-xxx">
+						<input type="checkbox" name="xxx" id="cpt-xxx">
+						<?php _e( 'XXX', DevHelper::SLUG ); ?>
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			-->
 		</table>
 <!--
-'permalink_epmask' - The default rewrite endpoint bitmasks. For more info see Trac Ticket 12605 and this Make WordPress Plugins summary of endpoints. Default: EP_PERMALINK.
 'rewrite' - Triggers the handling of rewrites for this post type. To prevent rewrites, set to false. Default: true and use $post_type as slug.
 'query_var' - Sets the <code>query_var</code> key for this post type. Default: <b>true</b> - set to <code>$post_type</code>.
 '' -
