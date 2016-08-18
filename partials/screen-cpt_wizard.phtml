@@ -165,17 +165,9 @@
 						 -      Also this will be used for entering very own value.
 					   -->
 					<select name="menu_position" id="cpt-menu_position">
-				    <option value="5"><?php _e( 'Below Posts', DevHelper::SLUG ); ?></option>
-				    <option value="10"><?php _e( 'Below Media', DevHelper::SLUG ); ?></option>
-				    <option value="15"><?php _e( 'Below Links', DevHelper::SLUG ); ?></option>
-				    <option value="20"><?php _e( 'Below Pages', DevHelper::SLUG ); ?></option>
-				    <option value="25"><?php _e( 'Below comments', DevHelper::SLUG ); ?></option>
-				    <option value="60"><?php _e( 'Below first separator', DevHelper::SLUG ); ?></option>
-				    <option value="65"><?php _e( 'Below Plugins', DevHelper::SLUG ); ?></option>
-				    <option value="70"><?php _e( 'Below Users', DevHelper::SLUG ); ?></option>
-				    <option value="75"><?php _e( 'Below Tools', DevHelper::SLUG ); ?></option>
-				    <option value="80"><?php _e( 'Below Settings', DevHelper::SLUG ); ?></option>
-				    <option value="100"><?php _e( 'Below second separator', DevHelper::SLUG ); ?></option>
+						<?php foreach ( $menu_position_options as $val => $opt ) : ?>
+						<option value="<?php echo $val; ?>"><?php echo $opt; ?></option>
+						<?php endforeach; ?>
 					</select>
 					<?php if ( $display_description === true ): ?>
 					<p class="description"><?php _e( 'The position in the menu order the post type should appear. <b>Show in menu</b> must be <b>true</b>. Default: <code>null</code> - defaults to below <b>Comments</b>.', DevHelper::SLUG ); ?></p>
@@ -259,17 +251,9 @@
 				</th>
 				<td>
 					<select name="supports" id="cpt-supports" multiple="multiple">
-				    <option value="title" selected="selected"><?php _e( 'title', DevHelper::SLUG ); ?></option>
-				    <option value="editor" selected="selected"><?php _e( 'editor (content)', DevHelper::SLUG ); ?></option>
-				    <option value="author"><?php _e( 'author', DevHelper::SLUG ); ?></option>
-				    <option value="thumbnail"><?php _e( 'thumbnail', DevHelper::SLUG ); ?></option>
-				    <option value="excerpt"><?php _e( 'excerpt', DevHelper::SLUG ); ?></option>
-				    <option value="trackbacks"><?php _e( 'trackbacks', DevHelper::SLUG ); ?></option>
-				    <option value="custom-fields"><?php _e( 'custom-fields', DevHelper::SLUG ); ?></option>
-				    <option value="comments"><?php _e( 'comments', DevHelper::SLUG ); ?></option>
-				    <option value="revisions"><?php _e( 'revisions', DevHelper::SLUG ); ?></option>
-				    <option value="page-attributes"><?php _e( 'page-attributes', DevHelper::SLUG ); ?></option>
-				    <option value="post-formats"><?php _e( 'post-formats', DevHelper::SLUG ); ?></option>
+						<?php foreach ( $supports_options as $val => $opt ) : ?>
+						<option value="<?php echo $val; ?>"><?php echo $opt; ?></option>
+						<?php endforeach; ?>
 					</select>
 					<?php if ( $display_description === true ): ?>
 					<p class="description"><?php printf(
@@ -319,7 +303,7 @@
 						<?php _e( 'Has archive?', DevHelper::SLUG ); ?>
 					</label>
 					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Enables post type archives. Will use <code>$post_type</code> as archive slug by default. Default: <b>false</b*.', DevHelper::SLUG ); ?></p>
+					<p class="description"><?php _e( 'Enables post type archives. Will use <code>$post_type</code> as archive slug by default. Default: <b>false</b>.', DevHelper::SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
@@ -334,6 +318,24 @@
 						__( 'The default rewrite endpoint bitmasks. For more info see <a href="%1$s" target="blank">Trac Ticket 12605</a> and this <a href="%1$s" target="blank">Make WordPress Plugins summary of endpoints</a>. Default: <code>EP_PERMALINK</code>.', DevHelper::SLUG ),
 						'http://core.trac.wordpress.org/ticket/12605',
 						'http://make.wordpress.org/plugins/2012/06/07/rewrite-endpoints-api/'
+					); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-rewrite"><?php _e( 'rewrite', DevHelper::SLUG ); ?></label>
+				</th>
+				<td>
+					<label for="cpt-rewrite">
+						<input type="checkbox" name="rewrite" id="cpt-rewrite" checked="checked">
+						<?php _e( 'Use default rewrite or specify yours: ', DevHelper::SLUG ); ?>
+						<input type="text" name="rewrite_custom" id="cpt-rewrite_custom" class="text" placeholder="<?php _e( '$post_type', DevHelper::SLUG ); ?>">
+					</label>
+					<?php if ( $display_description === true ): ?>
+					<p class="description"><?php printf(
+						__( 'Triggers the handling of rewrites for this post type. To prevent rewrites, set to <b>false</b> (<a href="%1$s" target="blank">see more details</a>). Default: <b>true</b> and use <code>$post_type</code> as slug.', DevHelper::SLUG ),
+						'https://codex.wordpress.org/Function_Reference/register_post_type#rewrite'
 					); ?></p>
 					<?php endif;?>
 				</td>
@@ -399,7 +401,7 @@
 			-->
 		</table>
 <!--
-'rewrite' - Triggers the handling of rewrites for this post type. To prevent rewrites, set to false. Default: true and use $post_type as slug.
+'' -
 'query_var' - Sets the <code>query_var</code> key for this post type. Default: <b>true</b> - set to <code>$post_type</code>.
 '' -
 '' -

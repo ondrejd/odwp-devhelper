@@ -21,6 +21,15 @@ form p.description {
 form .form-table td p.description {
 	font-size: 0.9em;
 }
+form .form-table td ul.description {
+	color: #666;
+	font-size: 0.9em;
+	font-style: italic;
+}
+form .form-table td ul.description li {
+	list-style: square;
+	margin-left: 15px;
+}
 
 /*
  * Sometimes there were a lot of empty space (see `odwpdh_render_advanced_options_form()`)...
