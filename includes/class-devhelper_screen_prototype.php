@@ -342,15 +342,17 @@ class DevHelper_Screen_Prototype {
 
 	/**
 	 * Render page self.
+	 * @param array $args (Optional.) Arguments for rendered template.
 	 * @since 0.1.0
 	 * @uses apply_filters()
 	 */
-	public function render() {
+	public function render( $args = array() ) {
 		// These are used in the template:
 		$slug = $this->slug;
 		$screen = $this->get_screen();
 		$wizard = $this;
 		extract( $this->get_screen_options() );
+		extract( $args );
 
 		ob_start();
 		include( DevHelper::plugin_path( 'partials/screen-' . $this->slug . '.phtml' ) );
