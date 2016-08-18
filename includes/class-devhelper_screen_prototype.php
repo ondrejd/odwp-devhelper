@@ -256,15 +256,12 @@ class DevHelper_Screen_Prototype {
 	}
 
 	/**
-	 * Handler for `screen_layout_columns` filter (see {@see DevHelper_Screen_Prototype::screen_load}).
-	 *
-	 * Renders screen options form.
-	 *
+	 * Renders screen options form. Handler for `screen_layout_columns` filter
+	 * (see {@see DevHelper_Screen_Prototype::screen_load}).
 	 * @since 0.1.0
 	 * @uses plugin_dir_path()
 	 * @uses update_option()
-	 *
-	 * @todo Enable filter (using {@see apply_filters()}) on rendered output.
+	 * @uses apply_filters()
 	 */
 	public function screen_options() {
 		// These are used in the template:
@@ -273,7 +270,23 @@ class DevHelper_Screen_Prototype {
 		extract( $this->get_screen_options() );
 		$templates = $this->get_source_templates();
 
+		ob_start();
 		include( DevHelper::plugin_path( 'partials/screen_options-wizard.php' ) );
+		$output = ob_get_clean();
+
+		/**
+		 * Filter for wizard's screen options form.
+		 *
+		 * Name of filter corresponds with slug of the particular wizard.
+		 * For example for `Custom Post Type wizard` is filter name
+		 * "devhelper_cpt_wizard_screen_options_form".
+		 *
+		 * @since 0.1.0
+		 *
+		 * @param string $output Rendered HTML.
+		 */
+		$output = apply_filters( "devhelper_{$this->slug}_screen_options_form", $output );
+		echo $output;
 	}
 
 	/**
@@ -330,8 +343,7 @@ class DevHelper_Screen_Prototype {
 	/**
 	 * Render page self.
 	 * @since 0.1.0
-	 *
-	 * @todo Enable filter (using {@see apply_filters()}) on rendered output.
+	 * @uses apply_filters()
 	 */
 	public function render() {
 		// These are used in the template:
@@ -340,7 +352,23 @@ class DevHelper_Screen_Prototype {
 		$wizard = $this;
 		extract( $this->get_screen_options() );
 
+		ob_start();
 		include( DevHelper::plugin_path( 'partials/screen-' . $this->slug . '.phtml' ) );
+		$output = ob_get_clean();
+
+		/**
+		 * Filter for whole wizard form.
+		 *
+		 * Name of filter corresponds with slug of the particular wizard.
+		 * For example for `Custom Post Type wizard` is filter name
+		 * "devhelper_cpt_wizard_form".
+		 *
+		 * @since 0.1.0
+		 *
+		 * @param string $output Rendered HTML.
+		 */
+		$output = apply_filters( "devhelper_{$this->slug}_form", $output );
+		echo $output;
 	}
 
 	/**
@@ -348,6 +376,7 @@ class DevHelper_Screen_Prototype {
 	 * @param boolean $display_description
 	 * @return string
 	 * @since 0.1.0
+	 * @uses apply_filters()
 	 */
 	public function render_advanced_options( $display_description ) {
 		ob_start();
@@ -372,6 +401,7 @@ class DevHelper_Screen_Prototype {
 	 * Render wizard form submit buttons.
 	 * @return string
 	 * @since 0.1.0
+	 * @uses apply_filters()
 	 */
 	public function render_submit_buttons() {
 		ob_start();
