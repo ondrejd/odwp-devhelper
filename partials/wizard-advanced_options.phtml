@@ -16,8 +16,8 @@
         <input type="checkbox" name="use_textdomain" id="plugin-use_textdomain">
         <?php printf(
           __( 'Use textdomain (as a string %1$s or PHP expression %2$s ).', DevHelper::SLUG ),
-          '<input type="text" name="textdomain" id="plugin-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DevHelper::SLUG ) . '" disabled="disabled">',
-          '<input type="text" name="textdomain_php" id="plugin-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DevHelper::SLUG ) . '" disabled="disabled">'
+          '<input type="text" name="textdomain" id="plugin-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DevHelper::SLUG ) . '">',
+          '<input type="text" name="textdomain_php" id="plugin-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DevHelper::SLUG ) . '">'
         ); ?>
       </label>
       <?php if ( $display_description === true ): ?>
