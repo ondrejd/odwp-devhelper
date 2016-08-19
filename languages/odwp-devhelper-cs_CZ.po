@@ -1,0 +1,1634 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: odwp-devhelper\n"
+"POT-Creation-Date: 2016-08-19 09:46+0100\n"
+"PO-Revision-Date: 2016-08-19 09:47+0100\n"
+"Last-Translator: \n"
+"Language-Team: Ondřej Doněk <ondrejd@gmail.com>\n"
+"Language: cs_CZ\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Poedit-KeywordsList: __;_e;_x\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: src\n"
+"X-Poedit-SearchPath-1: .\n"
+"X-Poedit-SearchPathExcluded-0: vendor\n"
+"X-Poedit-SearchPathExcluded-1: test\n"
+"X-Poedit-SearchPathExcluded-2: languages\n"
+"X-Poedit-SearchPathExcluded-3: css\n"
+"X-Poedit-SearchPathExcluded-4: js\n"
+
+#: includes/class-devhelper_screen_prototype.php:64
+msgid "Screen options"
+msgstr "Nastavení obrazovky"
+
+#: includes/class-devhelper_screen_prototype.php:66
+#, php-format
+msgid ""
+"<h4>Screen options</h4><p>Pay attention to screen options - there is a "
+"setting named <b>Used template</b> - if you don't know what they are you can "
+"choose them and see in <b>Generated Code</b> if they fit your needs. You can "
+"choose source codes template by your needs. If not these templates can be "
+"also extended via filter - for more details see <a href=\"%1$s\" target="
+"\"blank\">documentation</a>.</p>"
+msgstr ""
+
+#: includes/class-devhelper_screen_prototype.php:247
+msgid "Display detail descriptions?"
+msgstr "Zobrazit detailní popisky?"
+
+#: includes/class-devhelper_screen_prototype.php:252
+msgid "Used source codes template"
+msgstr "Použitá šablona zdrojových kódů"
+
+#: includes/class-devhelper_screen_prototype.php:300
+msgid "Default"
+msgstr "Defaultní"
+
+#: includes/class-screen_cpt_wizard.php:26
+msgid "New post type"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:27
+msgid "Custom Post Type wizard"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:32
+msgid "CPT Wizard"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:33
+msgid "<p><code>XXX</code> Finish this screen help!<p>"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:38
+#, php-format
+msgid ""
+"<b>Usefull links</b><p><a href=\"%1$s\" target=\"blank\">Post Types</a> on "
+"<b>WordPress Codex</b> especially part about <a href=\"%2$s\" target=\"blank"
+"\">Custom Post Types</a>.</p>"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:46
+msgid "Simple function"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:47
+msgid "Singleton class"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:75
+msgid "Below Posts"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:76
+msgid "Below Media"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:77
+msgid "Below Links"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:78
+msgid "Below Pages"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:79
+msgid "Below Comments"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:80
+msgid "Below first separator"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:81
+msgid "Below Plugins"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:82
+msgid "Below Users"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:83
+msgid "Below Tools"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:84
+msgid "Below Settings"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:85
+msgid "Below second separator"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:105
+msgid "title"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:106
+msgid "editor (content)"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:107
+msgid "author"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:108
+msgid "thumbnail"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:109
+msgid "excerpt"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:110
+msgid "trackbacks"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:111
+msgid "custom-fields"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:112
+msgid "comments"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:113
+msgid "revisions"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:114
+msgid "page-attributes"
+msgstr ""
+
+#: includes/class-screen_cpt_wizard.php:115
+msgid "post-formats"
+msgstr ""
+
+#: includes/class-screen_plugin_wizard.php:20
+msgid "New plugin"
+msgstr ""
+
+#: includes/class-screen_plugin_wizard.php:21
+msgid "Plugin wizard"
+msgstr ""
+
+#: includes/class-screen_plugin_wizard.php:26
+#: includes/class-screen_table_wizard.php:26
+#: includes/class-screen_theme_wizard.php:26
+msgid "Tables"
+msgstr ""
+
+#: includes/class-screen_plugin_wizard.php:27
+#: includes/class-screen_table_wizard.php:27
+#: includes/class-screen_theme_wizard.php:27
+msgid "<p style\"colof: #f30;\"><code>XXX</code> Fill this screen help!<p>"
+msgstr ""
+
+#: includes/class-screen_plugin_wizard.php:32
+#: includes/class-screen_table_wizard.php:32
+#: includes/class-screen_theme_wizard.php:32
+#, php-format
+msgid ""
+"<b>Usefull links</b><p><a href=\"%1$s\" target=\"blank"
+"\"><code>WP_List_Table</code></a> on <b>WordPress Codex</b>.</p><p><a href="
+"\"%2$s\" target=\"blank\"><code>WP_List_Table</code></a> on <b>WordPress "
+"Code Reference</b>.</a></p><!-- <p><a href=\"%3$s\" target=\"blank\">Link 3</"
+"a> is the third link.</p> -->"
+msgstr ""
+
+#: includes/class-screen_table_wizard.php:20
+msgid "New table"
+msgstr ""
+
+#: includes/class-screen_table_wizard.php:21
+msgid "Table list wizard"
+msgstr ""
+
+#: includes/class-screen_theme_wizard.php:20
+msgid "New theme"
+msgstr ""
+
+#: includes/class-screen_theme_wizard.php:21
+msgid "Theme wizard"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:53
+#: includes/class-wizard_post_type.php:65 partials/screen-cpt_wizard.phtml:56
+#: partials/screen-cpt_wizard.phtml:420 partials/screen-cpt_wizard.phtml:626
+msgid "Wizards"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:54
+#: includes/class-wizard_post_type.php:58
+msgid "New wizard"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:55
+msgid "Add wizard"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:56
+msgid "Add new wizard"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:57
+msgid "Edit wizard"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:59
+msgid "Show wizard"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:60
+msgid "Search wizards"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:61
+msgid "No wizard was found."
+msgstr ""
+
+#: includes/class-wizard_post_type.php:62
+msgid "No wizard was found in trash."
+msgstr ""
+
+#: includes/class-wizard_post_type.php:63
+msgid "Finished"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:64
+msgid "Wizards archive"
+msgstr ""
+
+#: includes/class-wizard_post_type.php:70
+msgid "Wizards created by DevHelper."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:14
+msgid "Custom Post Type Wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:16
+#, php-format
+msgid "Generator for <a href=\"%1$s\" target=\"blank\">custom post type</a>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:22
+msgid "Main"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:29
+msgid "Function name"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:32
+msgid "register_wizard_post_type"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:34
+msgid ""
+"Name of the PHP function that will be generated, e.g. "
+"<code>Wizard_Post_Type</code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:41 partials/screen-table_wizard.phtml:26
+msgid "Class name"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:44
+msgid "Wizard_Post_Type"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:46
+msgid ""
+"Name of the PHP class that will be generated, e.g. <code>Wizard_Post_Type</"
+"code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:53 partials/screen-table_wizard.phtml:126
+#: partials/screen-table_wizard.phtml:171
+msgid "Label"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:58
+msgid ""
+"A plural descriptive name for the post type marked for translation. Default: "
+"Value of <code>$labels['name']</code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:64 partials/screen-plugin_wizard.phtml:50
+msgid "Description"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:67
+msgid "Wizards custom post type."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:69
+msgid "A short descriptive summary of what the post type is. Default: blank."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:75
+msgid "Visibility"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:82
+msgid "Make this post type public?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:85
+msgid ""
+"Controls how the type is visible to authors (<b>Show in nav menus</b>, "
+"<b>Show UI</b>) and readers (<b>Exclude from search</b>, <b>Publicly "
+"queryable</b>). Default: <b>false</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:91
+msgid "Exclude from search?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:94
+msgid ""
+"Whether to exclude posts with this post type from front end search results. "
+"Default: value of the opposite of <b>Public</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:100
+msgid "Publicly queryable?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:103
+msgid ""
+"Whether queries can be performed on the front end as part of "
+"<code>parse_request()</code>. Default: value of <b>Public</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:109
+msgid "Show <abbr title=\"User Interface\">UI</abbr>?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:112
+msgid ""
+"Whether to generate a default UI for managing this post type in the admin. "
+"Default: value of <b>Public</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:118
+msgid "Show in navigation menus?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:121
+msgid ""
+"Whether post_type is available for selection in navigation menus. Default: "
+"value of <b>Public</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:127
+msgid "Show in admin menu?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:130
+msgid ""
+"Where to show the post type in the admin menu. <b>Show UI</b> must be "
+"<b>true</b>. Default: value of <b>Show UI</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:136
+msgid "Show in admin bar?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:139
+msgid ""
+"Whether to make this post type available in the WordPress admin bar. "
+"Default: value of the <b>Show in menu</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:146 partials/screen-cpt_wizard.phtml:149
+#: partials/screen-cpt_wizard.phtml:333
+msgid "XXX"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:159
+msgid "Menu position"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:173
+msgid ""
+"The position in the menu order the post type should appear. <b>Show in menu</"
+"b> must be <b>true</b>. Default: <code>null</code> - defaults to below "
+"<b>Comments</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:179
+msgid "Menu icon"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:182
+msgid "dashicons-media-default"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:185
+#, php-format
+msgid ""
+"The url to the icon to be used for this menu or the name of the icon from "
+"the <a href=\"%1$s\" target=\"blank\">iconfont</a>. Default: <code>null</"
+"code> - defaults to the posts icon."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:194
+msgid "Capability Type"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:197
+msgid "post"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:200
+#, php-format
+msgid ""
+"The string to use to build the read, edit, and delete capabilities. May be "
+"passed as an array to allow for alternative plurals when using this argument "
+"as a base to construct the capabilities, e.g. <code>array( 'story', "
+"'stories' )</code> the first array element will be used for the singular "
+"capabilities and the second array element for the plural capabilities, this "
+"is instead of the auto generated version if no array is given which would be "
+"\"storys\". The <b>Capability Type</b> parameter is used as a base to "
+"construct capabilities unless they are explicitly set with the "
+"<b>Capabilities</b> parameter. It seems that <b>Map Meta Cap</b> needs to be "
+"set to <code>false</code> or <code>null</code>, to make this work. Default: "
+"<b>post</b>. For more details see <a href=\"%1$s\" target=\"blank"
+"\">documentation on WordPress Codex</a>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:208
+msgid "Capabilities"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:214
+msgid ""
+"array( 'edit_post' => 'edit_wizard', 'read_post' => 'read_wizard', "
+"'delete_post' => 'delete_wizard', 'edit_others_posts' => "
+"'edit_others_wizards', 'publish_posts' => 'publish_wizards', 'edit_posts' => "
+"'edit_wizards', 'read_private_posts' => 'read_private_wizards', "
+"'create_posts' => 'edit_wizards' )"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:216
+msgid ""
+"An array of the capabilities for this post type. Default: <b>Capability "
+"type</b> is used to construct."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:222
+msgid "Map Meta Cap"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:227
+msgid "Map default meta capability?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:230
+msgid ""
+"Whether to use the internal default meta capability handling. Default: "
+"<code>null</code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:236
+msgid "Hierarchical"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:241
+msgid "Is this post type hierarchical?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:244
+msgid ""
+"Whether the post type is hierarchical (e.g. page). Allows Parent to be "
+"specified. The <b>Supports</b> parameter should contain <code>page-"
+"attributes</code> to show the parent select box on the editor page. Default: "
+"<b>false</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:250
+msgid "Supports"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:260
+#, php-format
+msgid ""
+"An alias for calling <code><a href=\"%1$s\" target=\"blank"
+"\">add_post_type_support()</a></code> directly. As of <ver>3.5</ver>, "
+"<b>false</b> can be passed as value instead of an array to prevent default "
+"behavior. Default: <code>array( 'title', 'editor' )</code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:268
+msgid "Register meta box callback"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:274
+#, php-format
+msgid ""
+"Provide a callback function that will be called when setting up the meta "
+"boxes for the edit form. The callback function takes one argument $post, "
+"which contains the WP_Post object for the currently edited post. Do <code><a "
+"href=\"%1$s\" target=\"blank\">remove_meta_box()</a></code> and <code><a "
+"href=\"%2$s\" target=\"blank\">add_meta_box()</a></code> calls in the "
+"callback. Default: <b>None</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:283
+msgid "Taxonomies"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:286
+msgid "'post_tag','category'"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:289
+#, php-format
+msgid ""
+"An comma-separated array of registered taxonomies like <code>category</code> "
+"or <code>post_tag</code> that will be used with this post type. This can be "
+"used in lieu of calling <code><a href=\"%1$s\" target=\"blank"
+"\">register_taxonomy_for_object_type()</a></code> directly. Custom "
+"taxonomies still need to be registered with <code><a href=\"%2$s\" target="
+"\"blank\">register_taxonomy()</a></code>. Default: <b>No taxonomies</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:298
+msgid "Archive"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:303
+msgid "Has archive?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:306
+msgid ""
+"Enables post type archives. Will use <code>$post_type</code> as archive slug "
+"by default. Default: <b>false</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:312
+msgid "Rewrite"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:317
+msgid "Use default rewrite or specify yours: "
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:318 partials/screen-cpt_wizard.phtml:351
+#: partials/screen-cpt_wizard.phtml:389
+msgid "$post_type"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:322
+#, php-format
+msgid ""
+"Triggers the handling of rewrites for this post type. To prevent rewrites, "
+"set to <b>false</b> (<a href=\"%1$s\" target=\"blank\">see more details</"
+"a>). Default: <b>true</b> and use <code>$post_type</code> as slug."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:330
+msgid "Permalink epmask"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:336
+#, php-format
+msgid ""
+"The default rewrite endpoint bitmasks. For more info see <a href=\"%1$s\" "
+"target=\"blank\">Trac Ticket 12605</a> and this <a href=\"%1$s\" target="
+"\"blank\">Make WordPress Plugins summary of endpoints</a>. Default: "
+"<code>EP_PERMALINK</code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:345
+msgid "Query variable"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:350
+msgid "Use default query variable or specify yours: "
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:354
+msgid ""
+"Sets the <code>query_var</code> key for this post type. You can set either "
+"<b>true</b> for default, <b>false</b> for disabling <code>query_var</code> "
+"key use, or <b>string</b> - <code>/?{query_var_string}={single_post_slug}</"
+"code> will work as intended. Default: <b>true</b> - set to <code>$post_type</"
+"code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:360
+msgid "Export"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:365
+msgid "Can export?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:368
+msgid "Can this post type be exported. Default: <b>true</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:374
+msgid "REST"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:380
+msgid "Show in REST API?"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:383
+#, php-format
+msgid ""
+"Whether to expose this post type in the <a href=\"%1$s\" target=\"blank"
+"\">REST API</a>. Default: <b>false</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:387
+msgid "Set REST base "
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:390
+msgid " and REST controller class "
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:392
+msgid "WP_REST_Posts_Controller"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:395
+#, php-format
+msgid ""
+"The base slug that this post type will use when accessed using the <a href="
+"\"%1$s\" target=\"blank\">REST API</a>. Default: <code>$post_type</code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:401
+#, php-format
+msgid ""
+"An optional custom controller to use instead of <code><a href=\"%1$s\" "
+"target=\"blank\">WP_REST_Posts_Controller</a></code>. Must be a subclass of "
+"<code><a href=\"%2$s\" target=\"blank\">WP_REST_Controller</a></code>. "
+"Default: <code><a href=\"%1$s\" target=\"blank\">WP_REST_Posts_Controller</"
+"a></code>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:412
+msgid "Labels"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:413
+msgid ""
+"An array of labels for this post type. By default, post labels are used for "
+"non-hierarchical post types and page labels for hierarchical ones."
+"<br>Default: if empty, <b>Name</b> is set to value of <b>Label</b>, and "
+"<b>Singular Name</b> is set to value of <b>Name</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:417 partials/screen-plugin_wizard.phtml:23
+#: partials/screen-table_wizard.phtml:323
+msgid "Name"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:422
+msgid ""
+"General name for the post type, usually plural. The same and overridden by "
+"<code>$post_type->label</code>. Default is <b>Posts</b>/<b>Pages</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:428
+msgid "Singular name"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:431 partials/screen-cpt_wizard.phtml:670
+msgid "Wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:433
+msgid ""
+"Name for one object of this post type. Default is <b>Posts</b>/<b>Pages</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:439
+msgid "Add new"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:442
+msgid "Add New"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:444
+#, php-format
+msgid ""
+"The add new text. The default is <b>Add&nbsp;New</b> for both hierarchical "
+"and non-hierarchical post types. When internationalizing this string, please "
+"use a gettext context matching your post type (e.g. <code><a href=\"%s\" "
+"target=\"blank\">_x</a>(&nbsp;'Add&nbsp;New',&nbsp;'wizard'&nbsp;,"
+"&nbsp;'textdomain'&nbsp;);</code>)."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:450
+msgid "Add new item"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:453
+msgid "Add New Wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:455
+msgid "Default is <b>Add New Post</b>/<b>Add New Page</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:461
+msgid "Edit Item"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:464
+msgid "Edit Wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:466
+msgid "Default is <b>Edit Post</b>/<b>Edit Page</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:472
+msgid "New Item"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:475
+msgid "New Wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:477
+msgid "Default is <b>New Post</b>/<b>New Page</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:483
+msgid "View Item"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:486
+msgid "View Wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:488
+msgid "Default is <b>View Post</b>/<b>View Page</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:494
+msgid "Search Items"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:497
+msgid "Search Wizards"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:499
+msgid "Default is <b>Search Posts</b>/<b>Search Pages</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:505
+msgid "Not Found"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:508
+msgid "No wizards found"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:510
+msgid "Default is <b>No posts found</b>/<b>No pages found</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:516
+msgid "Not found in Trash"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:519
+msgid "No wizards found in Trash"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:521
+msgid ""
+"Default is <b>No posts found in Trash</b>/<b>No pages found in Trash</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:527
+msgid "Parent Item Colon"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:530
+msgid "Parent Wizard:"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:532
+msgid ""
+"This string isn't used on non-hierarchical types. In hierarchical ones the "
+"default is <b>Parent Page:</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:538
+msgid "All Items"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:541
+msgid "All Wizards"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:543
+msgid "String for the submenu. Default is <b>All Posts</b>/<b>All Pages</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:549
+msgid "Archives"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:552
+msgid "Wizard Archives"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:554
+msgid ""
+"String for use with archives in nav menus. Default is <b>Post Archives</b>/"
+"<b>Page Archives</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:560
+msgid "Insert into item"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:563
+msgid "Insert into wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:565
+msgid ""
+"String for the media frame button. Default is <b>Insert into post</b>/"
+"<b>Insert into page</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:571
+msgid "Uploaded to this item"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:574
+msgid "Uploaded to this wizard"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:576
+msgid ""
+"String for the media frame filter. Default is <b>Uploaded to this post</b>/"
+"<b>Uploaded to this page</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:581 partials/screen-cpt_wizard.phtml:584
+msgid "Featured image"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:586
+msgid "Default is <b>Featured Image</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:591 partials/screen-cpt_wizard.phtml:594
+msgid "Set featured image"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:596
+msgid "Default is <b>Set featured image</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:601 partials/screen-cpt_wizard.phtml:604
+msgid "Remove featured image"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:606
+msgid "Default is <b>Remove featured image</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:612
+msgid "Use featured image"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:615
+msgid "Use as featured image"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:617
+msgid "Default is <b>Use as featured image</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:623
+msgid "Menu name"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:628
+msgid "Default is the same as <b>name</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:634
+msgid "Filter items list"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:637
+msgid "Wizards list filter"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:639
+msgid "String for the table views hidden heading."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:645
+msgid "Items list navigation"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:648
+msgid "Wizards list pagination"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:650
+msgid "String for the table pagination hidden heading."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:656
+msgid "Items list"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:659
+msgid "Wizards list"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:661
+msgid "String for the table hidden heading."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:667
+msgid "Name in Admin bar"
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:672
+msgid ""
+"String for use in <b>New</b> in <b>Admin menu bar</b>. Default is the same "
+"as <b>singular_name</b>."
+msgstr ""
+
+#: partials/screen-cpt_wizard.phtml:687 partials/screen-table_wizard.phtml:360
+msgid ""
+"Below are generated files that are required to get working WordPress plugin. "
+"You can copy source codes to clipboard or download it as a ZIP package."
+"<br>You can also test these source files before using them."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:14
+msgid "Plugin Wizard"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:15
+msgid "Generator for WordPress plugins."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:28
+msgid "Enter name of your plugin"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:36
+msgid "Identifier"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:41
+msgid "Enter identifier of your plugin"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:43
+msgid ""
+"<b>Identifier</b> could be derrived from plugin's name and can NOT contains "
+"spaces, tabs and other control or special characters."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:55
+msgid "Short description:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:56
+msgid "Enter short description of your plugin"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:59
+msgid "Full description:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:60
+msgid "Enter full description of your plugin"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:62
+msgid "Both descriptions are used in <code>readme.txt</code> file."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:69
+msgid "Tags"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:73
+msgid "Enter list of tags separated by comma."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:75
+msgid "Enter comma separated list of tags"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:77
+msgid "For example: <code>red,black,blue</code>."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:84
+msgid "Version"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:88
+msgid ""
+"Enter current version of the plugin, minimal required <b>WordPress</b> "
+"version, maximal version of <b>WordPress</b> on which was plugin tested and "
+"plugin's version which is considered to be stable."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:90
+msgid "Current version:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:94
+msgid "Required at least:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:98
+msgid "Tested up to:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:102
+msgid "Stable tag:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:105
+msgid ""
+"Some valid versions as an example: <b>3.4.0</b>, <b>4.4</b>, <b>1.2.1</b> "
+"etc."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:112
+msgid "Author"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:116
+msgid "Enter author's name and valid homepage's URL."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:118
+msgid "Author:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:119
+msgid "Enter author's name"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:122
+#: partials/screen-plugin_wizard.phtml:188
+msgid "URI:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:123
+msgid "Enter URI of author's homepage"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:131
+msgid "Contributors"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:135
+msgid "Comma separated list of contributors."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:137
+msgid "Enter comma separated list of contributors"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:139
+msgid "For example: <code>joed,jimb,janed</code>."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:146
+msgid "License"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:151
+msgid ""
+"Either select or enter name of license and its URL. You can also select no "
+"license but it is not recommended."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:154
+#: partials/screen-plugin_wizard.phtml:156
+msgid "No license"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:160
+msgid "Selected license"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:162
+msgid "Selected:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:165
+msgid "select license"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:166
+msgid "Licenses"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:178
+msgid "Custom license"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:180
+msgid "Custom license:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:184
+msgid "Name:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:185
+msgid "Enter license's name"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:189
+msgid "Enter URI of license"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:191
+msgid ""
+"For example: <code>Mozilla Public License 2.0</code> and <code>https://www."
+"mozilla.org/MPL/2.0/</code>."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:201
+msgid "Donate Link"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:205
+msgid ""
+"Valid URL of link with donation page. Leave blank if you don't have one."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:207
+msgid "Enter donate link"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:215
+msgid "Installation"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:220
+msgid "Installation instructions:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:221
+msgid "Enter plugin installation instructions"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:223
+msgid "Installation instructions are part of <code>readme.txt</code> file."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:230
+msgid "FAQ"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:235
+msgid "Frequently asked questions:"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:236
+msgid "Enter frequently asked questions"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:238
+msgid "Frequently asked questions are part of <code>readme.txt</code> file."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:246
+msgid "Change Log"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:251
+msgid "Enter change log of your plugin"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:253
+msgid "Change log is a part of <code>readme.txt</code> file."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:260
+msgid "Upgrade notice"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:265
+msgid "Enter upgrade notice"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:267
+msgid ""
+"Upgrade notice is a part of <code>readme.txt</code> file. When starting new "
+"plugin this field will be probably empty."
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:274
+#: partials/screen-table_wizard.phtml:82
+msgid "Options"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:278
+msgid "Other plugin options"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:282
+msgid "Include license in a standalone file"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:288
+msgid "Plugin has dependency to other plugin(s)"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:294
+msgid "Plugin contains administration"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:301
+msgid ""
+"Plugin has options (will be included new options page into WordPress "
+"administration)"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:307
+msgid "Plugin has own database tables"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:313
+msgid ""
+"Plugin will be localized (create <code>languages</code> folder with "
+"<code>POT</code> file)"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:322
+msgid "Template"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:327
+msgid "Select template for generating plugin source codes"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:329
+#: partials/screen-plugin_wizard.phtml:331
+msgid "Default template"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:335
+msgid "WordPress Plugin Boilerplate by Devin Devinson"
+msgstr ""
+
+#: partials/screen-plugin_wizard.phtml:337
+#, php-format
+msgid ""
+"<a href=\"%s\" target=\"blank\">WordPress Plugin Boilerplate</a> by <a href="
+"\"%s\" target=\"blank\">Devin Devinson</a>"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:14
+msgid "Table List Wizard"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:16
+#, php-format
+msgid ""
+"Generator for table list classes using <code><a href=\"%1$s\" target=\"blank"
+"\">WP_List_Table</a></code>."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:29
+msgid "My_Example_List"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:31
+msgid "Name of the PHP class that will be generated, e.g. 'My_Example_List'."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:38
+msgid "Arguments"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:41
+msgid ""
+"Arguments for <a href=\"https://developer.wordpress.org/reference/classes/"
+"wp_list_table/__construct/\" target=\"blank\">constructor</a> of "
+"<code>WP_List_Table</code> class."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:45
+msgid "Plural label:"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:46
+msgid "examples"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:49
+msgid ""
+"Plural value used for labels and the objects being listed. This affects "
+"things such as CSS class-names and nonces used in the list table, e.g. "
+"'posts'. Default empty."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:53
+msgid "Singular label:"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:54 partials/screen-table_wizard.phtml:71
+msgid "example"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:57
+msgid "Singular label for an object being listed, e.g. 'post'. Default empty."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:65
+msgid ""
+"Whether the list table supports AJAX. This includes loading and sorting "
+"data, for example. If true, the class will call the <code><a href=\"https://"
+"developer.wordpress.org/reference/classes/wp_list_table/_js_vars/\" target="
+"\"blank\">_js_vars()</a></code> method  in the footer to provide variables "
+"to any scripts handling AJAX events. Default false."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:70
+msgid "Screen:"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:74
+msgid ""
+"String containing the hook name used to determine the current screen. If "
+"left null, the current screen will be automatically set. Default null."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:88
+msgid "Add search box?"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:92
+#: partials/screen-table_wizard.phtml:101
+msgid "<code>XXX</code> Add detail description (with screenshot)!"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:97
+msgid "Add custom filter?"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:109
+msgid "Views"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:119
+msgid ""
+"Views are used as a main data filtres - commonly there are views <b>All</b> "
+"and <b>Deleted</b> which means one view with all not-deleted items and other "
+"with deleted items (trash)."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:122
+msgid "Specify all views:"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:130
+#: partials/screen-table_wizard.phtml:175
+msgid "Key"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:133
+#: partials/screen-table_wizard.phtml:178
+msgid "Add"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:136
+#: partials/screen-table_wizard.phtml:181
+msgid ""
+"Both values label and key are required. Key should not contain any spaces or "
+"special letters. The max. length of both strings is twenty-five letters."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:140
+msgid "All"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:144
+#: partials/screen-table_wizard.phtml:185
+msgid "Trash"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:154
+msgid "Bulk actions"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:164
+msgid ""
+"Bulk actions are pre-defined operations over selected items in the table. "
+"Are used for setting values for multiple items. Commonly is one of actions "
+"<b>Trash</b>."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:167
+msgid "Specify bulk actions:"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:195
+#: partials/screen-table_wizard.phtml:200
+msgid "Data source"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:205
+msgid "PHP source"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:208
+msgid ""
+"You can either import CSV file or paste your data array into the textarea."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:211
+msgid "Specify PHP data source"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:215
+msgid "Import file"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:217
+msgid "Upload CSV file"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:218
+msgid "Upload PHP file"
+msgstr "Nahrát PHP soubor"
+
+#: partials/screen-table_wizard.phtml:221
+msgid "Enter source"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:224
+msgid "Enter valid PHP file that returns array with data."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:235
+msgid "Parse columns"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:243
+msgid "Query for WordPress data"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:246
+msgid "Select which data you need."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:249
+msgid "Specify required WordPress data"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:253
+msgid "Posts"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:257
+msgid "Media"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:261
+msgid "Comments"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:265
+msgid "Users"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:269
+msgid "Custom"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:276
+msgid "Own database table"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:279
+msgid "Place here your SQL query for new database table."
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:282
+msgid "Specify SQL query"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:290
+msgid "External data source"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:298
+msgid "Columns"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:317
+msgid "ID"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:318
+#: partials/screen-table_wizard.phtml:324
+#: partials/screen-table_wizard.phtml:330
+#: partials/screen-table_wizard.phtml:342
+msgid "Make it sortable?"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:319
+#: partials/screen-table_wizard.phtml:325
+#: partials/screen-table_wizard.phtml:331
+msgid "Remove column"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:329
+msgid "Created"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:337
+msgid "Enter key"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:340
+msgid "Enter label"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:343
+msgid "Add column"
+msgstr ""
+
+#: partials/screen-table_wizard.phtml:343
+msgid "Clear values"
+msgstr ""
+
+#: partials/screen-theme_wizard.phtml:14
+msgid "Theme Wizard"
+msgstr ""
+
+#: partials/screen-theme_wizard.phtml:15
+msgid "Generator for WordPress themes."
+msgstr ""
+
+#: partials/wizard-advanced_options.phtml:11
+msgid "Advanced"
+msgstr ""
+
+# Into the placemarks will be inserted input elements.
+#: partials/wizard-advanced_options.phtml:18
+#, php-format
+msgid "Use textdomain (as a string %1$s or PHP expression %2$s )."
+msgstr ""
+
+#: partials/wizard-advanced_options.phtml:19
+msgid "Enter textdomain"
+msgstr ""
+
+#: partials/wizard-advanced_options.phtml:20
+msgid "Enter PHP expression"
+msgstr ""
+
+#: partials/wizard-advanced_options.phtml:24
+msgid ""
+"All strings in generated code will be ready for translation. You can choose "
+"either insert textdomain as a normal string (e.g. <code>my_textdomain</"
+"code>) which will be encapsulated by double-quotes or as a PHP expression (e."
+"g. <code>DevHelper::SLUG</code>) which will be inserted into code without "
+"any quotes."
+msgstr ""
+
+#: partials/wizard-submit_buttons.phtml:10
+msgid "Generate"
+msgstr ""
+
+#: partials/wizard-submit_buttons.phtml:11
+msgid "Download"
+msgstr ""
+
+#: partials/wizard-submit_buttons.phtml:12
+msgid "Test"
+msgstr ""
