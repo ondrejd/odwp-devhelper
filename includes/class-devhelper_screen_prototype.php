@@ -60,12 +60,12 @@ class DevHelper_Screen_Prototype {
 	public function __construct( WP_Screen $screen = null ) {
 		$this->screen = $screen;
 		$this->help_tabs[] = array(
-	    'id'      => $this->slug . '-options_help_tab',
-	    'title'   => __( 'Screen options', DevHelper::SLUG ),
-	    'content' => sprintf(
-	      __( '<h4>Screen options</h4><p>Pay attention to screen options - there is a setting named <b>Used template</b> - if you don\'t know what they are you can choose them and see in <b>Generated Code</b> if they fit your needs. You can choose source codes template by your needs. If not these templates can be also extended via filter - for more details see <a href="%1$s" target="blank">documentation</a>.</p>', DevHelper::SLUG ),
-	      '#'// TODO Link to the documentation (code_snippets plugin)!
-	    ),
+            'id'      => $this->slug . '-options_help_tab',
+            'title'   => __( 'Screen options', DevHelper::SLUG ),
+            'content' => sprintf(
+                __( '<h4>Screen options</h4><p>Pay attention to screen options - there is a setting named <b>Used template</b> - if you don\'t know what they are you can choose them and see in <b>Generated Code</b> if they fit your needs. You can choose source codes template by your needs. If not these templates can be also extended via filter - for more details see <a href="%1$s" target="blank">documentation</a>.</p>', DevHelper::SLUG ),
+                '#'// TODO Link to the documentation (code_snippets plugin)!
+            ),
 	  );
 	}
 
@@ -271,7 +271,7 @@ class DevHelper_Screen_Prototype {
 		$templates = $this->get_source_templates();
 
 		ob_start();
-		include( DevHelper::plugin_path( 'partials/screen_options-wizard.php' ) );
+		include( DevHelper::plugin_path( 'partials/screen_options-wizard.phtml' ) );
 		$output = ob_get_clean();
 
 		/**
@@ -352,7 +352,7 @@ class DevHelper_Screen_Prototype {
 		$screen = $this->get_screen();
 		$wizard = $this;
 		extract( $this->get_screen_options() );
-		extract( $args );
+		extract( is_array( $args ) ? $args : array() );
 
 		ob_start();
 		include( DevHelper::plugin_path( 'partials/screen-' . $this->slug . '.phtml' ) );

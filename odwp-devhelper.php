@@ -93,6 +93,8 @@ class DevHelper {
 			$this->plugin_path( 'includes/class-screen_theme_wizard.php' ),
 			$this->plugin_path( 'includes/class-screen_table_wizard.php' ),
 			$this->plugin_path( 'includes/class-screen_cpt_wizard.php' ),
+            $this->plugin_path( 'includes/class-screen_widget_wizard.php' ),
+            $this->plugin_path( 'includes/class-screen_dashboard_widget_wizard.php' ),
 		);
 
 		// Load all files (it throws error when file failed to be included but
@@ -251,7 +253,7 @@ class DevHelper {
 
 	/**
 	 * Add/register new screen. Is called from the end of screens source files.
-	 * @param DevHelper_Screen_Prototype $creen
+	 * @param DevHelper_Screen_Prototype $screen
 	 * @since 0.1.0
 	 * @static
 	 */

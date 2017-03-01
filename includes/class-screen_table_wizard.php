@@ -35,13 +35,6 @@ class Screen_Table_Wizard extends DevHelper_Screen_Prototype {
 				'#'
 		);
 
-		// TODO Overwrite available templates in screen options
-		/*add_filter( "devhelper_{$this->slug}_templates", function( $templates ) {
-			return array(
-				'default' => __( 'Default', DevHelper::SLUG ),
-			);
-		} );*/
-
 		// Finish screen constuction
 		parent::__construct( $screen );
 	}
