@@ -3,7 +3,7 @@ Contributors: ondrejd
 Donate link: 
 Tags: custom type, ecommerce
 Requires at least: 4.2
-Tested up to: 4.5
+Tested up to: 4.7.3
 Stable tag: 
 License: Mozilla Public License 2.0
 License URI: https://www.mozilla.org/MPL/2.0/

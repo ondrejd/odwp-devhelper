@@ -7,7 +7,7 @@
  * Author: Ondřej Doněk
  * Author URI: http://ondrejdonek.blogspot.cz/
  * Requires at least: 4.3
- * Tested up to: 4.5
+ * Tested up to: 4.7.3
  *
  * Text Domain: odwp-devhelper
  * Domain Path: /languages/
