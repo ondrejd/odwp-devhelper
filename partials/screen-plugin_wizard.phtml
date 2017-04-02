@@ -218,7 +218,7 @@
 						<fieldset>
 							<p>
 								<label for="plugin-installation"><?php _e( 'Installation instructions:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-installation" id="plugin-installation" class="long-text" placeholder="<?php _e( 'Enter plugin installation instructions', DevHelper::SLUG ) ?>" cols="72" rows="10"><?= WP_Style_Guide::get_option( 'default_install_text' ) ?></textarea>
+								<textarea name="plugin-installation" id="plugin-installation" class="long-text" placeholder="<?php _e( 'Enter plugin installation instructions', DevHelper::SLUG ) ?>" cols="72" rows="10"><?= DevHelper::get_option( 'default_install_text' ) ?></textarea>
 							</p>
 							<p class="description"><?php _e( 'Installation instructions are part of <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
 						</fieldset>
@@ -233,7 +233,7 @@
 						<fieldset>
 							<p>
 								<label for="plugin-faq"><?php _e( 'Frequently asked questions:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-faq" id="plugin-faq" class="long-text" placeholder="<?php _e( 'Enter frequently asked questions', DevHelper::SLUG ) ?>" cols="72" rows="10"><?= WP_Style_Guide::get_option( 'default_faq_text' ) ?></textarea>
+								<textarea name="plugin-faq" id="plugin-faq" class="long-text" placeholder="<?php _e( 'Enter frequently asked questions', DevHelper::SLUG ) ?>" cols="72" rows="10"><?= DevHelper::get_option( 'default_faq_text' ) ?></textarea>
 							</p>
 							<p class="description"><?php _e( 'Frequently asked questions are part of <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
 						</fieldset>
@@ -248,7 +248,7 @@
 					<td>
 						<fieldset>
 							<p>
-								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?php _e( 'Enter change log of your plugin' ) ?>" cols="72" rows="10"><?= WP_Style_Guide::get_option( 'default_changelog_text' ) ?></textarea>
+								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?php _e( 'Enter change log of your plugin' ) ?>" cols="72" rows="10"><?= DevHelper::get_option( 'default_changelog_text' ) ?></textarea>
 							</p>
 							<p class="description"><?php _e( 'Change log is a part of <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
 						</fieldset>
@@ -278,38 +278,38 @@
 							<legend class="screen-reader-text"><?php _e( 'Other plugin options', DevHelper::SLUG ) ?></legend>
 							<p>
 								<label for="plugin-include_license_file">
-									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_include_license_file' ) ) ?>>
+									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file" <?= checked( ( bool ) DevHelper::get_option( 'default_include_license_file' ) ) ?>>
 									<span><?php _e( 'Include license in a standalone file', DevHelper::SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_dependency">
-									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_dependency' ) ) ?>>
+									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency" <?= checked( ( bool ) DevHelper::get_option( 'default_has_dependency' ) ) ?>>
 									<span><?php _e( 'Plugin has dependency to other plugin(s)', DevHelper::SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_administration">
-									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_administration' ) ) ?>>
+									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration" <?= checked( ( bool ) DevHelper::get_option( 'default_has_administration' ) ) ?>>
 									<span><?php _e( 'Plugin contains administration', DevHelper::SLUG ) ?></span>
 								</label>
 							</p>
 							<!-- TODO This checkbox need `plugin-has_administration` checked! -->
 							<p>
 								<label for="plugin-has_options">
-									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_options' ) ) ?>>
+									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked( ( bool ) DevHelper::get_option( 'default_has_options' ) ) ?>>
 									<span><?php _e( 'Plugin has options (will be included new options page into WordPress administration)', DevHelper::SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_own_dbtables">
-									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_own_dbtables' ) ) ?>>
+									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked( ( bool ) DevHelper::get_option( 'default_has_own_dbtables' ) ) ?>>
 									<span><?php _e( 'Plugin has own database tables', DevHelper::SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_localization">
-									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization" <?= checked( ( bool ) WP_Style_Guide::get_option( 'default_has_localization' ) ) ?>>
+									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization" <?= checked( ( bool ) DevHelper::get_option( 'default_has_localization' ) ) ?>>
 									<span><?php _e( 'Plugin will be localized (create <code>languages</code> folder with <code>POT</code> file)', DevHelper::SLUG ) ?></span>
 								</label>
 							</p>
