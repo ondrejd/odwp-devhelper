@@ -7,6 +7,48 @@
 	<form id="wizard-dashboard_widget">
 		<table class="form-table">
             <tbody>
+				<!-- Class name -->
+				<tr>
+					<th scope="row">
+						<label for="odwpdh-classname"><?= __( 'Class name', DevHelper::SLUG ) ?></label>
+					</th>
+					<td>
+						<fieldset>
+							<p>
+								<input type="text" name="classname" id="odwpdh-classname" class="regular-text" placeholder="<?= __( 'My_Widget', DevHelper::SLUG ) ?>">
+							</p>
+							<p class="description"><?= __( 'Name of class which will contain implementation of the dashboard widget.', DevHelper::SLUG ) ?></p>
+						</fieldset>
+					</td>
+				</tr>
+				<!-- Identifier (slug) -->
+				<tr>
+					<th scope="row">
+						<label for="odwpdh-slug"><?= __( 'Identifier', DevHelper::SLUG ) ?></label>
+					</th>
+					<td>
+						<fieldset>
+							<p>
+								<input type="text" name="slug" id="odwpdh-slug" class="regular-text" placeholder="<?= __( 'Enter identifier of your plugin', DevHelper::SLUG ) ?>">
+							</p>
+							<p class="description"><?= __( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DevHelper::SLUG ) ?></p>
+						</fieldset>
+					</td>
+				</tr>
+				<!-- Name -->
+				<tr>
+					<th scope="row">
+						<label for="odwpdh-name"><?= __( 'Name', DevHelper::SLUG ) ?></label>
+					</th>
+					<td>
+						<fieldset>
+							<p>
+								<label for="plugin-name"><?= __( 'Name:', DevHelper::SLUG ) ?></label><br>
+								<textarea name="name" id="odwpdh-name" class="long-text" placeholder="<?= __( 'Enter short description of your plugin', DevHelper::SLUG ) ?>" cols="72" rows="5"></textarea>
+							</p>
+						</fieldset>
+					</td>
+				</tr>
                 <!-- ... -->
 
 				<!-- Advanced options -->
@@ -25,13 +67,124 @@
 	<h3><code><?php echo 'my-example-list/includes/class-my_example_dashboard_widget.php'; ?></code></h3>
 	<pre><code class="language-php">&lt;?php
 /**
- * File description ...
+ * Dashboard widget "Your Widget.
  *
- * @package my-example-widget
- * @since 1.0
+ * @package your-package
  */
 
-// ...
+if ( ! defined( 'ABSPATH' ) ) {
+    exit();
+}
+
+
+// Set up your textdomain instead of this:
+defined( 'TEXTDOMAIN' ) || defined( 'TEXTDOMAIN' );
+
+
+if ( ! class_exists( 'Your_Dashboard_Widget' ) ) :
+
+/**
+ * Dashboard widget "Your Widget.
+ * @since 1.0.0
+ */
+class Your_Dashboard_Widget {
+
+    /**
+     * @var Slug of the widget.
+     */
+    const SLUG = 'your-dashboard-widget';
+    const OPTIONS = [
+        // ...
+    ];
+
+    /**
+     * Inits plugin.
+     * @return void
+     */
+    public static function init() {
+        self::update_options( self::OPTIONS, true );
+
+        wp_add_dashboard_widget(
+                self::SLUG,
+                __( 'Your widget', TEXTDOMAIN ),
+                array( 'Your_Dashboard_Widget', 'render' ),
+                array( 'Your_Dashboard_Widget', 'render_config' )
+        );
+    }
+
+    /**
+     * @render void
+     */
+    public static function render() {
+        ob_start( function() {} );
+        include_once( 'templates/your-dashboard-widget.phtml' );
+        $html = ob_get_flush();
+        echo apply_filters( self::SLUG, $html );
+    }
+
+    /**
+     * @render void
+     */
+    public static function render_config() {
+        ob_start( function() {} );
+        include_once( ODWPDP_PATH . '/templates/your-widget-config-1.phtml' );
+        $html = ob_get_flush();
+        echo apply_filters( self::SLUG, $html );
+    }
+
+    /**
+     * @return mixed
+     */
+    public static function get_options() {
+        $opts = get_option( 'dashboard_widget_options' );
+
+        if ( array_key_exists( self::SLUG, $opts ) ) {
+            return $opts[self::SLUG];
+        }
+
+        return false;
+    }
+
+    /**
+     * @param string $key
+     * @param boolean $default (Optional.)
+     * @return mixed
+     */
+    public static function get_option( $key, $default = false ) {
+        $opts = self::get_options();
+        $ret = ( array_key_exists( $key, self::OPTIONS ) && $default === true )
+                ? self::OPTIONS[$key]
+                : false;
+
+        if ( $opts === false || ! array_key_exists( $key, $opts ) ) {
+            return $ret;
+        }
+
+        return $opts[$key];
+    }
+
+    /**
+     * @param array $options
+     * @param boolean $add_only (Optional.)
+     * @return boolean
+     */
+    public static function update_options( $options, $add_only = false ) {
+        $opts = get_option( 'dashboard_widget_options' );
+        $w_opts = array_key_exists( self::SLUG, $opts ) ? $opts[self::SLUG] : array();
+
+        if ( $add_only ) {
+            $opts[self::SLUG] = array_merge( $options, $w_opts );
+        } else {
+            $opts[self::SLUG] = array_merge( $w_opts, $options );
+        }
+
+        return update_option( 'dashboard_widget_options', $opts );
+    }
+}
+
+endif;
+
+add_action( 'wp_dashboard_setup', array( 'Your_Dashboard_Widget', 'init' ) );
 
 </code></pre>
 </div>
