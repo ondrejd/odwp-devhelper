@@ -1,4 +1,8 @@
 
+form legend {
+    padding: 10px 0px 10px 0px;
+}
+
 .inner_checkbox_area {
 	padding-left: 1.6em;
 }
@@ -43,4 +47,28 @@ form .form-table td ul.description li {
 
 select[name="supports"] {
 	width: 200px;
+}
+
+form input[type="number"].odwpdh-short_num {
+    width: 40px;
+}
+
+form .odwpdh-inner_choices {
+    padding-left: 25px;
+}
+form ul.odwpdh-inner_choices {
+    margin: 0 0 0 0;
+}
+form ul.odwpdh-inner_choices li,
+form ul.odwpdh-inner_choices li label {
+    margin: 0 0 0 0 !important;
+    padding: 0 0 0 0 !important;
+}
+
+/*
+ * Other styles
+ */
+.odwpdh-todo {
+    color: #f30;
+    font-weight: bold;
 }

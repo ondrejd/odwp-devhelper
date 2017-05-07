@@ -160,7 +160,7 @@
 								<label title="<?php _e( 'Selected license', DevHelper::SLUG ) ?>" class="license">
 								<input type="radio" name="plugin-license" value="custom">
 								<?php _e( 'Selected:', DevHelper::SLUG ) ?>
-								<div style="padding-left: 25px;" class="license_custom">
+								<div class="odwpdh-inner_choices license_custom">
 									<div class="inputs-subarea">
 										<span class="screen-reader-text"><?php _e( 'select license', DevHelper::SLUG ) ?></span>
 										<label class="screen-reader-text" for="plugin-license_select"><?php _e( 'Licenses', DevHelper::SLUG ) ?></label>
@@ -178,7 +178,7 @@
 								<label title="<?php _e( 'Custom license', DevHelper::SLUG ) ?>" class="license">
 								<input type="radio" name="plugin-license" value="other">
 								<?php _e( 'Custom license:', DevHelper::SLUG ) ?>
-								<div style="padding-left: 25px;" class="license_other">
+								<div class="odwpdh-inner_choices license_other">
 									<div class="inputs-subarea">
 										<p>
 											<label for="plugin-license_other_name" style="width: 130px;"><?php _e( 'Name:', DevHelper::SLUG ) ?></label>
@@ -322,19 +322,18 @@
 						<label for="plugin-template"><?php _e( 'Template', DevHelper::SLUG ) ?></label>
 					</th>
 					<td>
-						<p style="color: #f30;"><code>XXX</code> &ndash; Finish this!</p>
 						<fieldset>
-							<legend><?php _e( 'Select template for generating plugin source codes' ) ?></legend>
+							<legend><?php _e( 'Select template for generating plugin source codes.', DevHelper::SLUG ) ?></legend>
 							<div>
 								<label title="<?php _e( 'Default template', DevHelper::SLUG ) ?>" class="default">
-									<input type="radio" name="plugin-template" value="none" checked="checked">
+									<input type="radio" name="plugin-template" value="default" checked="checked">
 									<?php _e( 'Default template', DevHelper::SLUG ) ?>
 								</label>
 							</div>
 							<div>
-								<label title="<?php _e( 'WordPress Plugin Boilerplate by Devin Devinson', DevHelper::SLUG ) ?>" class="default">
-									<input type="radio" name="plugin-template" value="none" checked="checked">
-									<?= sprintf( __( '<a href="%s" target="blank">WordPress Plugin Boilerplate</a> by <a href="%s" target="blank">Devin Devinson</a>', DevHelper::SLUG ), '', '' ) ?>
+								<label title="<?php _e( 'WordPress Plugin Boilerplate by Devin Devinson', DevHelper::SLUG ) ?>">
+									<input type="radio" name="plugin-template" value="wpb_by_dd">
+									<?php printf( __( '<a href="%s" target="blank">WordPress Plugin Boilerplate</a> by <a href="%s" target="blank">Devin Devinson</a>', DevHelper::SLUG ), '', '' ) ?>
 								</label>
 							</div>
 						</fieldset>
@@ -342,6 +341,56 @@
 				</tr>
 				<!-- Advanced options -->
 				<?php echo $wizard->render_advanced_options( $display_description ); ?>
+                <tr>
+                    <th scope="row">
+                        <label for="plugin-template"><?php _e( 'Requirements', DevHelper::SLUG ) ?></label>
+                    </th>
+                    <td>
+                        <fieldset>
+                            <legend><?php printf( __( 'Select special requirements of your plugin - either on <a href="#" target="blank">PHP</a> or on <a href="#" target="blank">WordPress</a> self. <strong>This can be used only with default template.</strong>', DevHelper::SLUG ), 'https://php.net/', 'https://wordpress.org/' ) ?></legend>
+                            <div>
+                                <label title="<?php _e( 'Plugin has special PHP requirements', DevHelper::SLUG ) ?>" class="default">
+                                    <input type="checkbox" name="plugin-requirements" value="php">
+                                    <?php _e( 'Plugin has special PHP requirements: ', DevHelper::SLUG ) ?>
+                                    <ul class="odwpdh-inner_choices">
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" name="plugin-requirements-php[version]">
+                                                <?php _e( 'PHP version: ', DevHelper::SLUG ) ?>
+                                                <?php _e( 'select major version ', DevHelper::SLUG ) ?>
+                                                <select name="pugin-requirements-php[version][major]" value="">
+                                                    <option value="70"><?php _e( '7.0', DevHelper::SLUG ) ?>
+                                                    <option value="56"><?php _e( '5.6', DevHelper::SLUG ) ?>
+                                                    <option value="53"><?php _e( '5.3', DevHelper::SLUG ) ?>
+                                                    <option value="52"><?php _e( '5.2', DevHelper::SLUG ) ?>
+                                                    <option value="50"><?php _e( '5.0', DevHelper::SLUG ) ?>
+                                                </select>
+                                                <?php _e( 'or enter other version ', DevHelper::SLUG ) ?>
+                                                <input type="number" name="pugin-requirements-php[version][other][major]" value="" max="7" min="4" placeholder="<?php _e( '7', DevHelper::SLUG ) ?>" class="odwpdh-short_num">
+                                                .
+                                                <input type="number" name="pugin-requirements-php[version][other][minor]" value="" max="9" min="0" placeholder="<?php _e( '0', DevHelper::SLUG ) ?>" class="odwpdh-short_num">
+                                            </label>
+                                        </li>
+                                        <li>
+                                            <label>
+                                                <input type="checkbox" name="plugin-requirements-php[extensions]">
+                                                <?php _e( 'PHP extensions', DevHelper::SLUG ) ?>
+                                                <input type="text" name="pugin-requirements-php[extensions][]" value="" placeholder="<?php _e( 'sqlite,zlib', DevHelper::SLUG ) ?>" class="regular-text">
+                                                <span class="description"><?php _e( ' Enter comma-separated list of extensions required by your plugin.', DevHelper::SLUG ) ?></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </label>
+                            </div>
+                            <div>
+                                <label title="<?php _e( 'Plugin has special WP requirements', DevHelper::SLUG ) ?>" class="default">
+                                    <input type="checkbox" name="plugin-requirements" value="wp">
+                                    <?php _e( 'Plugin has special <abbr title="WordPress">WP</abbr> requirements: ', DevHelper::SLUG ) ?>
+                                </label>
+                            </div>
+                        </fieldset>
+                    </td>
+                </tr>
 			</table>
 			<!-- Submit buttons -->
 			<?php echo $wizard->render_submit_buttons(); ?>
