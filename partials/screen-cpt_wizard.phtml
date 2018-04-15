@@ -1,152 +1,156 @@
 <?php
 /**
- * Page "Custom Post Type Wizard".
+ * WordPress Custom Post Type wizard.
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
  * @package odwp-devhelper
- * @since 0.1.0
+ * @since 0.0.1
  */
+
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
 ?><div class="wrap">
+	<h1 class="wp-heading-inline"><?php _e( 'Custom Post Type Wizard', DH_SLUG ); ?></h1>
+    <hr class="wp-header-end">
 
-	<?php screen_icon(); ?>
-
-	<h2>
-		<?php _e( 'Custom Post Type Wizard', DevHelper::SLUG ); ?>
-		<small><?php printf(
-			__( 'Generator for <a href="%1$s" target="blank">custom post type</a>.', DevHelper::SLUG ),
-			'https://codex.wordpress.org/Post_Types#Custom_Post_Types'
-		); ?></small>
-	</h2>
+	<p class="description"><?php printf(
+		__( 'Generator for <a href="%1$s" target="blank">custom post type</a>.', DH_SLUG ),
+		'https://codex.wordpress.org/Post_Types#Custom_Post_Types'
+	); ?></p>
 
 	<form id="cpt-wizard">
-		<h3><?php _e( 'Main', DevHelper::SLUG ); ?></h3>
+		<h3><?php _e( 'Main', DH_SLUG ); ?></h3>
 		<table class="form-table">
 			<!-- Class name -->
 			<!-- TODO According to used template we need either class name or function name. -->
 			<?php if ( $used_template == 'simple' ) : ?>
 			<tr>
 				<th scope="row">
-					<label for="cpt-functionname"><?php _e( 'Function name', DevHelper::SLUG ); ?></label>
+					<label for="cpt-functionname"><?php _e( 'Function name', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="function_name" id="cpt-function_name" class="text" placeholder="<?php _e( 'register_wizard_post_type', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Name of the PHP function that will be generated, e.g. <code>Wizard_Post_Type</code>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="function_name" id="cpt-function_name" class="text" placeholder="<?php _e( 'register_wizard_post_type', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Name of the PHP function that will be generated, e.g. <code>Wizard_Post_Type</code>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<?php else/*if ( $used_template == 'class' )*/ : ?>
 			<tr>
 				<th scope="row">
-					<label for="cpt-class_name"><?php _e( 'Class name', DevHelper::SLUG ); ?></label>
+					<label for="cpt-class_name"><?php _e( 'Class name', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="class_name" id="cpt-class_name" class="text" placeholder="<?php _e( 'Wizard_Post_Type', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. <code>Wizard_Post_Type</code>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="class_name" id="cpt-class_name" class="text" placeholder="<?php _e( 'Wizard_Post_Type', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. <code>Wizard_Post_Type</code>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<?php endif; ?>
 			<tr>
 				<th scope="row">
-					<label for="cpt-label"><?php _e( 'Label', DevHelper::SLUG ); ?></label>
+					<label for="cpt-label"><?php _e( 'Label', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="label" id="cpt-label" class="text" placeholder="<?php _e( 'Wizards', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'A plural descriptive name for the post type marked for translation. Default: Value of <code>$labels[\'name\']</code>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="label" id="cpt-label" class="text" placeholder="<?php _e( 'Wizards', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'A plural descriptive name for the post type marked for translation. Default: Value of <code>$labels[\'name\']</code>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-description"><?php _e( 'Description', DevHelper::SLUG ); ?></label>
+					<label for="cpt-description"><?php _e( 'Description', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="description" id="cpt-description" class="regular-text" placeholder="<?php _e( 'Wizards custom post type.', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'A short descriptive summary of what the post type is. Default: blank.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="description" id="cpt-description" class="regular-text" placeholder="<?php _e( 'Wizards custom post type.', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'A short descriptive summary of what the post type is. Default: blank.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-public"><?php _e( 'Visibility', DevHelper::SLUG ); ?></label>
+					<label for="cpt-public"><?php _e( 'Visibility', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<fieldset>
 						<div class="fildset-row">
 							<label for="cpt-public">
 								<input type="checkbox" name="public" id="cpt-public">
-								<?php _e( 'Make this post type public?', DevHelper::SLUG ); ?>
+								<?php _e( 'Make this post type public?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'Controls how the type is visible to authors (<b>Show in nav menus</b>, <b>Show UI</b>) and readers (<b>Exclude from search</b>, <b>Publicly queryable</b>). Default: <b>false</b>.', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'Controls how the type is visible to authors (<b>Show in nav menus</b>, <b>Show UI</b>) and readers (<b>Exclude from search</b>, <b>Publicly queryable</b>). Default: <b>false</b>.', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						<div class="fildset-row">
 							<label for="cpt-exclude_from_search">
 								<input type="checkbox" name="exclude_from_search" id="cpt-exclude_from_search">
-								<?php _e( 'Exclude from search?', DevHelper::SLUG ); ?>
+								<?php _e( 'Exclude from search?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'Whether to exclude posts with this post type from front end search results. Default: value of the opposite of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'Whether to exclude posts with this post type from front end search results. Default: value of the opposite of <b>Public</b>.', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						<div class="fildset-row">
 							<label for="cpt-publicly_queryable">
 								<input type="checkbox" name="publicly_queryable" id="cpt-publicly_queryable">
-								<?php _e( 'Publicly queryable?', DevHelper::SLUG ); ?>
+								<?php _e( 'Publicly queryable?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'Whether queries can be performed on the front end as part of <code>parse_request()</code>. Default: value of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'Whether queries can be performed on the front end as part of <code>parse_request()</code>. Default: value of <b>Public</b>.', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						<div class="fildset-row">
 							<label for="cpt-show_ui">
 								<input type="checkbox" name="show_ui" id="cpt-show_ui">
-								<?php _e( 'Show <abbr title="User Interface">UI</abbr>?', DevHelper::SLUG ); ?>
+								<?php _e( 'Show <abbr title="User Interface">UI</abbr>?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'Whether to generate a default UI for managing this post type in the admin. Default: value of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'Whether to generate a default UI for managing this post type in the admin. Default: value of <b>Public</b>.', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						<div class="fildset-row">
 							<label for="cpt-show_in_nav_menus">
 								<input type="checkbox" name="show_in_nav_menus" id="cpt-show_in_nav_menus">
-								<?php _e( 'Show in navigation menus?', DevHelper::SLUG ); ?>
+								<?php _e( 'Show in navigation menus?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'Whether post_type is available for selection in navigation menus. Default: value of <b>Public</b>.', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'Whether post_type is available for selection in navigation menus. Default: value of <b>Public</b>.', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						<div class="fildset-row">
 							<label for="cpt-show_in_menu">
 								<input type="checkbox" name="show_in_menu" id="cpt-show_in_menu">
-								<?php _e( 'Show in admin menu?', DevHelper::SLUG ); ?>
+								<?php _e( 'Show in admin menu?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'Where to show the post type in the admin menu. <b>Show UI</b> must be <b>true</b>. Default: value of <b>Show UI</b>.', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'Where to show the post type in the admin menu. <b>Show UI</b> must be <b>true</b>. Default: value of <b>Show UI</b>.', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						<div class="fildset-row">
 							<label for="cpt-show_in_admin_bar">
 								<input type="checkbox" name="show_in_admin_bar" id="cpt-show_in_admin_bar">
-								<?php _e( 'Show in admin bar?', DevHelper::SLUG ); ?>
+								<?php _e( 'Show in admin bar?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'Whether to make this post type available in the WordPress admin bar. Default: value of the <b>Show in menu</b>.', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'Whether to make this post type available in the WordPress admin bar. Default: value of the <b>Show in menu</b>.', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						<!--
 						<div class="fildset-row">
 							<label for="cpt-xxx">
 								<input type="checkbox" name="xxx" id="cpt-xxx">
-								<?php _e( 'XXX', DevHelper::SLUG ); ?>
+								<?php _e( 'XXX', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
-							<p class="description"><?php _e( 'XXX', DevHelper::SLUG ); ?></p>
+							<?php if ( $show_description === true ): ?>
+							<p class="description"><?php _e( 'XXX', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</div>
 						-->
@@ -156,7 +160,7 @@
 			<!-- TODO `Menu position`, `Menu icon` should be in one section "Visibility" (Rename this section to "UI"?)! -->
 			<tr>
 				<th scope="row">
-					<label for="cpt-menu_position"><?php _e( 'Menu position', DevHelper::SLUG ); ?></label>
+					<label for="cpt-menu_position"><?php _e( 'Menu position', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<!-- TODO This select should be disabled when `show_in_menu` is not checked.
@@ -169,20 +173,20 @@
 						<option value="<?php echo $val; ?>"><?php echo $opt; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'The position in the menu order the post type should appear. <b>Show in menu</b> must be <b>true</b>. Default: <code>null</code> - defaults to below <b>Comments</b>.', DevHelper::SLUG ); ?></p>
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'The position in the menu order the post type should appear. <b>Show in menu</b> must be <b>true</b>. Default: <code>null</code> - defaults to below <b>Comments</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-menu_icon"><?php _e( 'Menu icon', DevHelper::SLUG ); ?></label>
+					<label for="cpt-menu_icon"><?php _e( 'Menu icon', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="menu_icon" id="cpt-menu_icon" class="text" placeholder="<?php _e( 'dashicons-media-default', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
+					<input type="text" name="menu_icon" id="cpt-menu_icon" class="text" placeholder="<?php _e( 'dashicons-media-default', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
 					<p class="description"><?php printf(
-						__( 'The url to the icon to be used for this menu or the name of the icon from the <a href="%1$s" target="blank">iconfont</a>. Default: <code>null</code> - defaults to the posts icon.', DevHelper::SLUG ),
+						__( 'The url to the icon to be used for this menu or the name of the icon from the <a href="%1$s" target="blank">iconfont</a>. Default: <code>null</code> - defaults to the posts icon.', DH_SLUG ),
 						'https://developer.wordpress.org/resource/dashicons'
 					); ?></p>
 					<?php endif;?>
@@ -191,13 +195,13 @@
 			<!-- TODO `Capability type`, `Capabilities`, `Map Meta Cap` should be in one section "Capabilities"! -->
 			<tr>
 				<th scope="row">
-					<label for="cpt-capability_type"><?php _e( 'Capability Type', DevHelper::SLUG ); ?></label>
+					<label for="cpt-capability_type"><?php _e( 'Capability Type', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="capability_type" id="cpt-capability_type" class="text" placeholder="<?php _e( 'post', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
+					<input type="text" name="capability_type" id="cpt-capability_type" class="text" placeholder="<?php _e( 'post', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
 					<p class="description"><?php printf(
-						_e( 'The string to use to build the read, edit, and delete capabilities. May be passed as an array to allow for alternative plurals when using this argument as a base to construct the capabilities, e.g. <code>array( \'story\', \'stories\' )</code> the first array element will be used for the singular capabilities and the second array element for the plural capabilities, this is instead of the auto generated version if no array is given which would be "storys". The <b>Capability Type</b> parameter is used as a base to construct capabilities unless they are explicitly set with the <b>Capabilities</b> parameter. It seems that <b>Map Meta Cap</b> needs to be set to <code>false</code> or <code>null</code>, to make this work. Default: <b>post</b>. For more details see <a href="%1$s" target="blank">documentation on WordPress Codex</a>.', DevHelper::SLUG ),
+						_e( 'The string to use to build the read, edit, and delete capabilities. May be passed as an array to allow for alternative plurals when using this argument as a base to construct the capabilities, e.g. <code>array( \'story\', \'stories\' )</code> the first array element will be used for the singular capabilities and the second array element for the plural capabilities, this is instead of the auto generated version if no array is given which would be "storys". The <b>Capability Type</b> parameter is used as a base to construct capabilities unless they are explicitly set with the <b>Capabilities</b> parameter. It seems that <b>Map Meta Cap</b> needs to be set to <code>false</code> or <code>null</code>, to make this work. Default: <b>post</b>. For more details see <a href="%1$s" target="blank">documentation on WordPress Codex</a>.', DH_SLUG ),
 						'https://codex.wordpress.org/Function_Reference/register_post_type#capability_type'
 					); ?></p>
 					<?php endif;?>
@@ -205,49 +209,49 @@
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-capabilities"><?php _e( 'Capabilities', DevHelper::SLUG ); ?></label>
+					<label for="cpt-capabilities"><?php _e( 'Capabilities', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<!-- TODO Construct value of `capabilities` via JavaScript when `capability_type` is set!
 						 - TODO There should be textarea instad of plain text input!
 						 -->
-					<textarea name="capabilities" id="cpt-capabilities" class="large-text code" cols="50" rows="5" placeholder="<?php _e( 'array( \'edit_post\' => \'edit_wizard\', \'read_post\' => \'read_wizard\', \'delete_post\' => \'delete_wizard\', \'edit_others_posts\' => \'edit_others_wizards\', \'publish_posts\' => \'publish_wizards\', \'edit_posts\' => \'edit_wizards\', \'read_private_posts\' => \'read_private_wizards\', \'create_posts\' => \'edit_wizards\' )', DevHelper::SLUG ); ?>"></textarea>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'An array of the capabilities for this post type. Default: <b>Capability type</b> is used to construct.', DevHelper::SLUG ); ?></p>
+					<textarea name="capabilities" id="cpt-capabilities" class="large-text code" cols="50" rows="5" placeholder="<?php _e( 'array( \'edit_post\' => \'edit_wizard\', \'read_post\' => \'read_wizard\', \'delete_post\' => \'delete_wizard\', \'edit_others_posts\' => \'edit_others_wizards\', \'publish_posts\' => \'publish_wizards\', \'edit_posts\' => \'edit_wizards\', \'read_private_posts\' => \'read_private_wizards\', \'create_posts\' => \'edit_wizards\' )', DH_SLUG ); ?>"></textarea>
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'An array of the capabilities for this post type. Default: <b>Capability type</b> is used to construct.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-map_meta_cap"><?php _e( 'Map Meta Cap', DevHelper::SLUG ); ?></label>
+					<label for="cpt-map_meta_cap"><?php _e( 'Map Meta Cap', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<label for="cpt-map_meta_cap">
 						<input type="checkbox" name="map_meta_cap" id="cpt-map_meta_cap">
-						<?php _e( 'Map default meta capability?', DevHelper::SLUG ); ?>
+						<?php _e( 'Map default meta capability?', DH_SLUG ); ?>
 					</label>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Whether to use the internal default meta capability handling. Default: <code>null</code>.', DevHelper::SLUG ); ?></p>
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Whether to use the internal default meta capability handling. Default: <code>null</code>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-hierarchical"><?php _e( 'Hierarchical', DevHelper::SLUG ); ?></label>
+					<label for="cpt-hierarchical"><?php _e( 'Hierarchical', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<label for="cpt-hierarchical">
 						<input type="checkbox" name="hierarchical" id="cpt-hierarchical">
-						<?php _e( 'Is this post type hierarchical?', DevHelper::SLUG ); ?>
+						<?php _e( 'Is this post type hierarchical?', DH_SLUG ); ?>
 					</label>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Whether the post type is hierarchical (e.g. page). Allows Parent to be specified. The <b>Supports</b> parameter should contain <code>page-attributes</code> to show the parent select box on the editor page. Default: <b>false</b>.', DevHelper::SLUG ); ?></p>
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Whether the post type is hierarchical (e.g. page). Allows Parent to be specified. The <b>Supports</b> parameter should contain <code>page-attributes</code> to show the parent select box on the editor page. Default: <b>false</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-supports"><?php _e( 'Supports', DevHelper::SLUG ); ?></label>
+					<label for="cpt-supports"><?php _e( 'Supports', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<select name="supports" id="cpt-supports" multiple="multiple">
@@ -255,9 +259,9 @@
 						<option value="<?php echo $val; ?>"><?php echo $opt; ?></option>
 						<?php endforeach; ?>
 					</select>
-					<?php if ( $display_description === true ): ?>
+					<?php if ( $show_description === true ): ?>
 					<p class="description"><?php printf(
-						__( 'An alias for calling <code><a href="%1$s" target="blank">add_post_type_support()</a></code> directly. As of <ver>3.5</ver>, <b>false</b> can be passed as value instead of an array to prevent default behavior. Default: <code>array( \'title\', \'editor\' )</code>.', DevHelper::SLUG ),
+						__( 'An alias for calling <code><a href="%1$s" target="blank">add_post_type_support()</a></code> directly. As of <ver>3.5</ver>, <b>false</b> can be passed as value instead of an array to prevent default behavior. Default: <code>array( \'title\', \'editor\' )</code>.', DH_SLUG ),
 						'https://developer.wordpress.org/reference/functions/add_post_type_support/'
 					); ?></p>
 					<?php endif;?>
@@ -265,13 +269,13 @@
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-register_meta_box_cb"><?php _e( 'Register meta box callback', DevHelper::SLUG ); ?></label>
+					<label for="cpt-register_meta_box_cb"><?php _e( 'Register meta box callback', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<input type="text" name="register_meta_box_cb" id="cpt-register_meta_box_cb" class="text" placeholder="">
-					<?php if ( $display_description === true ): ?>
+					<?php if ( $show_description === true ): ?>
 					<p class="description"><?php printf(
-						__( 'Provide a callback function that will be called when setting up the meta boxes for the edit form. The callback function takes one argument $post, which contains the WP_Post object for the currently edited post. Do <code><a href="%1$s" target="blank">remove_meta_box()</a></code> and <code><a href="%2$s" target="blank">add_meta_box()</a></code> calls in the callback. Default: <b>None</b>.', DevHelper::SLUG ),
+						__( 'Provide a callback function that will be called when setting up the meta boxes for the edit form. The callback function takes one argument $post, which contains the WP_Post object for the currently edited post. Do <code><a href="%1$s" target="blank">remove_meta_box()</a></code> and <code><a href="%2$s" target="blank">add_meta_box()</a></code> calls in the callback. Default: <b>None</b>.', DH_SLUG ),
 						'https://developer.wordpress.org/reference/functions/remove_meta_box/',
 						'https://developer.wordpress.org/reference/functions/add_meta_box/'
 					); ?></p>
@@ -280,13 +284,13 @@
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-taxonomies"><?php _e( 'Taxonomies', DevHelper::SLUG ); ?></label>
+					<label for="cpt-taxonomies"><?php _e( 'Taxonomies', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="taxonomies" id="cpt-taxonomies" class="regular-text" placeholder="<?php _e( '\'post_tag\',\'category\'', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
+					<input type="text" name="taxonomies" id="cpt-taxonomies" class="regular-text" placeholder="<?php _e( '\'post_tag\',\'category\'', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
 					<p class="description"><?php printf(
-						__( 'An comma-separated array of registered taxonomies like <code>category</code> or <code>post_tag</code> that will be used with this post type. This can be used in lieu of calling <code><a href="%1$s" target="blank">register_taxonomy_for_object_type()</a></code> directly. Custom taxonomies still need to be registered with <code><a href="%2$s" target="blank">register_taxonomy()</a></code>. Default: <b>No taxonomies</b>.', DevHelper::SLUG ),
+						__( 'An comma-separated array of registered taxonomies like <code>category</code> or <code>post_tag</code> that will be used with this post type. This can be used in lieu of calling <code><a href="%1$s" target="blank">register_taxonomy_for_object_type()</a></code> directly. Custom taxonomies still need to be registered with <code><a href="%2$s" target="blank">register_taxonomy()</a></code>. Default: <b>No taxonomies</b>.', DH_SLUG ),
 						'https://developer.wordpress.org/reference/functions/register_taxonomy_for_object_type/',
 						'https://developer.wordpress.org/reference/functions/register_taxonomy/'
 					); ?></p>
@@ -295,31 +299,31 @@
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-has_archive"><?php _e( 'Archive', DevHelper::SLUG ); ?></label>
+					<label for="cpt-has_archive"><?php _e( 'Archive', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<label for="cpt-has_archive">
 						<input type="checkbox" name="has_archive" id="cpt-has_archive">
-						<?php _e( 'Has archive?', DevHelper::SLUG ); ?>
+						<?php _e( 'Has archive?', DH_SLUG ); ?>
 					</label>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Enables post type archives. Will use <code>$post_type</code> as archive slug by default. Default: <b>false</b>.', DevHelper::SLUG ); ?></p>
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Enables post type archives. Will use <code>$post_type</code> as archive slug by default. Default: <b>false</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-rewrite"><?php _e( 'Rewrite', DevHelper::SLUG ); ?></label>
+					<label for="cpt-rewrite"><?php _e( 'Rewrite', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<label for="cpt-rewrite">
 						<input type="checkbox" name="rewrite" id="cpt-rewrite" checked="checked">
-						<?php _e( 'Use default rewrite or specify yours: ', DevHelper::SLUG ); ?>
-						<input type="text" name="rewrite_custom" id="cpt-rewrite_custom" class="text" placeholder="<?php _e( '$post_type', DevHelper::SLUG ); ?>">
+						<?php _e( 'Use default rewrite or specify yours: ', DH_SLUG ); ?>
+						<input type="text" name="rewrite_custom" id="cpt-rewrite_custom" class="text" placeholder="<?php _e( '$post_type', DH_SLUG ); ?>">
 					</label>
-					<?php if ( $display_description === true ): ?>
+					<?php if ( $show_description === true ): ?>
 					<p class="description"><?php printf(
-						__( 'Triggers the handling of rewrites for this post type. To prevent rewrites, set to <b>false</b> (<a href="%1$s" target="blank">see more details</a>). Default: <b>true</b> and use <code>$post_type</code> as slug.', DevHelper::SLUG ),
+						__( 'Triggers the handling of rewrites for this post type. To prevent rewrites, set to <b>false</b> (<a href="%1$s" target="blank">see more details</a>). Default: <b>true</b> and use <code>$post_type</code> as slug.', DH_SLUG ),
 						'https://codex.wordpress.org/Function_Reference/register_post_type#rewrite'
 					); ?></p>
 					<?php endif;?>
@@ -327,13 +331,13 @@
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-permalink_epmask"><?php _e( 'Permalink epmask', DevHelper::SLUG ); ?></label>
+					<label for="cpt-permalink_epmask"><?php _e( 'Permalink epmask', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="permalink_epmask" id="cpt-permalink_epmask" class="text" placeholder="<?php _e( 'XXX', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
+					<input type="text" name="permalink_epmask" id="cpt-permalink_epmask" class="text" placeholder="<?php _e( 'XXX', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
 					<p class="description"><?php printf(
-						__( 'The default rewrite endpoint bitmasks. For more info see <a href="%1$s" target="blank">Trac Ticket 12605</a> and this <a href="%1$s" target="blank">Make WordPress Plugins summary of endpoints</a>. Default: <code>EP_PERMALINK</code>.', DevHelper::SLUG ),
+						__( 'The default rewrite endpoint bitmasks. For more info see <a href="%1$s" target="blank">Trac Ticket 12605</a> and this <a href="%1$s" target="blank">Make WordPress Plugins summary of endpoints</a>. Default: <code>EP_PERMALINK</code>.', DH_SLUG ),
 						'http://core.trac.wordpress.org/ticket/12605',
 						'http://make.wordpress.org/plugins/2012/06/07/rewrite-endpoints-api/'
 					); ?></p>
@@ -342,63 +346,63 @@
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-query_var"><?php _e( 'Query variable', DevHelper::SLUG ); ?></label>
+					<label for="cpt-query_var"><?php _e( 'Query variable', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<label for="cpt-query_var">
 						<input type="checkbox" name="query_var" id="cpt-query_var" checked="checked">
-						<?php _e( 'Use default query variable or specify yours: ', DevHelper::SLUG ); ?>
-						<input type="text" name="query_var_custom" id="cpt-query_var_custom" class="text" placeholder="<?php _e( '$post_type', DevHelper::SLUG ); ?>">
+						<?php _e( 'Use default query variable or specify yours: ', DH_SLUG ); ?>
+						<input type="text" name="query_var_custom" id="cpt-query_var_custom" class="text" placeholder="<?php _e( '$post_type', DH_SLUG ); ?>">
 					</label>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Sets the <code>query_var</code> key for this post type. You can set either <b>true</b> for default, <b>false</b> for disabling <code>query_var</code> key use, or <b>string</b> - <code>/?{query_var_string}={single_post_slug}</code> will work as intended. Default: <b>true</b> - set to <code>$post_type</code>.', DevHelper::SLUG ); ?></p>
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Sets the <code>query_var</code> key for this post type. You can set either <b>true</b> for default, <b>false</b> for disabling <code>query_var</code> key use, or <b>string</b> - <code>/?{query_var_string}={single_post_slug}</code> will work as intended. Default: <b>true</b> - set to <code>$post_type</code>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-can_export"><?php _e( 'Export', DevHelper::SLUG ); ?></label>
+					<label for="cpt-can_export"><?php _e( 'Export', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<label for="cpt-can_export">
 						<input type="checkbox" name="can_export" id="cpt-can_export">
-						<?php _e( 'Can export?', DevHelper::SLUG ); ?>
+						<?php _e( 'Can export?', DH_SLUG ); ?>
 					</label>
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Can this post type be exported. Default: <b>true</b>.', DevHelper::SLUG ); ?></p>
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Can this post type be exported. Default: <b>true</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-show_in_rest"><?php _e( 'REST', DevHelper::SLUG ); ?></label>
+					<label for="cpt-show_in_rest"><?php _e( 'REST', DH_SLUG ); ?></label>
 				</th>
 				<td>
 					<fieldset>
 						<label for="cpt-show_in_rest">
 							<input type="checkbox" name="show_in_rest" id="cpt-show_in_rest">
-							<?php _e( 'Show in REST API?', DevHelper::SLUG ); ?>
-							<?php if ( $display_description === true ): ?>
+							<?php _e( 'Show in REST API?', DH_SLUG ); ?>
+							<?php if ( $show_description === true ): ?>
 							<p class="description"><?php printf(
-								__( 'Whether to expose this post type in the <a href="%1$s" target="blank">REST API</a>. Default: <b>false</b>.', DevHelper::SLUG ),
+								__( 'Whether to expose this post type in the <a href="%1$s" target="blank">REST API</a>. Default: <b>false</b>.', DH_SLUG ),
 								'http://wp-api.org/'
 							); ?></p>
 							<?php endif;?>
-							<br><?php _e( 'Set REST base ', DevHelper::SLUG ); ?>
+							<br><?php _e( 'Set REST base ', DH_SLUG ); ?>
 							<!-- TODO Should be dissabled when `show_in_rest` is false. -->
-							<input type="text" name="rest_base" id="cpt-rest_base" class="extrashort-text" placeholder="<?php _e( '$post_type', DevHelper::SLUG ); ?>">
-							<?php _e( ' and REST controller class ', DevHelper::SLUG ); ?>
+							<input type="text" name="rest_base" id="cpt-rest_base" class="extrashort-text" placeholder="<?php _e( '$post_type', DH_SLUG ); ?>">
+							<?php _e( ' and REST controller class ', DH_SLUG ); ?>
 							<!-- TODO Should be dissabled when `show_in_rest` is false. -->
-							<input type="text" name="rest_controller_class" id="cpt-rest_controller_class" class="text" placeholder="<?php _e( 'WP_REST_Posts_Controller', DevHelper::SLUG ); ?>">
-							<?php if ( $display_description === true ): ?>
+							<input type="text" name="rest_controller_class" id="cpt-rest_controller_class" class="text" placeholder="<?php _e( 'WP_REST_Posts_Controller', DH_SLUG ); ?>">
+							<?php if ( $show_description === true ): ?>
 							<p class="description"><?php printf(
-								__( 'The base slug that this post type will use when accessed using the <a href="%1$s" target="blank">REST API</a>. Default: <code>$post_type</code>.', DevHelper::SLUG ),
+								__( 'The base slug that this post type will use when accessed using the <a href="%1$s" target="blank">REST API</a>. Default: <code>$post_type</code>.', DH_SLUG ),
 								'http://wp-api.org/'
 							); ?></p>
 							<?php endif;?>
-							<?php if ( $display_description === true ): ?>
+							<?php if ( $show_description === true ): ?>
 							<p class="description"><?php printf(
-								__( 'An optional custom controller to use instead of <code><a href="%1$s" target="blank">WP_REST_Posts_Controller</a></code>. Must be a subclass of <code><a href="%2$s" target="blank">WP_REST_Controller</a></code>. Default: <code><a href="%1$s" target="blank">WP_REST_Posts_Controller</a></code>.', DevHelper::SLUG ),
+								__( 'An optional custom controller to use instead of <code><a href="%1$s" target="blank">WP_REST_Posts_Controller</a></code>. Must be a subclass of <code><a href="%2$s" target="blank">WP_REST_Controller</a></code>. Default: <code><a href="%1$s" target="blank">WP_REST_Posts_Controller</a></code>.', DH_SLUG ),
 								'https://github.com/WP-API/WP-API/blob/develop/lib/endpoints/class-wp-rest-posts-controller.php',
 								'https://github.com/WP-API/WP-API/blob/develop/lib/endpoints/class-wp-rest-controller.php'
 							); ?></p>
@@ -409,276 +413,276 @@
 			</tr>
 		</table>
 
-		<h3><?php _e( 'Labels', DevHelper::SLUG ); ?></h3>
-		<?php if ( $display_description === true ): ?>
-		<p class="description"><?php _e ( 'An array of labels for this post type. By default, post labels are used for non-hierarchical post types and page labels for hierarchical ones.<br>Default: if empty, <b>Name</b> is set to value of <b>Label</b>, and <b>Singular Name</b> is set to value of <b>Name</b>.', DevHelper::SLUG ); ?></p>
+		<h3><?php _e( 'Labels', DH_SLUG ); ?></h3>
+		<?php if ( $show_description === true ): ?>
+		<p class="description"><?php _e ( 'An array of labels for this post type. By default, post labels are used for non-hierarchical post types and page labels for hierarchical ones.<br>Default: if empty, <b>Name</b> is set to value of <b>Label</b>, and <b>Singular Name</b> is set to value of <b>Name</b>.', DH_SLUG ); ?></p>
 		<?php endif; ?>
 		<table class="form-table">
 			<tr>
 				<th scope="row">
-					<label for="cpt-name"><?php _e( 'Name', DevHelper::SLUG ); ?></label>
+					<label for="cpt-name"><?php _e( 'Name', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="name" id="cpt-name" class="text" placeholder="<?php _e( 'Wizards', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'General name for the post type, usually plural. The same and overridden by <code>$post_type->label</code>. Default is <b>Posts</b>/<b>Pages</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="name" id="cpt-name" class="text" placeholder="<?php _e( 'Wizards', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'General name for the post type, usually plural. The same and overridden by <code>$post_type->label</code>. Default is <b>Posts</b>/<b>Pages</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-singular_name"><?php _e( 'Singular name', DevHelper::SLUG ); ?></label>
+					<label for="cpt-singular_name"><?php _e( 'Singular name', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="singular_name" id="cpt-singular_name" class="text" placeholder="<?php _e( 'Wizard', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Name for one object of this post type. Default is <b>Posts</b>/<b>Pages</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="singular_name" id="cpt-singular_name" class="text" placeholder="<?php _e( 'Wizard', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Name for one object of this post type. Default is <b>Posts</b>/<b>Pages</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-add_new"><?php _e( 'Add new', DevHelper::SLUG ); ?></label>
+					<label for="cpt-add_new"><?php _e( 'Add new', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="add_new" id="cpt-add_new" class="text" placeholder="<?php _e( 'Add New', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php printf( __( 'The add new text. The default is <b>Add&nbsp;New</b> for both hierarchical and non-hierarchical post types. When internationalizing this string, please use a gettext context matching your post type (e.g. <code><a href="%s" target="blank">_x</a>(&nbsp;\'Add&nbsp;New\',&nbsp;\'wizard\'&nbsp;,&nbsp;\'textdomain\'&nbsp;);</code>).', DevHelper::SLUG ), 'https://developer.wordpress.org/reference/functions/_x/' ); ?></p>
+					<input type="text" name="add_new" id="cpt-add_new" class="text" placeholder="<?php _e( 'Add New', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php printf( __( 'The add new text. The default is <b>Add&nbsp;New</b> for both hierarchical and non-hierarchical post types. When internationalizing this string, please use a gettext context matching your post type (e.g. <code><a href="%s" target="blank">_x</a>(&nbsp;\'Add&nbsp;New\',&nbsp;\'wizard\'&nbsp;,&nbsp;\'textdomain\'&nbsp;);</code>).', DH_SLUG ), 'https://developer.wordpress.org/reference/functions/_x/' ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-add_new_item"><?php _e( 'Add new item', DevHelper::SLUG ); ?></label>
+					<label for="cpt-add_new_item"><?php _e( 'Add new item', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="add_new_item" id="cpt-add_new_item" class="text" placeholder="<?php _e( 'Add New Wizard', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>Add New Post</b>/<b>Add New Page</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="add_new_item" id="cpt-add_new_item" class="text" placeholder="<?php _e( 'Add New Wizard', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>Add New Post</b>/<b>Add New Page</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-edit_item"><?php _e( 'Edit Item', DevHelper::SLUG ); ?></label>
+					<label for="cpt-edit_item"><?php _e( 'Edit Item', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="edit_item" id="cpt-edit_item" class="text" placeholder="<?php _e( 'Edit Wizard', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>Edit Post</b>/<b>Edit Page</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="edit_item" id="cpt-edit_item" class="text" placeholder="<?php _e( 'Edit Wizard', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>Edit Post</b>/<b>Edit Page</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-new_item"><?php _e( 'New Item', DevHelper::SLUG ); ?></label>
+					<label for="cpt-new_item"><?php _e( 'New Item', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="new_item" id="cpt-new_item" class="text" placeholder="<?php _e( 'New Wizard', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>New Post</b>/<b>New Page</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="new_item" id="cpt-new_item" class="text" placeholder="<?php _e( 'New Wizard', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>New Post</b>/<b>New Page</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-view_item"><?php _e( 'View Item', DevHelper::SLUG ); ?></label>
+					<label for="cpt-view_item"><?php _e( 'View Item', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="xxx" id="cpt-view_item" class="text" placeholder="<?php _e( 'View Wizard', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>View Post</b>/<b>View Page</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="xxx" id="cpt-view_item" class="text" placeholder="<?php _e( 'View Wizard', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>View Post</b>/<b>View Page</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-search_items"><?php _e( 'Search Items', DevHelper::SLUG ); ?></label>
+					<label for="cpt-search_items"><?php _e( 'Search Items', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="search_items" id="cpt-search_items" class="text" placeholder="<?php _e( 'Search Wizards', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>Search Posts</b>/<b>Search Pages</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="search_items" id="cpt-search_items" class="text" placeholder="<?php _e( 'Search Wizards', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>Search Posts</b>/<b>Search Pages</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-not_found"><?php _e( 'Not Found', DevHelper::SLUG ); ?></label>
+					<label for="cpt-not_found"><?php _e( 'Not Found', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="not_found" id="cpt-not_found" class="text" placeholder="<?php _e( 'No wizards found', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>No posts found</b>/<b>No pages found</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="not_found" id="cpt-not_found" class="text" placeholder="<?php _e( 'No wizards found', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>No posts found</b>/<b>No pages found</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-not_found_in_trash"><?php _e( 'Not found in Trash', DevHelper::SLUG ); ?></label>
+					<label for="cpt-not_found_in_trash"><?php _e( 'Not found in Trash', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="not_found_in_trash" id="cpt-not_found_in_trash" class="text" placeholder="<?php _e( 'No wizards found in Trash', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>No posts found in Trash</b>/<b>No pages found in Trash</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="not_found_in_trash" id="cpt-not_found_in_trash" class="text" placeholder="<?php _e( 'No wizards found in Trash', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>No posts found in Trash</b>/<b>No pages found in Trash</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-parent_item_colon"><?php _e( 'Parent Item Colon', DevHelper::SLUG ); ?></label>
+					<label for="cpt-parent_item_colon"><?php _e( 'Parent Item Colon', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="parent_item_colon" id="cpt-parent_item_colon" class="text" placeholder="<?php _e( 'Parent Wizard:', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'This string isn\'t used on non-hierarchical types. In hierarchical ones the default is <b>Parent Page:</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="parent_item_colon" id="cpt-parent_item_colon" class="text" placeholder="<?php _e( 'Parent Wizard:', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'This string isn\'t used on non-hierarchical types. In hierarchical ones the default is <b>Parent Page:</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-all_items"><?php _e( 'All Items', DevHelper::SLUG ); ?></label>
+					<label for="cpt-all_items"><?php _e( 'All Items', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="all_items" id="cpt-all_items" class="text" placeholder="<?php _e( 'All Wizards', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for the submenu. Default is <b>All Posts</b>/<b>All Pages</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="all_items" id="cpt-all_items" class="text" placeholder="<?php _e( 'All Wizards', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for the submenu. Default is <b>All Posts</b>/<b>All Pages</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-archives"><?php _e( 'Archives', DevHelper::SLUG ); ?></label>
+					<label for="cpt-archives"><?php _e( 'Archives', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="archives" id="cpt-archives" class="text" placeholder="<?php _e( 'Wizard Archives', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for use with archives in nav menus. Default is <b>Post Archives</b>/<b>Page Archives</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="archives" id="cpt-archives" class="text" placeholder="<?php _e( 'Wizard Archives', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for use with archives in nav menus. Default is <b>Post Archives</b>/<b>Page Archives</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-insert_into_item"><?php _e( 'Insert into item', DevHelper::SLUG ); ?></label>
+					<label for="cpt-insert_into_item"><?php _e( 'Insert into item', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="insert_into_item" id="cpt-insert_into_item" class="text" placeholder="<?php _e( 'Insert into wizard', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for the media frame button. Default is <b>Insert into post</b>/<b>Insert into page</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="insert_into_item" id="cpt-insert_into_item" class="text" placeholder="<?php _e( 'Insert into wizard', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for the media frame button. Default is <b>Insert into post</b>/<b>Insert into page</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-uploaded_to_this_item"><?php _e( 'Uploaded to this item', DevHelper::SLUG ); ?></label>
+					<label for="cpt-uploaded_to_this_item"><?php _e( 'Uploaded to this item', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="uploaded_to_this_item" id="cpt-uploaded_to_this_item" class="text" placeholder="<?php _e( 'Uploaded to this wizard', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for the media frame filter. Default is <b>Uploaded to this post</b>/<b>Uploaded to this page</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="uploaded_to_this_item" id="cpt-uploaded_to_this_item" class="text" placeholder="<?php _e( 'Uploaded to this wizard', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for the media frame filter. Default is <b>Uploaded to this post</b>/<b>Uploaded to this page</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 				<th scope="row">
-					<label for="cpt-featured_image"><?php _e( 'Featured image', DevHelper::SLUG ); ?></label>
+					<label for="cpt-featured_image"><?php _e( 'Featured image', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="featured_image" id="cpt-featured_image" class="text" placeholder="<?php _e( 'Featured image', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>Featured Image</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="featured_image" id="cpt-featured_image" class="text" placeholder="<?php _e( 'Featured image', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>Featured Image</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 				<th scope="row">
-					<label for="cpt-set_featured_image"><?php _e( 'Set featured image', DevHelper::SLUG ); ?></label>
+					<label for="cpt-set_featured_image"><?php _e( 'Set featured image', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="set_featured_image" id="cpt-set_featured_image" class="text" placeholder="<?php _e( 'Set featured image', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>Set featured image</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="set_featured_image" id="cpt-set_featured_image" class="text" placeholder="<?php _e( 'Set featured image', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>Set featured image</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 				<th scope="row">
-					<label for="cpt-remove_featured_image"><?php _e( 'Remove featured image', DevHelper::SLUG ); ?></label>
+					<label for="cpt-remove_featured_image"><?php _e( 'Remove featured image', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="remove_featured_image" id="cpt-remove_featured_image" class="text" placeholder="<?php _e( 'Remove featured image', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>Remove featured image</b>.', DevHelper::SLUG ); ?></p>
-					<?php endif;?>
-				</td>
-			</tr>
-			<tr>
-				<th scope="row">
-					<label for="cpt-use_featured_image"><?php _e( 'Use featured image', DevHelper::SLUG ); ?></label>
-				</th>
-				<td>
-					<input type="text" name="use_featured_image" id="cpt-use_featured_image" class="text" placeholder="<?php _e( 'Use as featured image', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is <b>Use as featured image</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="remove_featured_image" id="cpt-remove_featured_image" class="text" placeholder="<?php _e( 'Remove featured image', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>Remove featured image</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-menu_name"><?php _e( 'Menu name', DevHelper::SLUG ); ?></label>
+					<label for="cpt-use_featured_image"><?php _e( 'Use featured image', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="menu_name" id="cpt-menu_name" class="text" placeholder="<?php _e( 'Wizards', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'Default is the same as <b>name</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="use_featured_image" id="cpt-use_featured_image" class="text" placeholder="<?php _e( 'Use as featured image', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is <b>Use as featured image</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-filter_items_list"><?php _e( 'Filter items list', DevHelper::SLUG ); ?></label>
+					<label for="cpt-menu_name"><?php _e( 'Menu name', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="filter_items_list" id="cpt-filter_items_list" class="text" placeholder="<?php _e( 'Wizards list filter', DevHelper::SLUG ); ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for the table views hidden heading.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="menu_name" id="cpt-menu_name" class="text" placeholder="<?php _e( 'Wizards', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'Default is the same as <b>name</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-items_list_navigation"><?php _e( 'Items list navigation', DevHelper::SLUG ); ?></label>
+					<label for="cpt-filter_items_list"><?php _e( 'Filter items list', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="items_list_navigation" id="cpt-items_list_navigation" class="text" placeholder="<?php _e( 'Wizards list pagination', DevHelper::SLUG ) ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for the table pagination hidden heading.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="filter_items_list" id="cpt-filter_items_list" class="text" placeholder="<?php _e( 'Wizards list filter', DH_SLUG ); ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for the table views hidden heading.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-items_list"><?php _e( 'Items list', DevHelper::SLUG ); ?></label>
+					<label for="cpt-items_list_navigation"><?php _e( 'Items list navigation', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="items_list" id="cpt-items_list" class="text" placeholder="<?php _e( 'Wizards list', DevHelper::SLUG ) ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for the table hidden heading.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="items_list_navigation" id="cpt-items_list_navigation" class="text" placeholder="<?php _e( 'Wizards list pagination', DH_SLUG ) ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for the table pagination hidden heading.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<tr>
 				<th scope="row">
-					<label for="cpt-name_admin_bar"><?php _e( 'Name in Admin bar', DevHelper::SLUG ); ?></label>
+					<label for="cpt-items_list"><?php _e( 'Items list', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<input type="text" name="name_admin_bar" id="cpt-name_admin_bar" class="text" placeholder="<?php _e( 'Wizard', DevHelper::SLUG ) ?>">
-					<?php if ( $display_description === true ): ?>
-					<p class="description"><?php _e( 'String for use in <b>New</b> in <b>Admin menu bar</b>. Default is the same as <b>singular_name</b>.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="items_list" id="cpt-items_list" class="text" placeholder="<?php _e( 'Wizards list', DH_SLUG ) ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for the table hidden heading.', DH_SLUG ); ?></p>
+					<?php endif;?>
+				</td>
+			</tr>
+			<tr>
+				<th scope="row">
+					<label for="cpt-name_admin_bar"><?php _e( 'Name in Admin bar', DH_SLUG ); ?></label>
+				</th>
+				<td>
+					<input type="text" name="name_admin_bar" id="cpt-name_admin_bar" class="text" placeholder="<?php _e( 'Wizard', DH_SLUG ) ?>">
+					<?php if ( $show_description === true ): ?>
+					<p class="description"><?php _e( 'String for use in <b>New</b> in <b>Admin menu bar</b>. Default is the same as <b>singular_name</b>.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 						<!-- ... -->
 
 			<!-- Advanced options -->
-			<?php echo $wizard->render_advanced_options( $display_description ); ?>
+			<?php echo $wizard->render_advanced_options( $show_description ); ?>
 		</table>
 		<!-- Submit buttons -->
 		<?php echo $wizard->render_submit_buttons(); ?>
@@ -686,7 +690,7 @@
 
 	<hr>
 
-	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DevHelper::SLUG ); ?></p>
+	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DH_SLUG ); ?></p>
 
 	<h3><code><?php echo 'my-example-list/includes/class-my_example_list.php.php'; ?></code></h3>
 <pre><code class="language-php">&lt;?php

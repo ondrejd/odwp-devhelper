@@ -3,10 +3,19 @@
  * Part of common wizard.
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
  * @package odwp-devhelper
- * @since 0.1.0
+ * @since 0.0.1
+ * 
+ * @todo Add spinner and make this works via AJAX (with safe-fall to plain POST and PHP).
  */
-?><!-- TODO Add spinner and make this works via AJAX (with safe-fall to plain POST and PHP) -->
-<input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DevHelper::SLUG ); ?>" class="button-primary">
-<input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DevHelper::SLUG ); ?>" class="button">
-<input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DevHelper::SLUG ); ?>" class="button">
+
+if( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+?>
+<input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DH_SLUG ); ?>" class="button-primary">
+<input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DH_SLUG ); ?>" class="button">
+<input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DH_SLUG ); ?>" class="button">

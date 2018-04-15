@@ -3,25 +3,32 @@
  * Part of common wizard.
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
  * @package odwp-devhelper
- * @since 0.1.0
+ * @since 0.0.1
  */
+
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
 ?><tr>
   <th scope="row">
-    <label for="plugin-advanced"><?php _e( 'Advanced', DevHelper::SLUG ); ?></label>
+    <label for="plugin-advanced"><?php _e( 'Advanced', DH_SLUG ); ?></label>
   </th>
   <td>
     <fieldset id="plugin-advanced">
       <label for="plugin-use_textdomain">
         <input type="checkbox" name="use_textdomain" id="plugin-use_textdomain">
         <?php printf(
-          __( 'Use textdomain (as a string %1$s or PHP expression %2$s ).', DevHelper::SLUG ),
-          '<input type="text" name="textdomain" id="plugin-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DevHelper::SLUG ) . '">',
-          '<input type="text" name="textdomain_php" id="plugin-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DevHelper::SLUG ) . '">'
+          __( 'Use textdomain (as a string %1$s or PHP expression %2$s ).', DH_SLUG ),
+          '<input type="text" name="textdomain" id="plugin-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DH_SLUG ) . '">',
+          '<input type="text" name="textdomain_php" id="plugin-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DH_SLUG ) . '">'
         ); ?>
       </label>
-      <?php if ( $display_description === true ): ?>
-      <p class="description"><?php _e( 'All strings in generated code will be ready for translation. You can choose either insert textdomain as a normal string (e.g. <code>my_textdomain</code>) which will be encapsulated by double-quotes or as a PHP expression (e.g. <code>DevHelper::SLUG</code>) which will be inserted into code without any quotes.', DevHelper::SLUG ); ?></p>
+      <?php if ( $show_description === true ): ?>
+      <p class="description"><?php _e( 'All strings in generated code will be ready for translation. You can choose either insert textdomain as a normal string (e.g. <code>my_textdomain</code>) which will be encapsulated by double-quotes or as a PHP expression (e.g. <code>DH_SLUG</code>) which will be inserted into code without any quotes.', DH_SLUG ); ?></p>
       <?php endif;?>
     </fieldset>
   </td>

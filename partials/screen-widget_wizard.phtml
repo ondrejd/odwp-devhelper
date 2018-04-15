@@ -1,11 +1,24 @@
-<div class="wrap">
+<?php
+/**
+ * Widget wizard.
+ *
+ * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
+ * @package odwp-devhelper
+ * @since 0.0.1
+ */
 
-	<?php screen_icon(); ?>
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
 
-	<h1><?= __( 'Wizards - WordPress Widget', DevHelper::SLUG )?></h1>
+?><div class="wrap">
+	<h1 class="wp-heading-inline"><?php _e( 'Wizards - WordPress Widget', DH_SLUG )?></h1>
+    <hr class="wp-header-end">
 
 	<p class="description">
-		<?php sprintf( __( 'Generate new <a href="%s" target="blank">widgets</a> (using <a href="%s" target="blank">Widget API</a>).', DevHelper::SLUG ), 'https://codex.wordpress.org/WordPress_Widgets', 'https://codex.wordpress.org/Widgets_API' ); ?>
+		<?php sprintf( __( 'Generate new <a href="%s" target="blank">widgets</a> (using <a href="%s" target="blank">Widget API</a>).', DH_SLUG ), 'https://codex.wordpress.org/WordPress_Widgets', 'https://codex.wordpress.org/Widgets_API' ); ?>
 	</p>
 
 	<form id="wizard-dashboard_widget">
@@ -14,52 +27,52 @@
 				<!-- Class name -->
 				<tr>
 					<th scope="row">
-						<label for="widget-classname"><?= __( 'Class name', DevHelper::SLUG ) ?></label>
+						<label for="widget-classname"><?php _e( 'Class name', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="plugin-classname" id="plugin-classname" class="regular-text" placeholder="<?= __( 'My_Widget', DevHelper::SLUG ) ?>">
+								<input type="text" name="plugin-classname" id="plugin-classname" class="regular-text" placeholder="<?php _e( 'My_Widget', DH_SLUG ) ?>">
 							</p>
-							<p class="description"><?php printf( __( 'Name of class which will extend <a href="%s" target="blank"><code>WP_Widget</code></a>', DevHelper::SLUG ), 'https://developer.wordpress.org/reference/classes/wp_widget/' ); ?></p>
+							<p class="description"><?php printf( __( 'Name of class which will extend <a href="%s" target="blank"><code>WP_Widget</code></a>', DH_SLUG ), 'https://developer.wordpress.org/reference/classes/wp_widget/' ); ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Identifier -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-identifier"><?= __( 'Identifier', DevHelper::SLUG ) ?></label>
+						<label for="plugin-identifier"><?php _e( 'Identifier', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="plugin-identifier" id="plugin-identifier" class="regular-text" placeholder="<?= __( 'Enter identifier of your plugin', DevHelper::SLUG ) ?>">
+								<input type="text" name="plugin-identifier" id="plugin-identifier" class="regular-text" placeholder="<?php _e( 'Enter identifier of your plugin', DH_SLUG ) ?>">
 							</p>
-							<p class="description"><?= __( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Description -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-description"><?= __( 'Description', DevHelper::SLUG ) ?></label>
+						<label for="plugin-description"><?php _e( 'Description', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<label for="plugin-description"><?= __( 'Short description:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-description" id="plugin-description" class="long-text" placeholder="<?= __( 'Enter short description of your plugin', DevHelper::SLUG ) ?>" cols="72" rows="5"></textarea>
+								<label for="plugin-description"><?php _e( 'Short description:', DH_SLUG ) ?></label><br>
+								<textarea name="plugin-description" id="plugin-description" class="long-text" placeholder="<?php _e( 'Enter short description of your plugin', DH_SLUG ) ?>" cols="72" rows="5"></textarea>
 							</p>
 							<p>
-								<label for="plugin-description_full"><?= __( 'Full description:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-description_full" id="plugin-description_full" class="long-text" placeholder="<?= __( 'Enter full description of your plugin', DevHelper::SLUG ) ?>" cols="72" rows="10"></textarea>
+								<label for="plugin-description_full"><?php _e( 'Full description:', DH_SLUG ) ?></label><br>
+								<textarea name="plugin-description_full" id="plugin-description_full" class="long-text" placeholder="<?php _e( 'Enter full description of your plugin', DH_SLUG ) ?>" cols="72" rows="10"></textarea>
 							</p>
-							<p class="description"><?= __( 'Both descriptions are used in <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Both descriptions are used in <code>readme.txt</code> file.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $display_description ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description ); ?>
             </tbody>
 		</table>
         <!-- Submit buttons -->
@@ -68,7 +81,7 @@
 
 	<hr>
 
-	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin with new widget. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DevHelper::SLUG ); ?></p>
+	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin with new widget. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DH_SLUG ); ?></p>
 
 	<!-- TODO Here should be rendered generated PHP source -->
 	<h3><code><?php echo 'my-example-list/includes/class-my_example_widget.php'; ?></code></h3>

@@ -1,77 +1,81 @@
 <?php
 /**
- * Page "Table List Wizard".
+ * Table listing wizard.
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
  * @package odwp-devhelper
  * @since 0.0.1
  */
+
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
 ?><div class="wrap">
+	<h1><?php _e( 'Wizards - Table listing', DH_SLUG ); ?></h1>
+    <hr class="wp-header-end">
 
-	<?php screen_icon(); ?>
-
-	<h2>
-		<?php _e( 'Table List Wizard', DevHelper::SLUG ); ?>
-		<small><?php printf(
-			__( 'Generator for table list classes using <code><a href="%1$s" target="blank">WP_List_Table</a></code>.', DevHelper::SLUG ),
-			'https://developer.wordpress.org/reference/classes/wp_list_table/'
-		); ?></small>
-	</h2>
+	<p class="description"><?php printf(
+		__( 'Generator for table list classes using <code><a href="%1$s" target="blank">WP_List_Table</a></code>.', DH_SLUG ),
+		'https://developer.wordpress.org/reference/classes/wp_list_table/'
+	); ?></p>
 
 	<form id="list_table-wizard">
 		<table class="form-table">
 			<!-- Class name -->
 			<tr>
 				<th scope="row">
-					<label for="plugin-classname"><?php _e( 'Class name', DevHelper::SLUG ) ?></label>
+					<label for="plugin-classname"><?php _e( 'Class name', DH_SLUG ) ?></label>
 				</th>
 				<td>
-					<input type="text" name="classname" id="plugin-classname" class="regular-text" placeholder="<?php _e( 'My_Example_List', DevHelper::SLUG ) ?>">
-					<?php if ( $display_description === true ): ?>
-					<p id="classname_description" class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. \'My_Example_List\'.', DevHelper::SLUG ); ?></p>
+					<input type="text" name="classname" id="plugin-classname" class="regular-text" placeholder="<?php _e( 'My_Example_List', DH_SLUG ) ?>">
+					<?php if ( $show_description === true ): ?>
+					<p id="classname_description" class="description"><?php _e( 'Name of the PHP class that will be generated, e.g. \'My_Example_List\'.', DH_SLUG ); ?></p>
 					<?php endif;?>
 				</td>
 			</tr>
 			<!-- WP_List_Table Arguments -->
 			<tr>
 				<th scope="row">
-					<label for="plugin-arguments"><?php _e( 'Arguments', DevHelper::SLUG ); ?></label>
+					<label for="plugin-arguments"><?php _e( 'Arguments', DH_SLUG ); ?></label>
 				</th>
 				<td>
-					<p class="description"><?php _e( 'Arguments for <a href="https://developer.wordpress.org/reference/classes/wp_list_table/__construct/" target="blank">constructor</a> of <code>WP_List_Table</code> class.', DevHelper::SLUG ); ?></p>
+					<p class="description"><?php _e( 'Arguments for <a href="https://developer.wordpress.org/reference/classes/wp_list_table/__construct/" target="blank">constructor</a> of <code>WP_List_Table</code> class.', DH_SLUG ); ?></p>
 					<fieldset>
 						<label for="plugin-set_plural">
 							<input type="checkbox" name="plugin-set_plural" id="plugin-set_plural">
-							<?php _e( 'Plural label:', DevHelper::SLUG ); ?>
-							<input type="text" name="plural" id="plugin-plural" placeholder="<?php _e( 'examples', DevHelper::SLUG ) ?>" disabled="disabled">
+							<?php _e( 'Plural label:', DH_SLUG ); ?>
+							<input type="text" name="plural" id="plugin-plural" placeholder="<?php _e( 'examples', DH_SLUG ) ?>" disabled="disabled">
 						</label>
-						<?php if ( $display_description === true ): ?>
-						<p id="set_plural_description" class="description"><?php _e( 'Plural value used for labels and the objects being listed. This affects things such as CSS class-names and nonces used in the list table, e.g. \'posts\'. Default empty.', DevHelper::SLUG ); ?></p>
+						<?php if ( $show_description === true ): ?>
+						<p id="set_plural_description" class="description"><?php _e( 'Plural value used for labels and the objects being listed. This affects things such as CSS class-names and nonces used in the list table, e.g. \'posts\'. Default empty.', DH_SLUG ); ?></p>
 						<?php endif;?>
 						<label for="plugin-set_singular">
 							<input type="checkbox" name="plugin-set_singular" id="plugin-set_singular">
-							<?php _e( 'Singular label:', DevHelper::SLUG ); ?>
-							<input type="text" name="singular" id="plugin-singular" placeholder="<?php _e( 'example', DevHelper::SLUG ); ?>" disabled="disabled">
+							<?php _e( 'Singular label:', DH_SLUG ); ?>
+							<input type="text" name="singular" id="plugin-singular" placeholder="<?php _e( 'example', DH_SLUG ); ?>" disabled="disabled">
 						</label>
-						<?php if ( $display_description === true ): ?>
-						<p id="set_singular_description" class="description"><?php _e( 'Singular label for an object being listed, e.g. \'post\'. Default empty.', DevHelper::SLUG ); ?></p>
+						<?php if ( $show_description === true ): ?>
+						<p id="set_singular_description" class="description"><?php _e( 'Singular label for an object being listed, e.g. \'post\'. Default empty.', DH_SLUG ); ?></p>
 						<?php endif;?>
 						<label for="plugin-use_ajax">
 							<input type="checkbox" name="use_ajax" id="plugin-use_ajax">
 							Use AJAX?
 						</label>
-						<?php if ( $display_description === true ): ?>
+						<?php if ( $show_description === true ): ?>
 						<p id="use_ajax_description" class="description">
-							<?php _e( 'Whether the list table supports AJAX. This includes loading and sorting data, for example. If true, the class will call the <code><a href="https://developer.wordpress.org/reference/classes/wp_list_table/_js_vars/" target="blank">_js_vars()</a></code> method  in the footer to provide variables to any scripts handling AJAX events. Default false.', DevHelper::SLUG ); ?>
+							<?php _e( 'Whether the list table supports AJAX. This includes loading and sorting data, for example. If true, the class will call the <code><a href="https://developer.wordpress.org/reference/classes/wp_list_table/_js_vars/" target="blank">_js_vars()</a></code> method  in the footer to provide variables to any scripts handling AJAX events. Default false.', DH_SLUG ); ?>
 						<?php endif;?>
 						</p>
 						<label for="plugin-set_screen">
 							<input type="checkbox" name="plugin-set_screen" id="plugin-set_screen">
-							<?php _e( 'Screen:', DevHelper::SLUG ); ?>
-							<input type="text" name="screen" id="plugin-screen" placeholder="<?php _e( 'example', DevHelper::SLUG ); ?>" disabled="disabled">
+							<?php _e( 'Screen:', DH_SLUG ); ?>
+							<input type="text" name="screen" id="plugin-screen" placeholder="<?php _e( 'example', DH_SLUG ); ?>" disabled="disabled">
 						</label>
-						<?php if ( $display_description === true ): ?>
-						<p id="set_screen_description" class="description"><?php _e( 'String containing the hook name used to determine the current screen. If left null, the current screen will be automatically set. Default null.', DevHelper::SLUG ); ?></p>
+						<?php if ( $show_description === true ): ?>
+						<p id="set_screen_description" class="description"><?php _e( 'String containing the hook name used to determine the current screen. If left null, the current screen will be automatically set. Default null.', DH_SLUG ); ?></p>
 						<?php endif;?>
 					</fieldset>
 				</td>
@@ -79,26 +83,26 @@
 				<!-- Other options -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-options"><?php _e( 'Options', DevHelper::SLUG ); ?></label>
+						<label for="plugin-options"><?php _e( 'Options', DH_SLUG ); ?></label>
 					</th>
 					<td>
 						<fieldset id="plugin-options">
 							<label for="plugin-searchbox">
 								<input type="checkbox" name="searchbox" id="plugin-searchbox">
-								<?php _e( 'Add search box?', DevHelper::SLUG ); ?>
+								<?php _e( 'Add search box?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
+							<?php if ( $show_description === true ): ?>
 							<p id="searchbox_description" class="description">
-								<?php _e( '<code>XXX</code> Add detail description (with screenshot)!', DevHelper::SLUG ); ?></p>
+								<?php _e( '<code>XXX</code> Add detail description (with screenshot)!', DH_SLUG ); ?></p>
 							<?php endif;?>
 
 							<label for="plugin-custom_filter">
 								<input type="checkbox" name="custom_filter" id="plugin-custom_filter">
-								<?php _e( 'Add custom filter?', DevHelper::SLUG ); ?>
+								<?php _e( 'Add custom filter?', DH_SLUG ); ?>
 							</label>
-							<?php if ( $display_description === true ): ?>
+							<?php if ( $show_description === true ): ?>
 							<p id="custom_filter_description" class="description">
-								<?php _e( '<code>XXX</code> Add detail description (with screenshot)!', DevHelper::SLUG ); ?></p>
+								<?php _e( '<code>XXX</code> Add detail description (with screenshot)!', DH_SLUG ); ?></p>
 							<?php endif;?>
 						</fieldset>
 					</td>
@@ -106,7 +110,7 @@
 				<!-- Views -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-use_views"><?php _e( 'Views', DevHelper::SLUG ) ?></label>
+						<label for="plugin-use_views"><?php _e( 'Views', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
@@ -114,34 +118,34 @@
 								<input type="checkbox" name="plugin-use_views" id="plugin-use_views">
 								Use custom views?
 							</label>
-							<?php if ( $display_description === true ): ?>
+							<?php if ( $show_description === true ): ?>
 							<p id="use_views_description" class="description">
-								<?php _e( 'Views are used as a main data filtres - commonly there are views <b>All</b> and <b>Deleted</b> which means one view with all not-deleted items and other with deleted items (trash).', DevHelper::SLUG ) ?></p>
+								<?php _e( 'Views are used as a main data filtres - commonly there are views <b>All</b> and <b>Deleted</b> which means one view with all not-deleted items and other with deleted items (trash).', DH_SLUG ) ?></p>
 							<?php endif;?>
 							<div id="use_views_area" class="wp-pattern-example">
-								<p><b><?php _e( 'Specify all views:', DevHelper::SLUG ); ?></b></p>
+								<p><b><?php _e( 'Specify all views:', DH_SLUG ); ?></b></p>
 								<div><!--  class="hide-if-no-js" -->
 									<p>
 										<label for="add_view_label">
-											<?php _e( 'Label', DevHelper::SLUG ); ?>
+											<?php _e( 'Label', DH_SLUG ); ?>
 											<input id="add_view_label" name="add_view_label" class="form-input-tip" aria-describedby="add_view_desc" type="text" value="" size="25" style="width: 125px;">
 										</label>
 										<label for="add_view_key">
-											<?php _e( 'Key', DevHelper::SLUG ); ?>
+											<?php _e( 'Key', DH_SLUG ); ?>
 											<input id="add_view_key" name="add_view_key" class="form-input-tip" aria-describedby="add_view_desc" type="text" value="" size="25" style="width: 125px;">
 										</label>
-										<input class="button tagadd" type="button" value="<?php _e( 'Add', DevHelper::SLUG ); ?>">
+										<input class="button tagadd" type="button" value="<?php _e( 'Add', DH_SLUG ); ?>">
 									</p>
 								</div>
-								<p id="add_view_desc" class="description"<?php echo ( $display_description !== true ) ? ' style="display: none; visibility: hidden;"' : ''; ?>><?php _e( 'Both values label and key are required. Key should not contain any spaces or special letters. The max. length of both strings is twenty-five letters.', DevHelper::SLUG ); ?></p>
+								<p id="add_view_desc" class="description"<?php echo ( $show_description !== true ) ? ' style="display: none; visibility: hidden;"' : ''; ?>><?php _e( 'Both values label and key are required. Key should not contain any spaces or special letters. The max. length of both strings is twenty-five letters.', DH_SLUG ); ?></p>
 								<div class="tagchecklist">
 									<span>
 										<a id="view_check-0" class="ntdelbutton"></a>
-										<b><?php _e( 'All', DevHelper::SLUG ); ?></b> (<i><?php esc_html_e( 'all', DevHelper::SLUG ); ?></i>)
+										<b><?php _e( 'All', DH_SLUG ); ?></b> (<i><?php esc_html_e( 'all', DH_SLUG ); ?></i>)
 									</span>
 									<span>
 										<a id="view_check-1" class="ntdelbutton"></a>
-										<b><?php _e( 'Trash', DevHelper::SLUG ); ?></b> (<i><?php esc_html_e( 'trash', DevHelper::SLUG ); ?></i>)
+										<b><?php _e( 'Trash', DH_SLUG ); ?></b> (<i><?php esc_html_e( 'trash', DH_SLUG ); ?></i>)
 									</span>
 								</div>
 							</div>
@@ -151,7 +155,7 @@
 				<!-- Bulk actions -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-use_bulkactions"><?php _e( 'Bulk actions', DevHelper::SLUG ) ?></label>
+						<label for="plugin-use_bulkactions"><?php _e( 'Bulk actions', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
@@ -159,30 +163,30 @@
 								<input type="checkbox" name="plugin-use_bulkactions" id="plugin-use_bulkactions">
 								Use bulk actions?
 							</label>
-							<?php if ( $display_description === true ): ?>
+							<?php if ( $show_description === true ): ?>
 							<p id="use_bulkactions_description" class="description">
-								<?php _e( 'Bulk actions are pre-defined operations over selected items in the table. Are used for setting values for multiple items. Commonly is one of actions <b>Trash</b>.', DevHelper::SLUG ) ?></p>
+								<?php _e( 'Bulk actions are pre-defined operations over selected items in the table. Are used for setting values for multiple items. Commonly is one of actions <b>Trash</b>.', DH_SLUG ) ?></p>
 							<?php endif;?>
 							<div id="use_bulkactions_area" class="wp-pattern-example">
-								<p><b><?php _e( 'Specify bulk actions:', DevHelper::SLUG ); ?></b></p>
+								<p><b><?php _e( 'Specify bulk actions:', DH_SLUG ); ?></b></p>
 								<div><!--  class="hide-if-no-js" -->
 									<p>
 										<label for="add_bulkaction_label">
-											<?php _e( 'Label', DevHelper::SLUG ); ?>
+											<?php _e( 'Label', DH_SLUG ); ?>
 											<input id="add_bulkaction_label" name="add_bulkaction_label" class="form-input-tip" aria-describedby="add_bulkaction_desc" type="text" value="" size="25" style="width: 125px;">
 										</label>
 										<label for="add_bulkaction_key">
-											<?php _e( 'Key', DevHelper::SLUG ); ?>
+											<?php _e( 'Key', DH_SLUG ); ?>
 											<input id="add_bulkaction_key" name="add_bulkaction_key" class="form-input-tip" aria-describedby="add_bulkaction_desc" type="text" value="" size="25" style="width: 125px;">
 										</label>
-										<input class="button tagadd" type="button" value="<?php _e( 'Add', DevHelper::SLUG ); ?>">
+										<input class="button tagadd" type="button" value="<?php _e( 'Add', DH_SLUG ); ?>">
 									</p>
 								</div>
-								<p id="add_bulkaction_desc" class="description"<?php echo ( $display_description !== true ) ? ' style="display: none; visibility: hidden;"' : ''; ?>><?php _e( 'Both values label and key are required. Key should not contain any spaces or special letters. The max. length of both strings is twenty-five letters.', DevHelper::SLUG ); ?></p>
+								<p id="add_bulkaction_desc" class="description"<?php echo ( $show_description !== true ) ? ' style="display: none; visibility: hidden;"' : ''; ?>><?php _e( 'Both values label and key are required. Key should not contain any spaces or special letters. The max. length of both strings is twenty-five letters.', DH_SLUG ); ?></p>
 								<div class="tagchecklist">
 									<span>
 										<a id="bulkaction_check-1" class="ntdelbutton"></a>
-										<b><?php _e( 'Trash', DevHelper::SLUG ); ?></b> (<i><?php esc_html_e( 'trash', DevHelper::SLUG ); ?></i>)
+										<b><?php _e( 'Trash', DH_SLUG ); ?></b> (<i><?php esc_html_e( 'trash', DH_SLUG ); ?></i>)
 									</span>
 								</div>
 							</div>
@@ -192,36 +196,36 @@
 				<!-- Data source -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-ds_php_source"><?php _e( 'Data source', DevHelper::SLUG ); ?></label>
+						<label for="plugin-ds_php_source"><?php _e( 'Data source', DH_SLUG ); ?></label>
 					</th>
 					<td>
 						<fieldset id="plugin-ds_fieldset">
 							<legend class="screen-reader-text">
-								<span><?php _e( 'Data source', DevHelper::SLUG ); ?></span>
+								<span><?php _e( 'Data source', DH_SLUG ); ?></span>
 							</legend>
 							<!-- Data source: PHP source -->
 							<label for="plugin-ds_php_source">
 								<input type="radio" name="plugin-datasource" id="plugin-ds_php_source">
-								<?php _e( 'PHP source', DevHelper::SLUG ); ?>
+								<?php _e( 'PHP source', DH_SLUG ); ?>
 							</label>
 							<div id="ds_php_source-area" class="inner_checkbox_area">
-								<p class="description"><?php _e( 'You can either import CSV file or paste your data array into the textarea.', DevHelper::SLUG );?></p>
+								<p class="description"><?php _e( 'You can either import CSV file or paste your data array into the textarea.', DH_SLUG );?></p>
 								<fieldset>
 									<legend class="screen-reader-text">
-										<span><?php _e( 'Specify PHP data source', DevHelper::SLUG ); ?></span>
+										<span><?php _e( 'Specify PHP data source', DH_SLUG ); ?></span>
 									</legend>
 									<label for="ds_php_source-import">
 										<input type="radio" name="ds_php_source-choice" id="ds_php_source-import">
-										<?php _e( 'Import file', DevHelper::SLUG ); ?>
+										<?php _e( 'Import file', DH_SLUG ); ?>
 									</label>
-									<input type="button" id="ds_php_source-import_csv" class="button" value="<?php _e( 'Upload CSV file', DevHelper::SLUG ); ?>" disabled="disabled">
-									<input type="button" id="ds_php_source-import_php" class="button" value="<?php _e( 'Upload PHP file', DevHelper::SLUG ); ?>" disabled="disabled"><br>
+									<input type="button" id="ds_php_source-import_csv" class="button" value="<?php _e( 'Upload CSV file', DH_SLUG ); ?>" disabled="disabled">
+									<input type="button" id="ds_php_source-import_php" class="button" value="<?php _e( 'Upload PHP file', DH_SLUG ); ?>" disabled="disabled"><br>
 									<label for="ds_php_source-array">
 										<input type="radio" name="ds_php_source-choice" id="ds_php_source-array">
-										<?php _e( 'Enter source', DevHelper::SLUG ); ?>
+										<?php _e( 'Enter source', DH_SLUG ); ?>
 									</label>
 									<div class="inner_checkbox_area">
-										<p class="description"><?php _e( 'Enter valid PHP file that returns array with data.', DevHelper::SLUG ); ?></p>
+										<p class="description"><?php _e( 'Enter valid PHP file that returns array with data.', DH_SLUG ); ?></p>
 										<textarea name="ds_php_source-data" id="ds_php_source-textarea" cols="80" rows="10" disabled="disabled">
 &lt;?php
 return array(
@@ -232,7 +236,7 @@ return array(
 );
 										</textarea>
 										<p>
-											<input type="button" id="ds_php_source-array_parse" class="button" value="<?php _e( 'Parse columns', DevHelper::SLUG ); ?>" disabled="disabled">
+											<input type="button" id="ds_php_source-array_parse" class="button" value="<?php _e( 'Parse columns', DH_SLUG ); ?>" disabled="disabled">
 										</p>
 									</div>
 								</fieldset>
@@ -240,46 +244,46 @@ return array(
 							<!-- Data source: WordPress data -->
 							<label for="plugin-ds_wp_data">
 								<input type="radio" name="plugin-datasource" id="plugin-ds_wp_data">
-								<?php _e( 'Query for WordPress data', DevHelper::SLUG ); ?>
+								<?php _e( 'Query for WordPress data', DH_SLUG ); ?>
 							</label>
 							<div id="ds_wp_data-area" class="inner_checkbox_area">
-								<p class="description"><?php _e( 'Select which data you need.', DevHelper::SLUG );?></p>
+								<p class="description"><?php _e( 'Select which data you need.', DH_SLUG );?></p>
 								<fieldset>
 									<legend class="screen-reader-text">
-										<span><?php _e( 'Specify required WordPress data', DevHelper::SLUG ); ?></span>
+										<span><?php _e( 'Specify required WordPress data', DH_SLUG ); ?></span>
 									</legend>
 									<label for="ds_wp_data-radio1">
 										<input type="radio" name="ds_wp_data-radio" value="posts" id="ds_wp_data-radio1">
-										<?php _e( 'Posts', DevHelper::SLUG ); ?>
+										<?php _e( 'Posts', DH_SLUG ); ?>
 									</label><br>
 									<label for="ds_wp_data-radio2">
 										<input type="radio" name="ds_wp_data-radio" value="radio" id="ds_wp_data-radio2">
-										<?php _e( 'Media', DevHelper::SLUG ); ?>
+										<?php _e( 'Media', DH_SLUG ); ?>
 									</label><br>
 									<label for="ds_wp_data-radio3">
 										<input type="radio" name="ds_wp_data-radio" value="comments" id="ds_wp_data-radio3">
-										<?php _e( 'Comments', DevHelper::SLUG ); ?>
+										<?php _e( 'Comments', DH_SLUG ); ?>
 									</label><br>
 									<label for="ds_wp_data-radio4">
 										<input type="radio" name="ds_wp_data-radio" value="users" id="ds_wp_data-radio4">
-										<?php _e( 'Users', DevHelper::SLUG ); ?>
+										<?php _e( 'Users', DH_SLUG ); ?>
 									</label><br>
 									<label for="ds_wp_data-radio5">
 										<input type="radio" name="ds_wp_data-radio" value="custom" id="ds_wp_data-radio5" disabled="disabled">
-										<?php _e( 'Custom', DevHelper::SLUG ); ?>
+										<?php _e( 'Custom', DH_SLUG ); ?>
 									</label>
 								</fieldset>
 							</div>
 							<!-- Data source: Own database table -->
 							<label for="plugin-ds_db_table">
 								<input type="radio" name="plugin-datasource" id="plugin-ds_db_table">
-								<?php _e( 'Own database table', DevHelper::SLUG ); ?>
+								<?php _e( 'Own database table', DH_SLUG ); ?>
 							</label>
 							<div id="ds_db_table-area" class="inner_checkbox_area">
-								<p class="description"><?php _e( 'Place here your SQL query for new database table.', DevHelper::SLUG );?></p>
+								<p class="description"><?php _e( 'Place here your SQL query for new database table.', DH_SLUG );?></p>
 								<fieldset>
 									<legend class="screen-reader-text">
-										<span><?php _e( 'Specify SQL query', DevHelper::SLUG ); ?></span>
+										<span><?php _e( 'Specify SQL query', DH_SLUG ); ?></span>
 									</legend>
 									<textarea name="ds_db_table-sql" id="ds_db_table-textarea" cols="80" rows="10" disabled="disabled"></textarea>
 								</fieldset>
@@ -287,7 +291,7 @@ return array(
 							<!-- Data source: External -->
 							<label for="plugin-ds_ext_uri">
 								<input type="radio" name="plugin-datasource" id="plugin-ds_ext_uri" disabled="disabled">
-								<?php _e( 'External data source', DevHelper::SLUG ); ?>
+								<?php _e( 'External data source', DH_SLUG ); ?>
 							</label>
 						</fieldset>
 					</td>
@@ -295,52 +299,52 @@ return array(
 				<!-- Columns -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-columns"><?php _e( 'Columns', DevHelper::SLUG ) ?></label>
+						<label for="plugin-columns"><?php _e( 'Columns', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<div id="columns_area" class="wp-pattern-example">
-								<p class="description"><?php esc_html_e( 'Enter as many columns you want. Both `key` and `label` fields are required.', DevHelper::SLUG ); ?></p>
+								<p class="description"><?php esc_html_e( 'Enter as many columns you want. Both `key` and `label` fields are required.', DH_SLUG ); ?></p>
 								<table class="table" style="width: 100%;">
 									<thead>
 										<tr>
-											<th style="width: 35%;"><?php esc_html_e( 'Key', DevHelper::SLUG ); ?></th>
-											<th style="width: 35%;"><?php esc_html_e( 'Label', DevHelper::SLUG ); ?></th>
-											<th style="width: 10%;"><?php esc_html_e( 'Sort.', DevHelper::SLUG ); ?></th>
+											<th style="width: 35%;"><?php esc_html_e( 'Key', DH_SLUG ); ?></th>
+											<th style="width: 35%;"><?php esc_html_e( 'Label', DH_SLUG ); ?></th>
+											<th style="width: 10%;"><?php esc_html_e( 'Sort.', DH_SLUG ); ?></th>
 											<th style="width: 20%;"> </th>
 										</tr>
 									</thead>
 									<tbody>
 										<!-- TODO Render existing actions here! -->
 										<tr>
-											<td><input type="text" value="<?php esc_html_e( 'id', DevHelper::SLUG ); ?>" disabled="disabled"></td>
-											<td><input type="text" value="<?php _e( 'ID', DevHelper::SLUG ); ?>" disabled="disabled"></td>
-											<td><input type="checkbox" title="<?php _e( 'Make it sortable?', DevHelper::SLUG ); ?>" checked="checked" disabled="disabled"></td>
-											<td><span title="<?php _e( 'Remove column', DevHelper::SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
+											<td><input type="text" value="<?php esc_html_e( 'id', DH_SLUG ); ?>" disabled="disabled"></td>
+											<td><input type="text" value="<?php _e( 'ID', DH_SLUG ); ?>" disabled="disabled"></td>
+											<td><input type="checkbox" title="<?php _e( 'Make it sortable?', DH_SLUG ); ?>" checked="checked" disabled="disabled"></td>
+											<td><span title="<?php _e( 'Remove column', DH_SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
 										</tr>
 										<tr>
-											<td><input type="text" value="<?php esc_html_e( 'name', DevHelper::SLUG ); ?>" disabled="disabled"></td>
-											<td><input type="text" value="<?php _e( 'Name', DevHelper::SLUG ); ?>" disabled="disabled"></td>
-											<td><input type="checkbox" title="<?php _e( 'Make it sortable?', DevHelper::SLUG ); ?>" checked="checked" disabled="disabled"></td>
-											<td><span title="<?php _e( 'Remove column', DevHelper::SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
+											<td><input type="text" value="<?php esc_html_e( 'name', DH_SLUG ); ?>" disabled="disabled"></td>
+											<td><input type="text" value="<?php _e( 'Name', DH_SLUG ); ?>" disabled="disabled"></td>
+											<td><input type="checkbox" title="<?php _e( 'Make it sortable?', DH_SLUG ); ?>" checked="checked" disabled="disabled"></td>
+											<td><span title="<?php _e( 'Remove column', DH_SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
 										</tr>
 										<tr>
-											<td><input type="text" value="<?php esc_html_e( 'created', DevHelper::SLUG ); ?>" disabled="disabled"></td>
-											<td><input type="text" value="<?php _e( 'Created', DevHelper::SLUG ); ?>" disabled="disabled"></td>
-											<td><input type="checkbox" title="<?php _e( 'Make it sortable?', DevHelper::SLUG ); ?>" checked="checked" disabled="disabled"></td>
-											<td><span title="<?php _e( 'Remove column', DevHelper::SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
+											<td><input type="text" value="<?php esc_html_e( 'created', DH_SLUG ); ?>" disabled="disabled"></td>
+											<td><input type="text" value="<?php _e( 'Created', DH_SLUG ); ?>" disabled="disabled"></td>
+											<td><input type="checkbox" title="<?php _e( 'Make it sortable?', DH_SLUG ); ?>" checked="checked" disabled="disabled"></td>
+											<td><span title="<?php _e( 'Remove column', DH_SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
 										</tr>
 									</tbody>
 									<tfoot>
 										<tr>
 											<td style="width: 35%;">
-												<input type="text" name="plugin-new_columns_key" id="plugin-new_columns_key" class="regular-text" placeholder="<?php _e( 'Enter key', DevHelper::SLUG ) ?>" style="width: 100%;">
+												<input type="text" name="plugin-new_columns_key" id="plugin-new_columns_key" class="regular-text" placeholder="<?php _e( 'Enter key', DH_SLUG ) ?>" style="width: 100%;">
 											</td>
 											<td style="width: 35%;">
-												<input type="text" name="plugin-new_columns_label" id="plugin-new_columns_label" class="regular-text" placeholder="<?php _e( 'Enter label', DevHelper::SLUG ) ?>" style="width: 100%;">
+												<input type="text" name="plugin-new_columns_label" id="plugin-new_columns_label" class="regular-text" placeholder="<?php _e( 'Enter label', DH_SLUG ) ?>" style="width: 100%;">
 											</td>
-											<td style="width: 10%;"><input type="checkbox" title="<?php _e( 'Make it sortable?', DevHelper::SLUG ); ?>" checked="checked"></td>
-											<td style="width: 20%;"><span title="<?php _e( 'Add column', DevHelper::SLUG ); ?>"><span class="wp-ui-text-highlight dashicons dashicons-plus"></span></span> / <span title="<?php _e( 'Clear values', DevHelper::SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
+											<td style="width: 10%;"><input type="checkbox" title="<?php _e( 'Make it sortable?', DH_SLUG ); ?>" checked="checked"></td>
+											<td style="width: 20%;"><span title="<?php _e( 'Add column', DH_SLUG ); ?>"><span class="wp-ui-text-highlight dashicons dashicons-plus"></span></span> / <span title="<?php _e( 'Clear values', DH_SLUG ); ?>"><span class="wp-ui-text-notification dashicons dashicons-trash"></span></span></td>
 										</tr>
 									</tfoot>
 								</table>
@@ -349,7 +353,7 @@ return array(
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $display_description ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description ); ?>
 			</table>
 			<!-- Submit buttons -->
 			<?php echo $wizard->render_submit_buttons(); ?>
@@ -357,7 +361,7 @@ return array(
 
 	<hr>
 
-	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DevHelper::SLUG ); ?></p>
+	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DH_SLUG ); ?></p>
 
 	<!-- TODO Here should be rendered generated PHP source -->
 	<h3><code><?php echo 'my-example-list/includes/class-my_example_list.php.php'; ?></code></h3>

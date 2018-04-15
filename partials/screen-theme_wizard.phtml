@@ -1,24 +1,26 @@
 <?php
 /**
- * Page "Theme Wizard".
+ * WordPress theme wizard.
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
  * @package odwp-devhelper
  * @since 0.0.1
  */
+
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
 ?><div class="wrap">
-
-	<?php screen_icon(); ?>
-
-	<h2>
-		<?php _e( 'Theme Wizard', DevHelper::SLUG ); ?>
-		<small><?php _e( 'Generator for WordPress themes.', DevHelper::SLUG ); ?></small>
-	</h2>
+	<h1 class="wp-heading-inline"><?php _e( 'Wizards - WordPress Theme', DH_SLUG )?></h1>
+    <hr class="wp-header-end">
 
 	<form id="theme-wizard">
 		<table class="form-table">
 			<!-- Advanced options -->
-			<?php echo $wizard->render_advanced_options( $display_description ); ?>
+			<?php echo $wizard->render_advanced_options( $show_description ); ?>
 		</table>
 		<!-- Submit buttons -->
 		<?php echo $wizard->render_submit_buttons(); ?>

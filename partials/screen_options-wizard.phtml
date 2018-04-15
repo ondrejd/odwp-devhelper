@@ -3,23 +3,30 @@
  * Screen options form (for all screens is the same).
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
  * @package odwp-devhelper
  * @since 0.0.1
  */
-?><div id="screen-options-wrap" class="hidden" aria-label="<?php esc_html_e( 'Screen Options Tab', DevHelper::SLUG ); ?>">
+
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
+?><div id="screen-options-wrap" class="hidden" aria-label="<?php esc_html_e( 'Screen Options Tab', DH_SLUG ); ?>">
     <form name="<?php echo $slug; ?>-form" method="post">
-        <?php echo wp_nonce_field( -1, $slug . '-nonce', true, false); ?>
+        <?php echo wp_nonce_field( -1, $slug . '-screen_options_nonce', true, false); ?>
         <input type="hidden" name="screen_name" value="<?php echo $screen->id; ?>">
         <fieldset>
-          <legend><?php esc_html_e( 'Display detail description', DevHelper::SLUG ); ?></legend>
-          <label for="<?php echo $slug; ?>-checkbox1" title="<?php esc_html_e( 'Show detail description by default.', DevHelper::SLUG ); ?>">
-            <input type="checkbox" name="<?php echo $slug; ?>-checkbox1" id="<?php echo $slug; ?>-checkbox1" <?php checked( $display_description ); ?>>
-            <?php esc_html_e( 'Check if you want see detailed description.', DevHelper::SLUG ); ?>
+          <legend><?php esc_html_e( 'Display detail description', DH_SLUG ); ?></legend>
+          <label for="<?php echo $slug; ?>-checkbox1" title="<?php esc_html_e( 'Show detail description by default.', DH_SLUG ); ?>">
+            <input type="checkbox" name="<?php echo $slug; ?>-checkbox1" id="<?php echo $slug; ?>-checkbox1" <?php checked( $show_description ); ?>>
+            <?php esc_html_e( 'Check if you want see detailed description.', DH_SLUG ); ?>
           </label>
         </fieldset>
         <fieldset>
             <legend><?php esc_html_e( 'Select source code template' ); ?></legend>
-            <label for="<?php echo $slug; ?>-select1" title="<?php esc_html_e( 'Select source code template', DevHelper::SLUG ); ?>"><?php esc_html_e( 'Used template:', DevHelper::SLUG ); ?></label>
+            <label for="<?php echo $slug; ?>-select1" title="<?php esc_html_e( 'Select source code template', DH_SLUG ); ?>"><?php esc_html_e( 'Used template:', DH_SLUG ); ?></label>
             <select name="<?php echo $slug; ?>-select1" id="<?php echo $slug; ?>-select1">
               <?php foreach ( $templates as $tpl_key => $tpl_lbl ) : ?>
               <option value="<?php echo $tpl_key; ?>"<?php selected( $used_template, $tpl_key ); ?>><?php echo $tpl_lbl; ?></option>
@@ -27,7 +34,7 @@
             </select>
         </fieldset>
         <p class="submit">
-          <input type="submit" name="<?php echo $slug; ?>-submit" value="<?php esc_html_e( 'Apply', DevHelper::SLUG ); ?>" class="button button-primary">
+          <input type="submit" name="<?php echo $slug; ?>-screen_options_submit" value="<?php esc_html_e( 'Apply', DH_SLUG ); ?>" class="button button-primary">
         </p>
     </form>
 </div>

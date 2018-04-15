@@ -1,47 +1,27 @@
 # odwp-devhelper
 
-Plugin that helps with development for [WordPress](https://wordpress.org/).
+_Českou verzi najdete zde [README.cs.md][1]._
+
+[WordPress][2] plugin for developers that can generate pieces of code or whole plugins.
 
 __Note__: This plugin uses excelent [PrismJs](http://prismjs.com) library for syntax highlighting. Thanks!
 
-## Description
+## Donations
 
-Plugin offers set of wizards for creating new plugins, themes or significant parts of code (such as admin tables or metaboxes). These wizards produces source codes that are downloadable within `ZIP` archives. Values entered into wizards and generated codes are stored for later so can be easily reused or updated.
+If your like this plugin and you want to be maintained and improved more frequently consider donation using service
 
-Plugin is not just for administrators but can be used by any registered user of your [WordPress](https://wordpress.org/) site.
+[![Make donation](https://www.paypalobjects.com/webstatic/paypalme/images/pp_logo_small.png "PayPal.Me, your link to getting paid")][3]
 
-## TODO
+## Main Features
 
-- [x] screen options cannot be saved on page __New table__.
-- [x] available templates in screen option __Used template__ should be extendable via [`apply_filters`](https://developer.wordpress.org/reference/functions/apply_filters/) so each wizard could easily set up own templates.
-- [ ] finish __New table__ wizard.
-- [ ] finish __New plugin__ wizard.
-- [ ] finish __New theme__ wizard.
-- [ ] finish __Custom post type__ wizard.
-- [ ] update version to __0.1.0__.
-- [ ] make this plugin extendable by using [`apply_filters`](https://developer.wordpress.org/reference/functions/apply_filters/) and [`do_action`](https://developer.wordpress.org/reference/functions/do_action/).
-- [ ] forms have to be _AJAXish_ if possible (i.e. if browser supports JavaScript) - generated code snippets should be updated on fly (after any input is changed).
-- [ ] add Czech translation
-- [ ] add these plugin's options:
-  - [ ] chooser for [PrismJs](http://prismjs.com) color scheme
-  - [ ] checkbox if user wants to generate full-plugin code or just classes or functions. This will be applied for __Table List__ or __Custom Post Type__ wizards. _Think about placing this option into particular screen options._
-  - [ ] add mention about [Code Snippets](https://wordpress.org/plugins/code-snippets/) plugin which can help with extending __DevHelper__ without need of new plugin.
-- [ ] Finish `README.txt` file.
+* ...
+* ...
 
-## Changelog
+## Screenshots
 
-_Note_: Versions are sorted from the newest to the oldest.
+...
 
-### Version 0.1.0
-
-- Code moved on __GitHub__ to the repository [ondrejd/odwp-devhelper](https://github.com/ondrejd/odwp-devhelper).
-- Code clean-up.
-- Improved [`DevHelper_Screen_Prototype`](https://github.com/ondrejd/odwp-devhelper/blob/master/includes/class-devhelper_screen_prototype.php) class (newly implemented screen options, all is now extendable using [filters](https://codex.wordpress.org/Plugin_API#Filters)).
-- Initial version of new plugin wizard.
-- Initial version of new table wizard.
-- Initial version of new theme wizard.
-- Initial version of custom post type wizard.
-
-### Version 0.0.1
-
-- Initial version (some code ported from [ondrejd/wp-style-guide](https://github.com/ondrejd/wp-style-guide)).
+[1]: README.cs.md
+[2]: https://wordpress.org/
+[3]: https://www.paypal.me/ondrejd
+[4]: http://prismjs.com

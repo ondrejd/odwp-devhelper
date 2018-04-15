@@ -1,31 +1,37 @@
 <?php
 /**
- * Page "Plugin wizard".
+ * WordPress plugin wizard.
  *
  * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
  * @package odwp-devhelper
  * @since 0.0.1
  */
+
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
+
 ?><div class="wrap">
+	<h1 class="wp-heading-inline"><?php _e( 'Plugin Wizard', DH_SLUG ); ?></h1>
+    <hr class="wp-header-end">
 
-	<?php screen_icon(); ?>
-
-	<h2>
-		<?php _e( 'Plugin Wizard', DevHelper::SLUG ); ?>
-		<small><?php _e( 'Generator for WordPress plugins.', DevHelper::SLUG ); ?></small>
-	</h2>
+	<p class="description">
+		<?php _e( 'Generator for WordPress plugins.', DH_SLUG ); ?>
+	</p>
 
 	<form id="plugin-wizard">
 		<table class="form-table">
 				<!-- Name -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-name"><?php _e( 'Name', DevHelper::SLUG ) ?></label>
+						<label for="plugin-name"><?php _e( 'Name', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="plugin-name" id="plugin-name" class="regular-text" placeholder="<?php _e( 'Enter name of your plugin', DevHelper::SLUG ) ?>">
+								<input type="text" name="plugin-name" id="plugin-name" class="regular-text" placeholder="<?php _e( 'Enter name of your plugin', DH_SLUG ) ?>">
 							</p>
 						</fieldset>
 					</td>
@@ -33,94 +39,94 @@
 				<!-- Identifier -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-identifier"><?php _e( 'Identifier', DevHelper::SLUG ) ?></label>
+						<label for="plugin-identifier"><?php _e( 'Identifier', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="plugin-identifier" id="plugin-identifier" class="regular-text" placeholder="<?php _e( 'Enter identifier of your plugin', DevHelper::SLUG ) ?>">
+								<input type="text" name="plugin-identifier" id="plugin-identifier" class="regular-text" placeholder="<?php _e( 'Enter identifier of your plugin', DH_SLUG ) ?>">
 							</p>
-							<p class="description"><?php _e( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Description -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-description"><?php _e( 'Description', DevHelper::SLUG ) ?></label>
+						<label for="plugin-description"><?php _e( 'Description', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<label for="plugin-description"><?php _e( 'Short description:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-description" id="plugin-description" class="long-text" placeholder="<?php _e( 'Enter short description of your plugin', DevHelper::SLUG ) ?>" cols="72" rows="5"></textarea>
+								<label for="plugin-description"><?php _e( 'Short description:', DH_SLUG ) ?></label><br>
+								<textarea name="plugin-description" id="plugin-description" class="long-text" placeholder="<?php _e( 'Enter short description of your plugin', DH_SLUG ) ?>" cols="72" rows="5"></textarea>
 							</p>
 							<p>
-								<label for="plugin-description_full"><?php _e( 'Full description:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-description_full" id="plugin-description_full" class="long-text" placeholder="<?php _e( 'Enter full description of your plugin', DevHelper::SLUG ) ?>" cols="72" rows="10"></textarea>
+								<label for="plugin-description_full"><?php _e( 'Full description:', DH_SLUG ) ?></label><br>
+								<textarea name="plugin-description_full" id="plugin-description_full" class="long-text" placeholder="<?php _e( 'Enter full description of your plugin', DH_SLUG ) ?>" cols="72" rows="10"></textarea>
 							</p>
-							<p class="description"><?php _e( 'Both descriptions are used in <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Both descriptions are used in <code>readme.txt</code> file.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Tags -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-tags"><?php _e( 'Tags', DevHelper::SLUG ) ?></label>
+						<label for="plugin-tags"><?php _e( 'Tags', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<p><?php _e( 'Enter list of tags separated by comma.', DevHelper::SLUG ) ?></p>
+							<p><?php _e( 'Enter list of tags separated by comma.', DH_SLUG ) ?></p>
 							<p>
-								<input type="text" name="plugin-tags" id="plugin-tags" class="regular-text" placeholder="<?php _e( 'Enter comma separated list of tags', DevHelper::SLUG ) ?>" style="width: 695px;">
+								<input type="text" name="plugin-tags" id="plugin-tags" class="regular-text" placeholder="<?php _e( 'Enter comma separated list of tags', DH_SLUG ) ?>" style="width: 695px;">
 							</p>
-							<p class="description"><?php _e( 'For example: <code>red,black,blue</code>.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'For example: <code>red,black,blue</code>.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Version -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-version"><?php _e( 'Version', DevHelper::SLUG ) ?></label>
+						<label for="plugin-version"><?php _e( 'Version', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<p><?php _e( 'Enter current version of the plugin, minimal required <b>WordPress</b> version, maximal version of <b>WordPress</b> on which was plugin tested and plugin\'s version which is considered to be stable.', DevHelper::SLUG ) ?></p>
+							<p><?php _e( 'Enter current version of the plugin, minimal required <b>WordPress</b> version, maximal version of <b>WordPress</b> on which was plugin tested and plugin\'s version which is considered to be stable.', DH_SLUG ) ?></p>
 							<p>
-								<label for="plugin-version" style="width: 130px;"><?php _e( 'Current version:', DevHelper::SLUG ) ?></label>
+								<label for="plugin-version" style="width: 130px;"><?php _e( 'Current version:', DH_SLUG ) ?></label>
 								<input type="text" name="plugin-version" id="plugin-version" style="width: 120px;">
 							</p>
 							<p>
-								<label for="plugin-required_at_least" style="width: 130px;"><?php _e( 'Required at least:', DevHelper::SLUG ) ?></label>
+								<label for="plugin-required_at_least" style="width: 130px;"><?php _e( 'Required at least:', DH_SLUG ) ?></label>
 								<input type="text" name="plugin-required_at_least" id="plugin-required_at_least" style="width: 120px;">
 							</p>
 							<p>
-								<label for="plugin-tested_up_to" style="width: 130px;"><?php _e( 'Tested up to:', DevHelper::SLUG ) ?></label>
+								<label for="plugin-tested_up_to" style="width: 130px;"><?php _e( 'Tested up to:', DH_SLUG ) ?></label>
 								<input type="text" name="plugin-tested_up_to" id="plugin-tested_up_to" style="width: 120px;">
 							</p>
 							<p>
-								<label for="plugin-stable_tag" style="width: 130px;"><?php _e( 'Stable tag:', DevHelper::SLUG ) ?></label>
+								<label for="plugin-stable_tag" style="width: 130px;"><?php _e( 'Stable tag:', DH_SLUG ) ?></label>
 								<input type="text" name="plugin-stable_tag" id="plugin-stable_tag" style="width: 120px;">
 							</p>
-							<p class="description"><?php _e( 'Some valid versions as an example: <b>3.4.0</b>, <b>4.4</b>, <b>1.2.1</b> etc.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Some valid versions as an example: <b>3.4.0</b>, <b>4.4</b>, <b>1.2.1</b> etc.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Author -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-author"><?php _e( 'Author', DevHelper::SLUG ) ?></label>
+						<label for="plugin-author"><?php _e( 'Author', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<p><?php _e( 'Enter author\'s name and valid homepage\'s URL.', DevHelper::SLUG ) ?></p>
+							<p><?php _e( 'Enter author\'s name and valid homepage\'s URL.', DH_SLUG ) ?></p>
 							<p>
-								<label for="plugin-author" style="width: 130px;"><?php _e( 'Author:', DevHelper::SLUG ) ?></label>
-								<input type="text" name="plugin-author" id="plugin-author" class="regular-text" placeholder="<?php _e( 'Enter author\'s name', DevHelper::SLUG ) ?>">
+								<label for="plugin-author" style="width: 130px;"><?php _e( 'Author:', DH_SLUG ) ?></label>
+								<input type="text" name="plugin-author" id="plugin-author" class="regular-text" placeholder="<?php _e( 'Enter author\'s name', DH_SLUG ) ?>">
 							</p>
 							<p>
-								<label for="plugin-author_uri" style="width: 130px;"><?php _e( 'URI:', DevHelper::SLUG ) ?></label>
-								<input type="text" name="plugin-author_uri" id="plugin-author_uri" class="regular-text" placeholder="<?php _e( 'Enter URI of author\'s homepage', DevHelper::SLUG ) ?>">
+								<label for="plugin-author_uri" style="width: 130px;"><?php _e( 'URI:', DH_SLUG ) ?></label>
+								<input type="text" name="plugin-author_uri" id="plugin-author_uri" class="regular-text" placeholder="<?php _e( 'Enter URI of author\'s homepage', DH_SLUG ) ?>">
 							</p>
 						</fieldset>
 					</td>
@@ -128,42 +134,42 @@
 				<!-- Contributors -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-contributors"><?php _e( 'Contributors', DevHelper::SLUG ) ?></label>
+						<label for="plugin-contributors"><?php _e( 'Contributors', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<p><?= sprintf( __( 'Comma separated list of contributors.', DevHelper::SLUG ), '<a href="https://wordpress.org/" target="blank">', '</a>' ) ?></p>
+							<p><?= sprintf( __( 'Comma separated list of contributors.', DH_SLUG ), '<a href="https://wordpress.org/" target="blank">', '</a>' ) ?></p>
 							<p>
-								<input type="text" name="plugin-contributors" id="plugin-contributors" class="regular-text" placeholder="<?php _e( 'Enter comma separated list of contributors', DevHelper::SLUG ) ?>" style="width: 695px;">
+								<input type="text" name="plugin-contributors" id="plugin-contributors" class="regular-text" placeholder="<?php _e( 'Enter comma separated list of contributors', DH_SLUG ) ?>" style="width: 695px;">
 							</p>
-							<p class="description"><?php _e( 'For example: <code>joed,jimb,janed</code>.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'For example: <code>joed,jimb,janed</code>.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- License -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-author"><?php _e( 'License', DevHelper::SLUG ) ?></label>
+						<label for="plugin-author"><?php _e( 'License', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<legend>
-								<span><?php _e( 'Either select or enter name of license and its URL. You can also select no license but it is not recommended.', DevHelper::SLUG ) ?></span>
+								<span><?php _e( 'Either select or enter name of license and its URL. You can also select no license but it is not recommended.', DH_SLUG ) ?></span>
 							</legend>
 							<div>
-								<label title="<?php _e( 'No license', DevHelper::SLUG ) ?>" class="license">
+								<label title="<?php _e( 'No license', DH_SLUG ) ?>" class="license">
 									<input type="radio" name="plugin-license" value="none" checked="checked">
-									<?php _e( 'No license', DevHelper::SLUG ) ?>
+									<?php _e( 'No license', DH_SLUG ) ?>
 								</label>
 							</div>
 							<div>
-								<label title="<?php _e( 'Selected license', DevHelper::SLUG ) ?>" class="license">
+								<label title="<?php _e( 'Selected license', DH_SLUG ) ?>" class="license">
 								<input type="radio" name="plugin-license" value="custom">
-								<?php _e( 'Selected:', DevHelper::SLUG ) ?>
+								<?php _e( 'Selected:', DH_SLUG ) ?>
 								<div class="odwpdh-inner_choices license_custom">
 									<div class="inputs-subarea">
-										<span class="screen-reader-text"><?php _e( 'select license', DevHelper::SLUG ) ?></span>
-										<label class="screen-reader-text" for="plugin-license_select"><?php _e( 'Licenses', DevHelper::SLUG ) ?></label>
+										<span class="screen-reader-text"><?php _e( 'select license', DH_SLUG ) ?></span>
+										<label class="screen-reader-text" for="plugin-license_select"><?php _e( 'Licenses', DH_SLUG ) ?></label>
 										<select name="plugin-license_select" id="plugin-license_select" disabled="disabled">
 											<option value="Apache License 2.0" data-license_url="http://www.apache.org/licenses/LICENSE-2.0">Apache License 2.0</option>
 											<option value="GPL 2.0" data-license_url="http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">GPL v2</option>
@@ -175,20 +181,20 @@
 								</div>
 							</div>
 							<div>
-								<label title="<?php _e( 'Custom license', DevHelper::SLUG ) ?>" class="license">
+								<label title="<?php _e( 'Custom license', DH_SLUG ) ?>" class="license">
 								<input type="radio" name="plugin-license" value="other">
-								<?php _e( 'Custom license:', DevHelper::SLUG ) ?>
+								<?php _e( 'Custom license:', DH_SLUG ) ?>
 								<div class="odwpdh-inner_choices license_other">
 									<div class="inputs-subarea">
 										<p>
-											<label for="plugin-license_other_name" style="width: 130px;"><?php _e( 'Name:', DevHelper::SLUG ) ?></label>
-											<input type="text" name="plugin-license_other_name" id="plugin-license_other_name" class="regular-text" placeholder="<?php _e( 'Enter license\'s name', DevHelper::SLUG ) ?>" disabled="disabled">
+											<label for="plugin-license_other_name" style="width: 130px;"><?php _e( 'Name:', DH_SLUG ) ?></label>
+											<input type="text" name="plugin-license_other_name" id="plugin-license_other_name" class="regular-text" placeholder="<?php _e( 'Enter license\'s name', DH_SLUG ) ?>" disabled="disabled">
 										</p>
 										<p>
-											<label for="plugin-license_other_uri" style="width: 130px;"><?php _e( 'URI:', DevHelper::SLUG ) ?></label>
-											<input type="text" name="plugin-license_other_uri" id="plugin-license_other_uri" class="regular-text" placeholder="<?php _e( 'Enter URI of license', DevHelper::SLUG ) ?>" disabled="disabled">
+											<label for="plugin-license_other_uri" style="width: 130px;"><?php _e( 'URI:', DH_SLUG ) ?></label>
+											<input type="text" name="plugin-license_other_uri" id="plugin-license_other_uri" class="regular-text" placeholder="<?php _e( 'Enter URI of license', DH_SLUG ) ?>" disabled="disabled">
 										</p>
-										<p class="description"><?php _e( 'For example: <code>Mozilla Public License 2.0</code> and <code>https://www.mozilla.org/MPL/2.0/</code>.', DevHelper::SLUG ) ?></p>
+										<p class="description"><?php _e( 'For example: <code>Mozilla Public License 2.0</code> and <code>https://www.mozilla.org/MPL/2.0/</code>.', DH_SLUG ) ?></p>
 									</div>
 								</div>
 							</div>
@@ -198,13 +204,13 @@
 				<!-- Donate Link -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-donate_link"><?php _e( 'Donate Link', DevHelper::SLUG ) ?></label>
+						<label for="plugin-donate_link"><?php _e( 'Donate Link', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<p><?php _e( 'Valid URL of link with donation page. Leave blank if you don\'t have one.', DevHelper::SLUG ) ?></p>
+							<p><?php _e( 'Valid URL of link with donation page. Leave blank if you don\'t have one.', DH_SLUG ) ?></p>
 							<p>
-								<input type="text" name="plugin-donate_link" id="plugin-donate_link" class="regular-text" placeholder="<?php _e( 'Enter donate link', DevHelper::SLUG ) ?>" style="width: 695px;">
+								<input type="text" name="plugin-donate_link" id="plugin-donate_link" class="regular-text" placeholder="<?php _e( 'Enter donate link', DH_SLUG ) ?>" style="width: 695px;">
 							</p>
 						</fieldset>
 					</td>
@@ -212,30 +218,30 @@
 				<!-- Installation -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-installation"><?php _e( 'Installation', DevHelper::SLUG ) ?></label>
+						<label for="plugin-installation"><?php _e( 'Installation', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<label for="plugin-installation"><?php _e( 'Installation instructions:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-installation" id="plugin-installation" class="long-text" placeholder="<?php _e( 'Enter plugin installation instructions', DevHelper::SLUG ) ?>" cols="72" rows="10"><?= DevHelper::get_option( 'default_install_text' ) ?></textarea>
+								<label for="plugin-installation"><?php _e( 'Installation instructions:', DH_SLUG ) ?></label><br>
+								<textarea name="plugin-installation" id="plugin-installation" class="long-text" placeholder="<?php _e( 'Enter plugin installation instructions', DH_SLUG ) ?>" cols="72" rows="10"><?= DevHelper_Plugin::get_option( 'default_install_text' ) ?></textarea>
 							</p>
-							<p class="description"><?php _e( 'Installation instructions are part of <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Installation instructions are part of <code>readme.txt</code> file.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- FAQ -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-faq"><?php _e( 'FAQ', DevHelper::SLUG ) ?></label>
+						<label for="plugin-faq"><?php _e( 'FAQ', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<label for="plugin-faq"><?php _e( 'Frequently asked questions:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="plugin-faq" id="plugin-faq" class="long-text" placeholder="<?php _e( 'Enter frequently asked questions', DevHelper::SLUG ) ?>" cols="72" rows="10"><?= DevHelper::get_option( 'default_faq_text' ) ?></textarea>
+								<label for="plugin-faq"><?php _e( 'Frequently asked questions:', DH_SLUG ) ?></label><br>
+								<textarea name="plugin-faq" id="plugin-faq" class="long-text" placeholder="<?php _e( 'Enter frequently asked questions', DH_SLUG ) ?>" cols="72" rows="10"><?= DevHelper_Plugin::get_option( 'default_faq_text' ) ?></textarea>
 							</p>
-							<p class="description"><?php _e( 'Frequently asked questions are part of <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Frequently asked questions are part of <code>readme.txt</code> file.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
@@ -243,74 +249,74 @@
 				<!-- Change Log -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-changelog"><?php _e( 'Change Log', DevHelper::SLUG ) ?></label>
+						<label for="plugin-changelog"><?php _e( 'Change Log', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?php _e( 'Enter change log of your plugin' ) ?>" cols="72" rows="10"><?= DevHelper::get_option( 'default_changelog_text' ) ?></textarea>
+								<textarea name="plugin-changelog" id="plugin-changelog" class="long-text" placeholder="<?php _e( 'Enter change log of your plugin' ) ?>" cols="72" rows="10"><?= DevHelper_Plugin::get_option( 'default_changelog_text' ) ?></textarea>
 							</p>
-							<p class="description"><?php _e( 'Change log is a part of <code>readme.txt</code> file.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Change log is a part of <code>readme.txt</code> file.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Upgrade notice -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-upgrade"><?php _e( 'Upgrade notice', DevHelper::SLUG ) ?></label>
+						<label for="plugin-upgrade"><?php _e( 'Upgrade notice', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<textarea name="plugin-upgrade" id="plugin-upgrade" class="long-text" placeholder="<?php _e( 'Enter upgrade notice', DevHelper::SLUG ) ?>" cols="72" rows="10"></textarea>
+								<textarea name="plugin-upgrade" id="plugin-upgrade" class="long-text" placeholder="<?php _e( 'Enter upgrade notice', DH_SLUG ) ?>" cols="72" rows="10"></textarea>
 							</p>
-							<p class="description"><?php _e( 'Upgrade notice is a part of <code>readme.txt</code> file. When starting new plugin this field will be probably empty.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Upgrade notice is a part of <code>readme.txt</code> file. When starting new plugin this field will be probably empty.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Options -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-has_dependency"><?php _e( 'Options', DevHelper::SLUG ) ?></label>
+						<label for="plugin-has_dependency"><?php _e( 'Options', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><?php _e( 'Other plugin options', DevHelper::SLUG ) ?></legend>
+							<legend class="screen-reader-text"><?php _e( 'Other plugin options', DH_SLUG ) ?></legend>
 							<p>
 								<label for="plugin-include_license_file">
-									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file" <?= checked( ( bool ) DevHelper::get_option( 'default_include_license_file' ) ) ?>>
-									<span><?php _e( 'Include license in a standalone file', DevHelper::SLUG ) ?></span>
+									<input type="checkbox" id="plugin-include_license_file" name="plugin-include_license_file" <?= checked( ( bool ) DevHelper_Plugin::get_option( 'default_include_license_file' ) ) ?>>
+									<span><?php _e( 'Include license in a standalone file', DH_SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_dependency">
-									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency" <?= checked( ( bool ) DevHelper::get_option( 'default_has_dependency' ) ) ?>>
-									<span><?php _e( 'Plugin has dependency to other plugin(s)', DevHelper::SLUG ) ?></span>
+									<input type="checkbox" id="plugin-has_dependency" name="plugin-has_dependency" <?= checked( ( bool ) DevHelper_Plugin::get_option( 'default_has_dependency' ) ) ?>>
+									<span><?php _e( 'Plugin has dependency to other plugin(s)', DH_SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_administration">
-									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration" <?= checked( ( bool ) DevHelper::get_option( 'default_has_administration' ) ) ?>>
-									<span><?php _e( 'Plugin contains administration', DevHelper::SLUG ) ?></span>
+									<input type="checkbox" id="plugin-has_administration" name="plugin-has_administration" <?= checked( ( bool ) DevHelper_Plugin::get_option( 'default_has_administration' ) ) ?>>
+									<span><?php _e( 'Plugin contains administration', DH_SLUG ) ?></span>
 								</label>
 							</p>
 							<!-- TODO This checkbox need `plugin-has_administration` checked! -->
 							<p>
 								<label for="plugin-has_options">
-									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked( ( bool ) DevHelper::get_option( 'default_has_options' ) ) ?>>
-									<span><?php _e( 'Plugin has options (will be included new options page into WordPress administration)', DevHelper::SLUG ) ?></span>
+									<input type="checkbox" id="plugin-has_options" name="plugin-has_options" <?= checked( ( bool ) DevHelper_Plugin::get_option( 'default_has_options' ) ) ?>>
+									<span><?php _e( 'Plugin has options (will be included new options page into WordPress administration)', DH_SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_own_dbtables">
-									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked( ( bool ) DevHelper::get_option( 'default_has_own_dbtables' ) ) ?>>
-									<span><?php _e( 'Plugin has own database tables', DevHelper::SLUG ) ?></span>
+									<input type="checkbox" id="plugin-has_own_dbtables" name="plugin-has_own_dbtables" <?= checked( ( bool ) DevHelper_Plugin::get_option( 'default_has_own_dbtables' ) ) ?>>
+									<span><?php _e( 'Plugin has own database tables', DH_SLUG ) ?></span>
 								</label>
 							</p>
 							<p>
 								<label for="plugin-has_localization">
-									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization" <?= checked( ( bool ) DevHelper::get_option( 'default_has_localization' ) ) ?>>
-									<span><?php _e( 'Plugin will be localized (create <code>languages</code> folder with <code>POT</code> file)', DevHelper::SLUG ) ?></span>
+									<input type="checkbox" id="plugin-has_localization" name="plugin-has_localization" <?= checked( ( bool ) DevHelper_Plugin::get_option( 'default_has_localization' ) ) ?>>
+									<span><?php _e( 'Plugin will be localized (create <code>languages</code> folder with <code>POT</code> file)', DH_SLUG ) ?></span>
 								</label>
 							</p>
 						</fieldset>
@@ -319,73 +325,73 @@
 				<!-- Template -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-template"><?php _e( 'Template', DevHelper::SLUG ) ?></label>
+						<label for="plugin-template"><?php _e( 'Template', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
-							<legend><?php _e( 'Select template for generating plugin source codes.', DevHelper::SLUG ) ?></legend>
+							<legend><?php _e( 'Select template for generating plugin source codes.', DH_SLUG ) ?></legend>
 							<div>
-								<label title="<?php _e( 'Default template', DevHelper::SLUG ) ?>" class="default">
+								<label title="<?php _e( 'Default template', DH_SLUG ) ?>" class="default">
 									<input type="radio" name="plugin-template" value="default" checked="checked">
-									<?php _e( 'Default template', DevHelper::SLUG ) ?>
+									<?php _e( 'Default template', DH_SLUG ) ?>
 								</label>
 							</div>
 							<div>
-								<label title="<?php _e( 'WordPress Plugin Boilerplate by Devin Devinson', DevHelper::SLUG ) ?>">
+								<label title="<?php _e( 'WordPress Plugin Boilerplate by Devin Devinson', DH_SLUG ) ?>">
 									<input type="radio" name="plugin-template" value="wpb_by_dd">
-									<?php printf( __( '<a href="%s" target="blank">WordPress Plugin Boilerplate</a> by <a href="%s" target="blank">Devin Devinson</a>', DevHelper::SLUG ), '', '' ) ?>
+									<?php printf( __( '<a href="%s" target="blank">WordPress Plugin Boilerplate</a> by <a href="%s" target="blank">Devin Devinson</a>', DH_SLUG ), '', '' ) ?>
 								</label>
 							</div>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $display_description ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description ); ?>
                 <tr>
                     <th scope="row">
-                        <label for="plugin-template"><?php _e( 'Requirements', DevHelper::SLUG ) ?></label>
+                        <label for="plugin-template"><?php _e( 'Requirements', DH_SLUG ) ?></label>
                     </th>
                     <td>
                         <fieldset>
-                            <legend><?php printf( __( 'Select special requirements of your plugin - either on <a href="#" target="blank">PHP</a> or on <a href="#" target="blank">WordPress</a> self. <strong>This can be used only with default template.</strong>', DevHelper::SLUG ), 'https://php.net/', 'https://wordpress.org/' ) ?></legend>
+                            <legend><?php printf( __( 'Select special requirements of your plugin - either on <a href="#" target="blank">PHP</a> or on <a href="#" target="blank">WordPress</a> self. <strong>This can be used only with default template.</strong>', DH_SLUG ), 'https://php.net/', 'https://wordpress.org/' ) ?></legend>
                             <div>
-                                <label title="<?php _e( 'Plugin has special PHP requirements', DevHelper::SLUG ) ?>" class="default">
+                                <label title="<?php _e( 'Plugin has special PHP requirements', DH_SLUG ) ?>" class="default">
                                     <input type="checkbox" name="plugin-requirements" value="php">
-                                    <?php _e( 'Plugin has special PHP requirements: ', DevHelper::SLUG ) ?>
+                                    <?php _e( 'Plugin has special PHP requirements: ', DH_SLUG ) ?>
                                     <ul class="odwpdh-inner_choices">
                                         <li>
                                             <label>
                                                 <input type="checkbox" name="plugin-requirements-php[version]">
-                                                <?php _e( 'PHP version: ', DevHelper::SLUG ) ?>
-                                                <?php _e( 'select major version ', DevHelper::SLUG ) ?>
+                                                <?php _e( 'PHP version: ', DH_SLUG ) ?>
+                                                <?php _e( 'select major version ', DH_SLUG ) ?>
                                                 <select name="pugin-requirements-php[version][major]" value="">
-                                                    <option value="70"><?php _e( '7.0', DevHelper::SLUG ) ?>
-                                                    <option value="56"><?php _e( '5.6', DevHelper::SLUG ) ?>
-                                                    <option value="53"><?php _e( '5.3', DevHelper::SLUG ) ?>
-                                                    <option value="52"><?php _e( '5.2', DevHelper::SLUG ) ?>
-                                                    <option value="50"><?php _e( '5.0', DevHelper::SLUG ) ?>
+                                                    <option value="70"><?php _e( '7.0', DH_SLUG ) ?>
+                                                    <option value="56"><?php _e( '5.6', DH_SLUG ) ?>
+                                                    <option value="53"><?php _e( '5.3', DH_SLUG ) ?>
+                                                    <option value="52"><?php _e( '5.2', DH_SLUG ) ?>
+                                                    <option value="50"><?php _e( '5.0', DH_SLUG ) ?>
                                                 </select>
-                                                <?php _e( 'or enter other version ', DevHelper::SLUG ) ?>
-                                                <input type="number" name="pugin-requirements-php[version][other][major]" value="" max="7" min="4" placeholder="<?php _e( '7', DevHelper::SLUG ) ?>" class="odwpdh-short_num">
+                                                <?php _e( 'or enter other version ', DH_SLUG ) ?>
+                                                <input type="number" name="pugin-requirements-php[version][other][major]" value="" max="7" min="4" placeholder="<?php _e( '7', DH_SLUG ) ?>" class="odwpdh-short_num">
                                                 .
-                                                <input type="number" name="pugin-requirements-php[version][other][minor]" value="" max="9" min="0" placeholder="<?php _e( '0', DevHelper::SLUG ) ?>" class="odwpdh-short_num">
+                                                <input type="number" name="pugin-requirements-php[version][other][minor]" value="" max="9" min="0" placeholder="<?php _e( '0', DH_SLUG ) ?>" class="odwpdh-short_num">
                                             </label>
                                         </li>
                                         <li>
                                             <label>
                                                 <input type="checkbox" name="plugin-requirements-php[extensions]">
-                                                <?php _e( 'PHP extensions', DevHelper::SLUG ) ?>
-                                                <input type="text" name="pugin-requirements-php[extensions][]" value="" placeholder="<?php _e( 'sqlite,zlib', DevHelper::SLUG ) ?>" class="regular-text">
-                                                <span class="description"><?php _e( ' Enter comma-separated list of extensions required by your plugin.', DevHelper::SLUG ) ?></span>
+                                                <?php _e( 'PHP extensions', DH_SLUG ) ?>
+                                                <input type="text" name="pugin-requirements-php[extensions][]" value="" placeholder="<?php _e( 'sqlite,zlib', DH_SLUG ) ?>" class="regular-text">
+                                                <span class="description"><?php _e( ' Enter comma-separated list of extensions required by your plugin.', DH_SLUG ) ?></span>
                                             </label>
                                         </li>
                                     </ul>
                                 </label>
                             </div>
                             <div>
-                                <label title="<?php _e( 'Plugin has special WP requirements', DevHelper::SLUG ) ?>" class="default">
+                                <label title="<?php _e( 'Plugin has special WP requirements', DH_SLUG ) ?>" class="default">
                                     <input type="checkbox" name="plugin-requirements" value="wp">
-                                    <?php _e( 'Plugin has special <abbr title="WordPress">WP</abbr> requirements: ', DevHelper::SLUG ) ?>
+                                    <?php _e( 'Plugin has special <abbr title="WordPress">WP</abbr> requirements: ', DH_SLUG ) ?>
                                 </label>
                             </div>
                         </fieldset>

@@ -1,50 +1,63 @@
-<div class="wrap">
+<?php
+/**
+ * Admin dashboard widget wizard.
+ *
+ * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
+ * @package odwp-devhelper
+ * @since 0.0.1
+ */
 
-	<?php screen_icon(); ?>
+if( ! defined( 'ABSPATH' ) ) {
+  exit;
+}
 
-	<h1><?= __( 'Wizards - DashBoard Widget', DevHelper::SLUG )?></h1>
-
+?><div class="wrap">
+	<h1 class="wp-heading-inline"><?php _e( 'Wizards - Dashboard Widget', DH_SLUG )?></h1>
+    <hr class="wp-header-end">
+    
 	<form id="wizard-dashboard_widget">
 		<table class="form-table">
             <tbody>
 				<!-- Class name -->
 				<tr>
 					<th scope="row">
-						<label for="odwpdh-classname"><?= __( 'Class name', DevHelper::SLUG ) ?></label>
+						<label for="odwpdh-classname"><?php _e( 'Class name', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="classname" id="odwpdh-classname" class="regular-text" placeholder="<?= __( 'My_Widget', DevHelper::SLUG ) ?>">
+								<input type="text" name="classname" id="odwpdh-classname" class="regular-text" placeholder="<?php _e( 'My_Widget', DH_SLUG ) ?>">
 							</p>
-							<p class="description"><?= __( 'Name of class which will contain implementation of the dashboard widget.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( 'Name of class which will contain implementation of the dashboard widget.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Identifier (slug) -->
 				<tr>
 					<th scope="row">
-						<label for="odwpdh-slug"><?= __( 'Identifier', DevHelper::SLUG ) ?></label>
+						<label for="odwpdh-slug"><?php _e( 'Identifier', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="slug" id="odwpdh-slug" class="regular-text" placeholder="<?= __( 'Enter identifier of your plugin', DevHelper::SLUG ) ?>">
+								<input type="text" name="slug" id="odwpdh-slug" class="regular-text" placeholder="<?php _e( 'Enter identifier of your plugin', DH_SLUG ) ?>">
 							</p>
-							<p class="description"><?= __( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DevHelper::SLUG ) ?></p>
+							<p class="description"><?php _e( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Name -->
 				<tr>
 					<th scope="row">
-						<label for="odwpdh-name"><?= __( 'Name', DevHelper::SLUG ) ?></label>
+						<label for="odwpdh-name"><?php _e( 'Name', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<label for="plugin-name"><?= __( 'Name:', DevHelper::SLUG ) ?></label><br>
-								<textarea name="name" id="odwpdh-name" class="long-text" placeholder="<?= __( 'Enter short description of your plugin', DevHelper::SLUG ) ?>" cols="72" rows="5"></textarea>
+								<label for="plugin-name"><?php _e( 'Name:', DH_SLUG ) ?></label><br>
+								<textarea name="name" id="odwpdh-name" class="long-text" placeholder="<?php _e( 'Enter short description of your plugin', DH_SLUG ) ?>" cols="72" rows="5"></textarea>
 							</p>
 						</fieldset>
 					</td>
@@ -52,7 +65,7 @@
                 <!-- ... -->
 
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $display_description ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description ); ?>
             </tbody>
 		</table>
         <!-- Submit buttons -->
@@ -61,7 +74,7 @@
 
 	<hr>
 
-	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin with new dashboard widget. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DevHelper::SLUG ); ?></p>
+	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin with new dashboard widget. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DH_SLUG ); ?></p>
 
 	<!-- TODO Here should be rendered generated PHP source -->
 	<h3><code><?php echo 'my-example-list/includes/class-my_example_dashboard_widget.php'; ?></code></h3>
