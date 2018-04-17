@@ -13,6 +13,20 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
+$textomain_checkbox = sprintf(
+    '<input type="text" name="textdomain" id="%1$s-textdomain" class="extrashort-text" placeholder="%2$s" value="%3$s">',
+    $key_prefix,
+    __( 'Enter textdomain', DH_SLUG ),
+    $values['textdomain']
+);
+
+$textomain_php_checkbox = sprintf(
+    '<input type="text" name="textdomain_php" id="%1$s-textdomain_php" class="extrashort-text" placeholder="%2$s" value="%3$s">',
+    $key_prefix,
+    __( 'Enter PHP code', DH_SLUG ),
+    $values['textdomain_php']
+);
+
 ?><tr>
     <th scope="row">
         <label for="<?php echo $key_prefix ?>-advanced"><?php _e( 'Advanced', DH_SLUG ); ?></label>
@@ -20,11 +34,10 @@ if( ! defined( 'ABSPATH' ) ) {
     <td>
         <fieldset id="<?php echo $key_prefix ?>-advanced">
             <label for="<?php echo $key_prefix ?>-use_textdomain">
-                <input type="checkbox" name="use_textdomain" id="<?php echo $key_prefix ?>-use_textdomain">
+                <input type="checkbox" name="use_textdomain" id="<?php echo $key_prefix ?>-use_textdomain" <?php checked( $values['use_textdomain'] )?>>
                 <?php printf(
                     __( 'Use textdomain (as a string %1$s or PHP expression %2$s ).', DH_SLUG ),
-                    '<input type="text" name="textdomain" id="' . $key_prefix . '-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DH_SLUG ) . '">',
-                    '<input type="text" name="textdomain_php" id="' . $key_prefix . '-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DH_SLUG ) . '">'
+                    $textomain_checkbox, $textomain_php_checkbox
                 ) ?>
             </label>
             <?php if( $show_description === true ) : ?>

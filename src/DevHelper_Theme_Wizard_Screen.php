@@ -11,6 +11,14 @@ if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ) {
+    include DH_PATH . 'src/DevHelper_Widget_Wizard_Template.php';
+}
+
+if( ! class_exists( 'DevHelper_Wizard_Screen_Prototype' ) ) {
+    include DH_PATH . 'src/DevHelper_Wizard_Screen_Prototype.php';
+}
+
 if( ! class_exists( 'DevHelper_Theme_Wizard_Screen' ) ) :
 
 /**

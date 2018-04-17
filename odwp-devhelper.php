@@ -46,7 +46,6 @@ defined( 'DH_SLUG' ) || define( 'DH_SLUG', 'odwpdh' );
 defined( 'DH_NAME' ) || define( 'DH_NAME', 'odwp-devhelper' );
 defined( 'DH_PATH' ) || define( 'DH_PATH', dirname( __FILE__ ) . '/' );
 defined( 'DH_FILE' ) || define( 'DH_FILE', __FILE__ );
-defined( 'DH_CPT' )  || define( 'DH_CPT', 'odwpdh-wizard' );
 
 
 if( ! function_exists( 'odwpdh_check_requirements' ) ) :

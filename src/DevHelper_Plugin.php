@@ -161,38 +161,13 @@ class DevHelper_Plugin {
      * @since 0.1.0
      */
     public static function init_custom_post_types() {
-        $args = array(
-            'labels' => array(
-                'name' => _x( 'Wizards', 'post type general name', DH_SLUG ),
-                'singular_name' => _x( 'New wizard', 'post type singular name', DH_SLUG ),
-                'add_new' => _x( 'Add wizard', 'add new course', DH_SLUG ),
-                'add_new_item' => __( 'Add new wizard', DH_SLUG ),
-                'edit_item' => __( 'Edit wizard', DH_SLUG ),
-                'new_item' => __( 'New wizard', DH_SLUG ),
-                'view_item' => __( 'Show wizard', DH_SLUG ),
-                'search_items' => __( 'Search wizards', DH_SLUG ),
-                'not_found' => __( 'No wizard was found.', DH_SLUG ),
-                'not_found_in_trash' => __( 'No wizard was found in trash.', DH_SLUG ),
-                'all_items' => __( 'Finished', DH_SLUG ),
-                'archives' => __( 'Wizards archive', DH_SLUG ),
-                'menu_name' => __( 'Wizards', DH_SLUG )
-            ),
-            'description' => __( 'Wizards created by DevHelper.', DH_SLUG ),
-            'public' => true,
-            'menu_position' => 5,
-            'menu_icon' => 'dashicons-welcome-learn-more',
-            'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions', 'author' ),
-            'taxonomies' => array(),
-            'has_archive' => true
-        );
+        include( DH_PATH . 'src/DevHelper_Wizard_CustomPostType.php' );
 
         /**
-         * Filter wizard post type arguments.
-         * @param array $arguments Wizard post type arguments.
-         * @since 0.1.0
+         * @var DevHelper_Wizard_CustomPostType $cpt_wizard_screen
          */
-        $args = apply_filters( 'devhelper_' . DH_CPT . '_post_type_arguments', $args );
-        register_post_type( DH_CPT, $args );
+        $cpt_wizard = new DevHelper_Wizard_CustomPostType();
+        $cpt_wizard->init_cpt();
     }
 
     /**

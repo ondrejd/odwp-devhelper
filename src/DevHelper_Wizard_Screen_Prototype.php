@@ -24,6 +24,12 @@ if( ! class_exists( 'DevHelper_Wizard_Screen_Prototype' ) ) :
 abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Prototype {
 
 	/**
+	 * @var DevHelper_Widget_Wizard_Template $template
+	 * @since 0.1.0
+	 */
+	public $template;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param \WP_Screen $screen
@@ -155,11 +161,12 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 	 *
 	 * @param boolean $show_description
 	 * @param string $key_prefix Optional.
+	 * @param array $values Optional.
 	 * @return string
 	 * @since 0.1.0
 	 * @uses apply_filters()
 	 */
-	public function render_advanced_options( $show_description,  $key_prefix = 'plugin' ) {
+	public function render_advanced_options( $show_description,  $key_prefix = 'plugin', $values = array() ) {
 		ob_start();
 		include( DH_PATH . 'partials/wizard-advanced_options.phtml' );
 

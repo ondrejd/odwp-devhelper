@@ -15,6 +15,10 @@ if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ) {
     include DH_PATH . 'src/DevHelper_Widget_Wizard_Template.php';
 }
 
+if( ! class_exists( 'DevHelper_Wizard_Screen_Prototype' ) ) {
+    include DH_PATH . 'src/DevHelper_Wizard_Screen_Prototype.php';
+}
+
 if( ! class_exists( 'DevHelper_Widget_Wizard_Screen' ) ) :
 
 /**
@@ -24,12 +28,6 @@ if( ! class_exists( 'DevHelper_Widget_Wizard_Screen' ) ) :
  * @since 0.1.0
  */
 class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
-
-	/**
-	 * @var DevHelper_Widget_Wizard_Template $template
-	 * @since 0.1.0
-	 */
-	public $template;
 
 	/**
 	 * Constructor.
@@ -69,8 +67,63 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 		// Set template
 		$this->template = new DevHelper_Widget_Wizard_Template();
 
+		// Process screen's form
+		$this->process_form();
+
 		// Finish screen constuction
 		parent::__construct( $screen );
+	}
+
+	/**
+	 * Process wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 */
+	protected function process_form() {
+		$values = array();
+
+		if( ! isset( $_POST['wizard-submit1'] ) && ! isset( $_POST['wizard-submit2'] ) ) {
+			return;
+		}
+
+		// Collect common values
+		$classname = filter_input( INPUT_POST, 'classname' );
+		$title = filter_input( INPUT_POST, 'title' );
+		$description = filter_input( INPUT_POST, 'description' );
+		$has_options = isset( $_POST['has_options' ] ) ? filter_input( INPUT_POST, 'has_options' ) : 'off';
+
+		// Collect advanced values
+		$use_textdomain = isset( $_POST['use_textdomain' ] ) ? filter_input( INPUT_POST, 'use_textdomain' ) : 'off';
+		$textdomain = filter_input( INPUT_POST, 'textdomain' );
+		$textdomain_php = filter_input( INPUT_POST, 'textdomain_php' );
+
+		// Validate common values
+		$values['classname'] = empty( $classname ) ? $this->template->get_default( 'classname' ) : $classname;
+		$values['title'] = empty( $title ) ? $this->template->get_default( 'title' ) : $title;
+		$values['description'] = empty( $description ) ? '' : $description;
+		$values['has_options'] = ( strtolower( $has_options ) === 'on' ) ? true : false;
+	
+		// Validate advanced values
+		// TODO Tohle by mělo být implementováno tak, aby to šlo sdílet mezi třídami (takže asi `trait`)...
+		$values['use_textdomain'] = ( strtolower( $use_textdomain ) === 'on' ) ? true : false;
+
+		if( $values['use_textdomain'] ) {
+			$values['textdomain'] = empty( $textdomain ) ? '' : $textdomain;
+			$values['textdomain_php'] = empty( $textdomain_php ) ? '' : $textdomain_php;
+
+			if( empty( $values['textdomain_php'] ) && $values['use_textdomain'] === true ) {
+				$values['textdomain'] = $this->template->get_default( 'textdomain' );
+			} else {
+				$values['textdomain'] = '';
+			}
+		} else {
+			$values['textdomain'] = '';
+			$values['textdomain_php'] = '';
+		}
+
+		// Set values into the template
+		$this->template->values = $values;
 	}
 
 }

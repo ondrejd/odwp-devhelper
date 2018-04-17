@@ -13,15 +13,7 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-// common
-$classname = filter_input( INPUT_POST, 'classname' );
-$title = filter_input( INPUT_POST, 'title' );
-$description = filter_input( INPUT_POST, 'description' );
-$has_options = filter_input( INPUT_POST, 'has_options' );
-// advanced
-$use_textdomain = filter_input( INPUT_POST, 'use_texdomain' );
-$textdomain = filter_input( INPUT_POST, 'texdomain' );
-$textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
+$form_url = admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::SLUG . '&page=' . $wizard->slug );
 
 ?><div class="wrap">
 	<h1 class="wp-heading-inline"><?php _e( 'Wizards - WordPress Widget', DH_SLUG )?></h1>
@@ -35,7 +27,7 @@ $textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
 		'<a href="https://developer.wordpress.org/reference/classes/wp_widget/" target="blank">',
 		'</a>'
 	)?></p>
-	<form id="wizard-dashboard_widget">
+	<form id="wizard-dashboard_widget" action="<?php esc_attr_e( $form_url )?>" method="post">
 		<table class="form-table">
 			<tbody>
 				<!-- Class name -->
@@ -46,7 +38,7 @@ $textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="classname" id="widget-classname" class="regular-text" placeholder="<?php _e( 'My_Widget', DH_SLUG ) ?>">
+								<input type="text" name="classname" id="widget-classname" class="regular-text" placeholder="<?php _e( 'My_Widget', DH_SLUG ) ?>" value="<?php echo $wizard->template->get_value( 'classname' )?>">
 							</p>
 							<p class="description"><?php printf( __( 'Name of class which will extend <a href="%s" target="blank"><code>WP_Widget</code></a>', DH_SLUG ), 'https://developer.wordpress.org/reference/classes/wp_widget/' ); ?></p>
 						</fieldset>
@@ -60,7 +52,7 @@ $textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="title" id="widget-identifier" class="regular-text" placeholder="<?php _e( 'My Widget', DH_SLUG ) ?>">
+								<input type="text" name="title" id="widget-identifier" class="regular-text" placeholder="<?php _e( 'My Widget', DH_SLUG )?>" value="<?php echo $wizard->template->get_value( 'title' )?>">
 							</p>
 							<p class="description"><?php _e( 'Enter title of your widget.', DH_SLUG ) ?></p>
 						</fieldset>
@@ -74,7 +66,7 @@ $textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="description" id="widget-description" class="long-text" placeholder="<?php _e( 'My awesome widget.', DH_SLUG ) ?>">
+								<input type="text" name="description" id="widget-description" class="long-text" placeholder="<?php _e( 'My awesome widget.', DH_SLUG ) ?>" value="<?php echo $wizard->template->get_value( 'description' )?>">
 							</p>
 							<p class="description"><?php _e( 'Enter short description of your widget.', DH_SLUG ) ?></p>
 						</fieldset>
@@ -89,7 +81,7 @@ $textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
 						<fieldset>
 							<p>
 								<label for="widget-has_options">
-									<input type="checkbox" name="has_options" id="widget-has_options">
+									<input type="checkbox" name="has_options" id="widget-has_options" <?php checked( $wizard->template->get_value( 'has_options' ) )?>>
 									<?php _e( 'Will your widget provide options?', DH_SLUG ) ?>
 								</label>
 							</p>
@@ -102,7 +94,7 @@ $textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $show_description, 'widget' ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description, 'widget', $wizard->template->get_values() ); ?>
             </tbody>
 		</table>
         <!-- Submit buttons -->

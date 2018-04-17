@@ -26,6 +26,44 @@ if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ):
 class DevHelper_Widget_Wizard_Template extends DevHelper_Template_Prototype {
 
     /**
+     * Constructor.
+     * 
+     * @param array $files Optional.
+     * @param array $values Optional.
+     * @return void
+     * @since 0.1.0
+     */
+    public function __construct( $files = array(), $defaults = array(), $values = array() ) {
+
+		// Files which will be generated
+        $files = array(
+            array(
+                'filename' => 'class-my_widget.php',
+                'filetype' => 'php',
+            )
+        );
+
+		// Default template values
+        $defaults = array(
+            // Widget's own options
+            'classname'      => __( 'My_Widget', DH_SLUG ),
+            'title'          => __( 'My Widget', DH_SLUG ),
+            'description'    => __( 'My awesome widget', DH_SLUG ),
+            'has_options'    => false,
+            // These are from `wizard-advanced_options.phtml`
+            'use_textdomain' => true,
+            'textdomain'     => 'textdomain',
+            'textdomain_php' => null,
+		);
+
+		// Submitted (or default) values
+		$values = $defaults;
+
+		// Finalize class construction
+		parent::__construct( $files, $defaults, $values );
+    }
+
+    /**
      * Render template preview.
      *
      * @param array $args Optional.
@@ -45,7 +83,7 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-if ( ! class_exists( 'My_Widget' ) ):
+if ( ! class_exists( '<?php echo $this->values['classname']?>' ) ):
 
 /**
  * Class description ...
@@ -54,7 +92,7 @@ if ( ! class_exists( 'My_Widget' ) ):
  * @see \WP_Widget
  * @since 1.0
  */
-class My_Widget extends \WP_Widget {
+class <?php echo $this->values['classname']?> extends \WP_Widget {
 
 	/**
 	 * Constructor.
@@ -64,10 +102,12 @@ class My_Widget extends \WP_Widget {
 	 */
 	function __construct() {
 		$widget_ops = array( 
-			'classname' => 'my_widget',
-			'description' => 'My Widget is awesome',
+			'classname' => '<?php echo strtolower( $this->values['classname'] )?>',
+<?php if( ! empty( $this->values['description'] ) ) : ?>
+			'description' => <?php $this->textdomainize( $this->values['description'] )?>,
+<?php endif ?>
 		);
-		parent::__construct( false, __( 'My New Widget Title', 'textdomain' ), $widget_opts );
+		parent::__construct( false, <?php $this->textdomainize( $this->values['title'] )?>, $widget_opts );
 	}
 
 	/**
@@ -85,10 +125,10 @@ class My_Widget extends \WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
 		}
 
-		echo esc_html__( 'Hello, World!', 'text_domain' );
+		echo <?php echo ( $this->values['use_textdomain'] ) ? "esc_html__( 'Hello, World!', {$this->get_textdomain_as_str_arg()} )" : "'Hello, World!'";?>;
 		echo $args['after_widget'];
 	}
-
+<?php if( $this->values['has_options'] ) : ?>
 	/**
 	 * Save widget options.
 	 *
@@ -110,15 +150,15 @@ class My_Widget extends \WP_Widget {
 	 */
 	function form( $instance ) {
 		// ...
-	}
+	}<?php endif ?>
 
-} // End of My_Widget
+} // End of <?php echo $this->values['classname']?>
 
 endif;
 
 // Initialize widget
 add_action( 'widgets_init', function() {
-	register_widget( 'My_Widget' );
+	register_widget( '<?php echo $this->values['classname']?>' );
 });
 <?php
     }
