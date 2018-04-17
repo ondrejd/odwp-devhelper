@@ -154,11 +154,12 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 	 * Render common advanced options.
 	 *
 	 * @param boolean $show_description
+	 * @param string $key_prefix Optional.
 	 * @return string
 	 * @since 0.1.0
 	 * @uses apply_filters()
 	 */
-	public function render_advanced_options( $show_description ) {
+	public function render_advanced_options( $show_description,  $key_prefix = 'plugin' ) {
 		ob_start();
 		include( DH_PATH . 'partials/wizard-advanced_options.phtml' );
 

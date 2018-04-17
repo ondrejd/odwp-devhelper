@@ -11,6 +11,10 @@ if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ) {
+    include DH_PATH . 'src/DevHelper_Widget_Wizard_Template.php';
+}
+
 if( ! class_exists( 'DevHelper_Widget_Wizard_Screen' ) ) :
 
 /**
@@ -20,6 +24,12 @@ if( ! class_exists( 'DevHelper_Widget_Wizard_Screen' ) ) :
  * @since 0.1.0
  */
 class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
+
+	/**
+	 * @var DevHelper_Widget_Wizard_Template $template
+	 * @since 0.1.0
+	 */
+	public $template;
 
 	/**
 	 * Constructor.
@@ -55,6 +65,9 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 				'default' => __( 'Default', DH_SLUG ),
 			);
 		} );
+
+		// Set template
+		$this->template = new DevHelper_Widget_Wizard_Template();
 
 		// Finish screen constuction
 		parent::__construct( $screen );

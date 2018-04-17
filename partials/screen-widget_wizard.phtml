@@ -13,14 +13,28 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
+// common
+$classname = filter_input( INPUT_POST, 'classname' );
+$title = filter_input( INPUT_POST, 'title' );
+$description = filter_input( INPUT_POST, 'description' );
+$has_options = filter_input( INPUT_POST, 'has_options' );
+// advanced
+$use_textdomain = filter_input( INPUT_POST, 'use_texdomain' );
+$textdomain = filter_input( INPUT_POST, 'texdomain' );
+$textdomain_php = filter_input( INPUT_POST, 'texdomain_php' );
+
 ?><div class="wrap">
 	<h1 class="wp-heading-inline"><?php _e( 'Wizards - WordPress Widget', DH_SLUG )?></h1>
     <hr class="wp-header-end">
-
-	<p class="description">
-		<?php sprintf( __( 'Generate new <a href="%s" target="blank">widgets</a> (using <a href="%s" target="blank">Widget API</a>).', DH_SLUG ), 'https://codex.wordpress.org/WordPress_Widgets', 'https://codex.wordpress.org/Widgets_API' ); ?>
-	</p>
-
+	<p class="description"><?php printf(
+		__( 'Generate new %1$swidgets%2$s (using %3$sWidget API%4$s). Generated code will contains new class that extends %5$sWP_Widget%6$s class and peace of code needed for activation.', DH_SLUG ),
+		'<a href="https://codex.wordpress.org/WordPress_Widgets" target="blank">',
+		'</a>',
+		'<a href="https://codex.wordpress.org/Widgets_API" target="blank">',
+		'</a>',
+		'<a href="https://developer.wordpress.org/reference/classes/wp_widget/" target="blank">',
+		'</a>'
+	)?></p>
 	<form id="wizard-dashboard_widget">
 		<table class="form-table">
 			<tbody>
@@ -32,80 +46,74 @@ if( ! defined( 'ABSPATH' ) ) {
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="plugin-classname" id="plugin-classname" class="regular-text" placeholder="<?php _e( 'My_Widget', DH_SLUG ) ?>">
+								<input type="text" name="classname" id="widget-classname" class="regular-text" placeholder="<?php _e( 'My_Widget', DH_SLUG ) ?>">
 							</p>
 							<p class="description"><?php printf( __( 'Name of class which will extend <a href="%s" target="blank"><code>WP_Widget</code></a>', DH_SLUG ), 'https://developer.wordpress.org/reference/classes/wp_widget/' ); ?></p>
 						</fieldset>
 					</td>
 				</tr>
-				<!-- Identifier -->
+				<!-- Title -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-identifier"><?php _e( 'Identifier', DH_SLUG ) ?></label>
+						<label for="widget-title"><?php _e( 'Title', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<input type="text" name="plugin-identifier" id="plugin-identifier" class="regular-text" placeholder="<?php _e( 'Enter identifier of your plugin', DH_SLUG ) ?>">
+								<input type="text" name="title" id="widget-identifier" class="regular-text" placeholder="<?php _e( 'My Widget', DH_SLUG ) ?>">
 							</p>
-							<p class="description"><?php _e( '<b>Identifier</b> could be derrived from plugin\'s name and can NOT contains spaces, tabs and other control or special characters.', DH_SLUG ) ?></p>
+							<p class="description"><?php _e( 'Enter title of your widget.', DH_SLUG ) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Description -->
 				<tr>
 					<th scope="row">
-						<label for="plugin-description"><?php _e( 'Description', DH_SLUG ) ?></label>
+						<label for="widget-description"><?php _e( 'Description', DH_SLUG ) ?></label>
 					</th>
 					<td>
 						<fieldset>
 							<p>
-								<label for="plugin-description"><?php _e( 'Short description:', DH_SLUG ) ?></label><br>
-								<textarea name="plugin-description" id="plugin-description" class="long-text" placeholder="<?php _e( 'Enter short description of your plugin', DH_SLUG ) ?>" cols="72" rows="5"></textarea>
+								<input type="text" name="description" id="widget-description" class="long-text" placeholder="<?php _e( 'My awesome widget.', DH_SLUG ) ?>">
 							</p>
+							<p class="description"><?php _e( 'Enter short description of your widget.', DH_SLUG ) ?></p>
+						</fieldset>
+					</td>
+				</tr>
+				<!-- Has options? -->
+				<tr>
+					<th scope="row">
+						<label for="widget-has_options"><?php _e( 'Has options', DH_SLUG ) ?></label>
+					</th>
+					<td>
+						<fieldset>
 							<p>
-								<label for="plugin-description_full"><?php _e( 'Full description:', DH_SLUG ) ?></label><br>
-								<textarea name="plugin-description_full" id="plugin-description_full" class="long-text" placeholder="<?php _e( 'Enter full description of your plugin', DH_SLUG ) ?>" cols="72" rows="10"></textarea>
+								<label for="widget-has_options">
+									<input type="checkbox" name="has_options" id="widget-has_options">
+									<?php _e( 'Will your widget provide options?', DH_SLUG ) ?>
+								</label>
 							</p>
-							<p class="description"><?php _e( 'Both descriptions are used in <code>readme.txt</code> file.', DH_SLUG ) ?></p>
+							<p class="description"><?php printf(
+								__( 'If checked generated source codes contain also methods <code>%1$s</code> and <code>%2$s</code>.', DH_SLUG ),
+								'<a href="https://developer.wordpress.org/reference/classes/wp_widget/form/" target="blank">WP_Widget::Form</a>',
+								'<a href="https://developer.wordpress.org/reference/classes/wp_widget/update/" target="blank">WP_Widget::Update</a>'
+							) ?></p>
 						</fieldset>
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $show_description ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description, 'widget' ); ?>
             </tbody>
 		</table>
         <!-- Submit buttons -->
         <?php echo $wizard->render_submit_buttons(); ?>
 	</form>
-
 	<hr>
-
 	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin with new widget. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DH_SLUG ); ?></p>
 
 	<!-- TODO Here should be rendered generated PHP source -->
 	<h3><code><?php echo 'my-example-list/includes/class-my_example_widget.php'; ?></code></h3>
 	<pre><code class="language-php">&lt;?php
-/**
- * File description ...
- *
- * @package my-example-widget
- * @since 1.0
- */
-
-if ( ! class_exists( 'My_Widget' ) ):
-
-/**
- * Class description ...
- *
- * @see WP_Widget
- * @since 1.0
- */
-class My_Widget extends WP_Widget {
-    // ...
-} // End of My_Widget
-
-endif;
-
+<?php $wizard->template->preview() ?>
 </code></pre>
 </div>

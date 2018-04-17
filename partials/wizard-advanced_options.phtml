@@ -14,22 +14,22 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 
 ?><tr>
-  <th scope="row">
-    <label for="plugin-advanced"><?php _e( 'Advanced', DH_SLUG ); ?></label>
-  </th>
-  <td>
-    <fieldset id="plugin-advanced">
-      <label for="plugin-use_textdomain">
-        <input type="checkbox" name="use_textdomain" id="plugin-use_textdomain">
-        <?php printf(
-          __( 'Use textdomain (as a string %1$s or PHP expression %2$s ).', DH_SLUG ),
-          '<input type="text" name="textdomain" id="plugin-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DH_SLUG ) . '">',
-          '<input type="text" name="textdomain_php" id="plugin-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DH_SLUG ) . '">'
-        ); ?>
-      </label>
-      <?php if ( $show_description === true ): ?>
-      <p class="description"><?php _e( 'All strings in generated code will be ready for translation. You can choose either insert textdomain as a normal string (e.g. <code>my_textdomain</code>) which will be encapsulated by double-quotes or as a PHP expression (e.g. <code>DH_SLUG</code>) which will be inserted into code without any quotes.', DH_SLUG ); ?></p>
-      <?php endif;?>
-    </fieldset>
-  </td>
+    <th scope="row">
+        <label for="<?php echo $key_prefix ?>-advanced"><?php _e( 'Advanced', DH_SLUG ); ?></label>
+    </th>
+    <td>
+        <fieldset id="<?php echo $key_prefix ?>-advanced">
+            <label for="<?php echo $key_prefix ?>-use_textdomain">
+                <input type="checkbox" name="use_textdomain" id="<?php echo $key_prefix ?>-use_textdomain">
+                <?php printf(
+                    __( 'Use textdomain (as a string %1$s or PHP expression %2$s ).', DH_SLUG ),
+                    '<input type="text" name="textdomain" id="' . $key_prefix . '-textdomain" class="extrashort-text" placeholder="' . __( 'Enter textdomain', DH_SLUG ) . '">',
+                    '<input type="text" name="textdomain_php" id="' . $key_prefix . '-textdomain_php" class="extrashort-text" placeholder="' . __( 'Enter PHP expression', DH_SLUG ) . '">'
+                ) ?>
+            </label>
+            <?php if( $show_description === true ) : ?>
+            <p class="description"><?php _e( 'All strings in generated code will be ready for translation. You can choose either insert textdomain as a normal string (e.g. <code>my_textdomain</code>) which will be encapsulated by double-quotes or as a PHP expression (e.g. <code>DH_SLUG</code>) which will be inserted into code without any quotes.', DH_SLUG ); ?></p>
+            <?php endif;?>
+        </fieldset>
+    </td>
 </tr>

@@ -161,6 +161,7 @@ endif;
 $odwpdh_errs = odwpdh_check_requirements( [
     'php' => [
         // Enter minimum PHP version you needs
+        // TODO But we uses lambda functions in screen classes!!!
         'version' => '5.6',
         // Enter extensions that your plugin needs
         'extensions' => [
