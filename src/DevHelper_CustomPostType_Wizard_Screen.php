@@ -57,14 +57,6 @@ class DevHelper_CustomPostType_Wizard_Screen extends DevHelper_Wizard_Screen_Pro
 			'https://codex.wordpress.org/Post_Types#Custom_Post_Types'
 		);
 
-		// Customize code templates
-		add_filter( "devhelper_{$this->slug}_templates", function( $templates ) {
-			return array(
-				'simple' => __( 'Simple function', DH_SLUG ),
-				'class'  => __( 'Singleton class', DH_SLUG ),
-			);
-		} );
-
 		// Set template
 		$this->template = new DevHelper_CustomPostType_Wizard_Template();
 
@@ -73,6 +65,20 @@ class DevHelper_CustomPostType_Wizard_Screen extends DevHelper_Wizard_Screen_Pro
 
 		// Finish screen constuction
 		parent::__construct( $screen );
+	}
+
+	/**
+	 * Set templates types for the wizard.
+	 * 
+	 * @param array $templates
+	 * @return array
+	 * @since 0.1.0
+	 */
+	public function filter_templates( $templates ) {
+		return array(
+			'simple' => __( 'Simple function', DH_SLUG ),
+			'class'  => __( 'Singleton class', DH_SLUG ),
+		);
 	}
 
 	/**
@@ -116,7 +122,7 @@ class DevHelper_CustomPostType_Wizard_Screen extends DevHelper_Wizard_Screen_Pro
 	 * @return void
 	 * @since 0.1.0
 	 */
-	protected function process_form() {
+	public function process_form() {
 		$values = array();
 
 		if( ! isset( $_POST['wizard-submit1'] ) && ! isset( $_POST['wizard-submit2'] ) ) {

@@ -38,6 +38,9 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 	 */
 	public function __construct( \WP_Screen $screen = null ) {
 
+		// Customize template types
+		add_filter( "devhelper_{$this->slug}_templates", array( $this, 'filter_templates' ) );
+
 		// Enable screen options
 		$this->enable_screen_options = true;
 
@@ -62,7 +65,8 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 		$link1 = __( 'Used template', DH_SLUG );
 		$link2 = __( 'Generated Code', DH_SLUG );
 
-		$this->help_tabs[] = array(
+		// We need this tab at the first place
+		array_unshift( $this->help_tabs, array(
             'id'      => $this->slug . '-options_help_tab',
             'title'   => $title,
 			'content' => sprintf(
@@ -75,11 +79,28 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 					'<a href="#" target="blank">', '</a>'
 				)
 			),
-		);
+		) );
 
 		// Finish screen constuction
 		parent::__construct( $screen );
 	}
+
+	/**
+	 * Set templates types for the wizard.
+	 * 
+	 * @param array $templates
+	 * @return array
+	 * @since 0.1.0
+	 */
+	abstract public function filter_templates( $templates );
+
+	/**
+	 * Process wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 */
+	abstract public function process_form();
 
     /**
      * Action for `admin_menu` hook.

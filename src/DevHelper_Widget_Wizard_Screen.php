@@ -57,14 +57,7 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
             'https://codex.wordpress.org/Widgets_API'
 		);
 
-		// Customize code templates
-		add_filter( "devhelper_{$this->slug}_templates", function( $templates ) {
-			return array(
-				'default' => __( 'Default', DH_SLUG ),
-			);
-		} );
-
-		// Set template
+		// Set template class
 		$this->template = new DevHelper_Widget_Wizard_Template();
 
 		// Process screen's form
@@ -75,12 +68,25 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 	}
 
 	/**
+	 * Set templates types for the wizard.
+	 * 
+	 * @param array $templates
+	 * @return array
+	 * @since 0.1.0
+	 */
+	public function filter_templates( $templates ) {
+		return array(
+			'default' => __( 'Default', DH_SLUG ),
+		);
+	}
+
+	/**
 	 * Process wizard's form.
 	 *
 	 * @return void
 	 * @since 0.1.0
 	 */
-	protected function process_form() {
+	public function process_form() {
 		$values = array();
 
 		if( ! isset( $_POST['wizard-submit1'] ) && ! isset( $_POST['wizard-submit2'] ) ) {
