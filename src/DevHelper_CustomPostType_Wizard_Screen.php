@@ -11,8 +11,8 @@ if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ) {
-    include DH_PATH . 'src/DevHelper_Widget_Wizard_Template.php';
+if( ! class_exists( 'DevHelper_CustomPostType_Wizard_Template' ) ) {
+    include DH_PATH . 'src/DevHelper_CustomPostType_Wizard_Template.php';
 }
 
 if( ! class_exists( 'DevHelper_Wizard_Screen_Prototype' ) ) {
@@ -65,8 +65,36 @@ class DevHelper_CustomPostType_Wizard_Screen extends DevHelper_Wizard_Screen_Pro
 			);
 		} );
 
+		// Set template
+		$this->template = new DevHelper_CustomPostType_Wizard_Template();
+
+		// Process screen's form
+		$this->process_form();
+
 		// Finish screen constuction
 		parent::__construct( $screen );
+	}
+
+	/**
+	 * Action for `init` hook (see {@see DevHelper::admin_enqueue_scripts} for more details).
+	 * 
+	 * @return void
+	 * @since 0.1.0
+	 * @uses plugins_url()
+	 * @uses wp_register_script()
+	 * @uses wp_enqueue_script()
+	 */
+	public function admin_enqueue_scripts() {
+		$screen = $this->get_screen();
+
+		if ( $screen->base != $this->hookname) {
+			return;
+		}
+
+		$script_url = plugins_url( 'assets/js/screen-cpt_wizard.js', dirname( __FILE__ ) );
+
+		wp_register_script( $this->slug, $script_url, array( 'jquery' ), false, true );
+		wp_enqueue_script( $this->slug );
 	}
 
 	/**
@@ -80,6 +108,32 @@ class DevHelper_CustomPostType_Wizard_Screen extends DevHelper_Wizard_Screen_Pro
 			'menu_position_options' => $this->get_menu_position_select(),
 			'supports_options'      => $this->get_supports_options(),
 		) );
+	}
+
+	/**
+	 * Process wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 */
+	protected function process_form() {
+		$values = array();
+
+		if( ! isset( $_POST['wizard-submit1'] ) && ! isset( $_POST['wizard-submit2'] ) ) {
+			return;
+		}
+
+		// Collect common values
+		//...
+
+		// Validate common values
+		//...
+
+		// Append advanced values
+		$values = array_merge( $this->process_advanced_options(), $values );
+
+		// Set values into the template
+		$this->template->values = $values;
 	}
 
 	/**

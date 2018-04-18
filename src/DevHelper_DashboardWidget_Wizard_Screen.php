@@ -11,8 +11,8 @@ if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ) {
-    include DH_PATH . 'src/DevHelper_Widget_Wizard_Template.php';
+if( ! class_exists( 'DevHelper_DashboardWidget_Wizard_Template' ) ) {
+    include DH_PATH . 'src/DevHelper_DashboardWidget_Wizard_Template.php';
 }
 
 if( ! class_exists( 'DevHelper_Wizard_Screen_Prototype' ) ) {
@@ -39,7 +39,7 @@ class DevHelper_DashboardWidget_Wizard_Screen extends DevHelper_Wizard_Screen_Pr
 	public function __construct( \WP_Screen $screen = null ) {
 		
 		// Main properties
-		$this->slug = 'dashboard_widget_wizard';
+		$this->slug = 'dashboardwidget_wizard';
 		$this->menu_title = __( 'New dashboard widget', DH_SLUG );
 		$this->page_title = __( 'Dashboard widget wizard', DH_SLUG );
 
@@ -64,8 +64,40 @@ class DevHelper_DashboardWidget_Wizard_Screen extends DevHelper_Wizard_Screen_Pr
 			);
 		} );
 
+		// Set template
+		$this->template = new DevHelper_DashboardWidget_Wizard_Template();
+
+		// Process screen's form
+		$this->process_form();
+
 		// Finish screen construction
 		parent::__construct( $screen );
+	}
+
+	/**
+	 * Process wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 */
+	protected function process_form() {
+		$values = array();
+
+		if( ! isset( $_POST['wizard-submit1'] ) && ! isset( $_POST['wizard-submit2'] ) ) {
+			return;
+		}
+
+		// Collect common values
+		//...
+
+		// Validate common values
+		//...
+
+		// Append advanced values
+		$values = array_merge( $this->process_advanced_options(), $values );
+
+		// Set values into the template
+		$this->template->values = $values;
 	}
 
 }

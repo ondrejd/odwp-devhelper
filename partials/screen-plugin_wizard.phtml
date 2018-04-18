@@ -13,16 +13,22 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
+/**
+ * @var string $form_url
+ */
+$form_url = admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::SLUG . '&page=' . $wizard->slug );
+
 ?><div class="wrap">
 	<h1 class="wp-heading-inline"><?php _e( 'Plugin Wizard', DH_SLUG ); ?></h1>
     <hr class="wp-header-end">
-
-	<p class="description">
-		<?php _e( 'Generator for WordPress plugins.', DH_SLUG ); ?>
-	</p>
-
-	<form id="plugin-wizard">
+	<p class="description"><?php printf(
+		__( 'Generate required minimal source codes for quicker development of new %1$sWordPress%2$s plugins. Generated code follows official rules and provides some specialities (like dependencies checking).', DH_SLUG ),
+		'<a href="https://wordpress.org/" target="blank">',
+		'</a>'
+	); ?></p>
+	<form id="plugin-wizard" action="<?php esc_attr_e( $form_url )?>" method="post">
 		<table class="form-table">
+			<tbody>
 				<!-- Name -->
 				<tr>
 					<th scope="row">
@@ -346,7 +352,7 @@ if( ! defined( 'ABSPATH' ) ) {
 					</td>
 				</tr>
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $show_description ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description, 'plugin', $wizard->template->get_values() ); ?>
                 <tr>
                     <th scope="row">
                         <label for="plugin-template"><?php _e( 'Requirements', DH_SLUG ) ?></label>
@@ -397,8 +403,9 @@ if( ! defined( 'ABSPATH' ) ) {
                         </fieldset>
                     </td>
                 </tr>
-			</table>
-			<!-- Submit buttons -->
-			<?php echo $wizard->render_submit_buttons(); ?>
+			</tbody>
+		</table>
+		<!-- Submit buttons -->
+		<?php echo $wizard->render_submit_buttons(); ?>
 	</form>
 </div>

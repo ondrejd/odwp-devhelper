@@ -93,34 +93,14 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 		$description = filter_input( INPUT_POST, 'description' );
 		$has_options = isset( $_POST['has_options' ] ) ? filter_input( INPUT_POST, 'has_options' ) : 'off';
 
-		// Collect advanced values
-		$use_textdomain = isset( $_POST['use_textdomain' ] ) ? filter_input( INPUT_POST, 'use_textdomain' ) : 'off';
-		$textdomain = filter_input( INPUT_POST, 'textdomain' );
-		$textdomain_php = filter_input( INPUT_POST, 'textdomain_php' );
-
 		// Validate common values
 		$values['classname'] = empty( $classname ) ? $this->template->get_default( 'classname' ) : $classname;
 		$values['title'] = empty( $title ) ? $this->template->get_default( 'title' ) : $title;
 		$values['description'] = empty( $description ) ? '' : $description;
 		$values['has_options'] = ( strtolower( $has_options ) === 'on' ) ? true : false;
-	
-		// Validate advanced values
-		// TODO Tohle by mělo být implementováno tak, aby to šlo sdílet mezi třídami (takže asi `trait`)...
-		$values['use_textdomain'] = ( strtolower( $use_textdomain ) === 'on' ) ? true : false;
 
-		if( $values['use_textdomain'] ) {
-			$values['textdomain'] = empty( $textdomain ) ? '' : $textdomain;
-			$values['textdomain_php'] = empty( $textdomain_php ) ? '' : $textdomain_php;
-
-			if( empty( $values['textdomain_php'] ) && $values['use_textdomain'] === true ) {
-				$values['textdomain'] = $this->template->get_default( 'textdomain' );
-			} else {
-				$values['textdomain'] = '';
-			}
-		} else {
-			$values['textdomain'] = '';
-			$values['textdomain_php'] = '';
-		}
+		// Append advanced values
+		$values = array_merge( $this->process_advanced_options(), $values );
 
 		// Set values into the template
 		$this->template->values = $values;

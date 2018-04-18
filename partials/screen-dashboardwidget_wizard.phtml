@@ -13,11 +13,24 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
+/**
+ * @var string $form_url
+ */
+$form_url = admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::SLUG . '&page=' . $wizard->slug );
+
 ?><div class="wrap">
 	<h1 class="wp-heading-inline"><?php _e( 'Wizards - Dashboard Widget', DH_SLUG )?></h1>
     <hr class="wp-header-end">
-    
-	<form id="wizard-dashboard_widget">
+	<p class="description"><?php printf(
+		__( 'Generate new %1$sdashboard%2$s widgets (using %3$sDashboard Widget API%4$s). Generated code contains new class with several static methods and follows %5$sofficial example%6$s. The last part is piece of code needed for activation.', DH_SLUG ),
+		'<a href="https://codex.wordpress.org/Dashboard_SubPanel" target="blank">',
+		'</a>',
+		'<a href="https://codex.wordpress.org/Dashboard_Widgets_API" target="blank">',
+		'</a>',
+		'<a href="https://codex.wordpress.org/Example_Dashboard_Widget" target="blank">',
+		'</a>'
+	)?></p>
+	<form id="wizard-dashboardwidget" action="<?php esc_attr_e( $form_url )?>" method="post">
 		<table class="form-table">
             <tbody>
 				<!-- Class name -->
@@ -65,7 +78,7 @@ if( ! defined( 'ABSPATH' ) ) {
                 <!-- ... -->
 
 				<!-- Advanced options -->
-				<?php echo $wizard->render_advanced_options( $show_description ); ?>
+				<?php echo $wizard->render_advanced_options( $show_description, 'dashboardwidget', $wizard->template->get_values() ); ?>
             </tbody>
 		</table>
         <!-- Submit buttons -->

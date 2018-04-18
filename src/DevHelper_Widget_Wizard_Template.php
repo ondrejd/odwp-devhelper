@@ -18,7 +18,7 @@ if( ! class_exists( 'DevHelper_Template_Prototype' ) ) {
 if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ):
 
 /**
- * Prototype class for administration screens.
+ * Class describing template for widget wizard.
  * 
  * @author Ondřej Doněk, <ondrejd@gmail.com>
  * @since 0.1.0

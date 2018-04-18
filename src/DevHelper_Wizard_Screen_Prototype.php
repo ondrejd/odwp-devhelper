@@ -157,6 +157,40 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 	}
 
 	/**
+	 * Process advanced options form part.
+	 * 
+	 * @return array Values processed from `$_POST`.
+	 * @since 0.1.0
+	 */
+	protected function process_advanced_options() {
+		$values = array();
+
+		// Collect advanced values
+		$use_textdomain = isset( $_POST['use_textdomain' ] ) ? filter_input( INPUT_POST, 'use_textdomain' ) : 'off';
+		$textdomain = filter_input( INPUT_POST, 'textdomain' );
+		$textdomain_php = filter_input( INPUT_POST, 'textdomain_php' );
+	
+		// Validate advanced values
+		$values['use_textdomain'] = ( strtolower( $use_textdomain ) === 'on' ) ? true : false;
+
+		if( $values['use_textdomain'] ) {
+			$values['textdomain'] = empty( $textdomain ) ? '' : $textdomain;
+			$values['textdomain_php'] = empty( $textdomain_php ) ? '' : $textdomain_php;
+
+			if( empty( $values['textdomain_php'] ) && $values['use_textdomain'] === true ) {
+				$values['textdomain'] = $this->template->get_default( 'textdomain' );
+			} else {
+				$values['textdomain'] = '';
+			}
+		} else {
+			$values['textdomain'] = '';
+			$values['textdomain_php'] = '';
+		}
+
+		return $values;
+	}
+
+	/**
 	 * Render common advanced options.
 	 *
 	 * @param boolean $show_description

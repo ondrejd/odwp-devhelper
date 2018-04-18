@@ -11,8 +11,8 @@ if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ) {
-    include DH_PATH . 'src/DevHelper_Widget_Wizard_Template.php';
+if( ! class_exists( 'DevHelper_Table_Wizard_Template' ) ) {
+    include DH_PATH . 'src/DevHelper_Table_Wizard_Template.php';
 }
 
 if( ! class_exists( 'DevHelper_Wizard_Screen_Prototype' ) ) {
@@ -65,6 +65,12 @@ class DevHelper_Table_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 			);
 		} );
 
+		// Set template
+		$this->template = new DevHelper_Table_Wizard_Template();
+
+		// Process screen's form
+		$this->process_form();
+
 		// Finish screen constuction
 		parent::__construct( $screen );
 	}
@@ -89,6 +95,32 @@ class DevHelper_Table_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 
 		wp_register_script( $this->slug, $script_url, array( 'jquery' ), false, true );
 		wp_enqueue_script( $this->slug );
+	}
+
+	/**
+	 * Process wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 */
+	protected function process_form() {
+		$values = array();
+
+		if( ! isset( $_POST['wizard-submit1'] ) && ! isset( $_POST['wizard-submit2'] ) ) {
+			return;
+		}
+
+		// Collect common values
+		//...
+
+		// Validate common values
+		//...
+
+		// Append advanced values
+		$values = array_merge( $this->process_advanced_options(), $values );
+
+		// Set values into the template
+		$this->template->values = $values;
 	}
 
 }

@@ -13,13 +13,16 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
+/**
+ * @var string $form_url
+ */
 $form_url = admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::SLUG . '&page=' . $wizard->slug );
 
 ?><div class="wrap">
 	<h1 class="wp-heading-inline"><?php _e( 'Wizards - WordPress Widget', DH_SLUG )?></h1>
     <hr class="wp-header-end">
 	<p class="description"><?php printf(
-		__( 'Generate new %1$swidgets%2$s (using %3$sWidget API%4$s). Generated code will contains new class that extends %5$sWP_Widget%6$s class and peace of code needed for activation.', DH_SLUG ),
+		__( 'Generate new %1$swidgets%2$s (using %3$sWidget API%4$s). Generated code contains new class that extends %5$sWP_Widget%6$s class and piece of code needed for activation.', DH_SLUG ),
 		'<a href="https://codex.wordpress.org/WordPress_Widgets" target="blank">',
 		'</a>',
 		'<a href="https://codex.wordpress.org/Widgets_API" target="blank">',

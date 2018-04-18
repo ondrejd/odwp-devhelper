@@ -13,14 +13,25 @@ if( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
+/**
+ * @var string $form_url
+ */
+$form_url = admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::SLUG . '&page=' . $wizard->slug );
+
 ?><div class="wrap">
 	<h1 class="wp-heading-inline"><?php _e( 'Wizards - WordPress Theme', DH_SLUG )?></h1>
     <hr class="wp-header-end">
-
-	<form id="theme-wizard">
+	<p class="description"><?php printf(
+		__( 'Generate required minimal source codes for quicker development of new %1$sWordPress%2$s themes.', DH_SLUG ),
+		'<a href="https://wordpress.org/" target="blank">',
+		'</a>'
+	); ?></p>
+	<form id="theme-wizard" action="<?php esc_attr_e( $form_url )?>" method="post">
 		<table class="form-table">
-			<!-- Advanced options -->
-			<?php echo $wizard->render_advanced_options( $show_description ); ?>
+			<tbody>
+				<!-- Advanced options -->
+				<?php echo $wizard->render_advanced_options( $show_description, 'theme', $wizard->template->get_values() ); ?>
+			</tbody>
 		</table>
 		<!-- Submit buttons -->
 		<?php echo $wizard->render_submit_buttons(); ?>
