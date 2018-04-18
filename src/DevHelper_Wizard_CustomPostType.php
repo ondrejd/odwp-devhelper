@@ -51,7 +51,7 @@ class DevHelper_Wizard_CustomPostType {
             'not_found_in_trash' => __( 'No wizard was found in trash.', DH_SLUG ),
             'all_items' => __( 'Finished', DH_SLUG ),
             'archives' => __( 'Wizards archive', DH_SLUG ),
-            'menu_name' => __( 'Wizards', DH_SLUG )
+            'menu_name' => __( 'Wizards', DH_SLUG ),
         );
 
         /**
@@ -65,7 +65,8 @@ class DevHelper_Wizard_CustomPostType {
             'menu_icon' => 'dashicons-welcome-learn-more',
             'supports' => array( 'title', 'editor', 'thumbnail', 'excerpt', 'comments', 'revisions', 'author' ),
             'taxonomies' => array(),
-            'has_archive' => true
+            'has_archive' => true,
+            'show_in_admin_bar' => false,
         );
 
         /**
@@ -75,8 +76,17 @@ class DevHelper_Wizard_CustomPostType {
          * @since 0.1.0
          */
         $args = apply_filters( 'devhelper_' . self::SLUG . '_post_type_arguments', $args );
-
         register_post_type( self::SLUG, $args );
+    }
+
+    /**
+     * Hide "Add new wizard" link (which was created automatically).
+     * 
+     * @return void
+     * @since 0.1.0
+     */
+    public static function adjust_admin_menu() {
+        remove_submenu_page( 'edit.php?post_type=odwpdh-wizard', 'post-new.php?post_type=odwpdh-wizard' );
     }
 
 }
