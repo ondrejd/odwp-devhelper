@@ -104,11 +104,5 @@ $form_url = admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::
         <?php echo $wizard->render_submit_buttons(); ?>
 	</form>
 	<hr>
-	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin with new widget. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DH_SLUG ); ?></p>
-
-	<!-- TODO Here should be rendered generated PHP source -->
-	<h3><code><?php echo 'my-example-list/includes/class-my_example_widget.php'; ?></code></h3>
-	<pre><code class="language-php">&lt;?php
-<?php $wizard->template->preview() ?>
-</code></pre>
+	<?php $wizard->template->preview()?>
 </div>

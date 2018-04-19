@@ -80,6 +80,17 @@ class DevHelper_Wizard_CustomPostType {
     }
 
     /**
+     * Insert new item (from one of wizard forms).
+     * 
+     * @param array $args
+     * @return void
+     * @since 0.1.0
+     */
+    public static function insert_new( $args ) {
+        //...
+    }
+
+    /**
      * Hide "Add new wizard" link (which was created automatically).
      * 
      * @return void

@@ -30,6 +30,12 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 	public $template;
 
 	/**
+	 * @var boolean $should_save
+	 * @since 0.1.0
+	 */
+	protected $should_save;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param \WP_Screen $screen

@@ -110,6 +110,33 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 
 		// Set values into the template
 		$this->template->values = $values;
+
+		// Indicate that we should save wizard
+		$this->should_save = true;
+	}
+
+	/**
+	 * Render page self.
+	 * 
+	 * @param array $args (Optional.) Arguments for rendered template.
+	 * @since 0.1.0
+	 */
+	public function render( $args = array() ) {
+
+        // Check arguments
+        if( ! is_array( $args ) ) {
+            $args = array();
+		}
+
+		// ...
+
+		// Gather all arguments
+		$all_args = array_merge( $args, array(
+			//...
+		) );
+
+		// Pass them...
+		parent::render( $all_args );
 	}
 
 }

@@ -11,6 +11,10 @@ if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if( ! class_exists( 'DevHelper_Template_File_Prototype' ) ) {
+    include DH_PATH . 'src/DevHelper_Template_File_Prototype.php';
+}
+
 if( ! class_exists( 'DevHelper_Template_Prototype' ) ):
 
 /**
@@ -24,7 +28,7 @@ abstract class DevHelper_Template_Prototype {
     /**
      * Template files.
      * 
-     * @var array $values
+     * @var array $values Array of `DevHelper_Template_File` instances.
      * @since 0.1.0
      */
     public $files = array();
@@ -133,51 +137,6 @@ abstract class DevHelper_Template_Prototype {
      */
     public function zip( $args = array() ) {
         throw new Exception( 'Not finished yet!' );
-    }
-
-    /**
-     * @internal Return localizable string as localized or not based on values.
-     * @param string $str
-     * @param boolean $echo Optional.
-     * @return string
-     * @since 0.1.0
-     */
-    public function textdomainize( $str, $echo = true ) {
-        $out = $str;
-
-        if( $this->values[ 'use_textdomain'] ) {
-            if( ! empty( $this->values['textdomain_php'] ) ) {
-                $out = "__( '$str', {$this->values['textdomain_php']} )";
-            }
-            else {
-                $out = "__( '$str', '{$this->values['textdomain']}' )";
-            }
-        } else {
-            $out = "'$str'";
-        }
-
-        if( $echo === true ) {
-            echo $out;
-        }
-
-        return $out;
-    }
-
-    /**
-     * @internal Use this only when you know that template using textdomain!
-     * @return string
-     * @since 0.1.0
-     */
-    public function get_textdomain_as_str_arg() {
-        
-        if( ! empty( $this->values['textdomain_php'] ) ) {
-            return $this->values['textdomain_php'];
-        }
-        elseif( ! empty( $this->values['textdomain'] ) ) {
-            return "'" . $this->values['textdomain'] . "'";
-        }
-
-        return "''";
     }
 
 }

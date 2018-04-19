@@ -15,6 +15,10 @@ if( ! class_exists( 'DevHelper_Template_Prototype' ) ) {
     include DH_PATH . 'src/DevHelper_Template_Prototype.php';
 }
 
+if( ! class_exists( 'DevHelper_Widget_Wizard_Template_File' ) ) {
+	include DH_PATH . 'src/DevHelper_Widget_Wizard_Template_File.php';
+}
+
 if( ! class_exists( 'DevHelper_Widget_Wizard_Template' ) ):
 
 /**
@@ -37,10 +41,7 @@ class DevHelper_Widget_Wizard_Template extends DevHelper_Template_Prototype {
 
 		// Files which will be generated
         $files = array(
-            array(
-                'filename' => 'class-my_widget.php',
-                'filetype' => 'php',
-            )
+			0 => new DevHelper_Widget_Wizard_Template_File( 'class-my_widget.php', 'php' )
         );
 
 		// Default template values
@@ -71,96 +72,20 @@ class DevHelper_Widget_Wizard_Template extends DevHelper_Template_Prototype {
      * @return void
      */
     public function preview( $args = array() ) {
+		$values = array_merge( $this->values, $args );
+
 ?>
-/**
- * File description ...
- *
- * @package my-example-widget
- * @since 1.0
- */
-
-if( ! defined( 'ABSPATH' ) ) {
-  exit;
-}
-
-if ( ! class_exists( '<?php echo $this->values['classname']?>' ) ):
-
-/**
- * Class description ...
- *
- * @link https://developer.wordpress.org/reference/classes/wp_widget/
- * @see \WP_Widget
- * @since 1.0
- */
-class <?php echo $this->values['classname']?> extends \WP_Widget {
-
-	/**
-	 * Constructor.
-	 *
-	 * @return void
-	 * @since 1.0
-	 */
-	function __construct() {
-		$widget_ops = array( 
-			'classname' => '<?php echo strtolower( $this->values['classname'] )?>',
-<?php if( ! empty( $this->values['description'] ) ) : ?>
-			'description' => <?php $this->textdomainize( $this->values['description'] )?>,
-<?php endif ?>
-		);
-		parent::__construct( false, <?php $this->textdomainize( $this->values['title'] )?>, $widget_opts );
-	}
-
-	/**
-	 * Widget output.
-	 *
-	 * @param array $args Display arguments including 'before_title', 'after_title', 'before_widget', and 'after_widget'.
-     * @param array $instance The settings for the particular instance of the widget.
-	 * @return void
-	 * @since 1.0
-	 */
-	function widget( $args, $instance ) {
-		echo $args['before_widget'];
-
-		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-		}
-
-		echo <?php echo ( $this->values['use_textdomain'] ) ? "esc_html__( 'Hello, World!', {$this->get_textdomain_as_str_arg()} )" : "'Hello, World!'";?>;
-		echo $args['after_widget'];
-	}
-<?php if( $this->values['has_options'] ) : ?>
-	/**
-	 * Save widget options.
-	 *
-	 * @param array $new_instance New settings for this instance as input by the user via WP_Widget::form().
-     * @param array $old_instance Old settings for this instance.
-     * @return array|bool Settings to save or bool false to cancel saving.
-	 * @since 1.0
-	 */
-	function update( $new_instance, $old_instance ) {
-		// ...
-	}
-
-	/**
-	 * Output admin widget options form.
-	 *
-	 * @param array $instance Current settings.
-     * @return string Default return is 'noform'.
-	 * @since 1.0
-	 */
-	function form( $instance ) {
-		// ...
-	}<?php endif ?>
-
-} // End of <?php echo $this->values['classname']?>
-
-endif;
-
-// Initialize widget
-add_action( 'widgets_init', function() {
-	register_widget( '<?php echo $this->values['classname']?>' );
-});
+	<p class="description"><?php _e( 'Below are generated files that are required to get working WordPress plugin with new widget. You can copy source codes to clipboard or download it as a ZIP package.<br>You can also test these source files before using them.', DH_SLUG ); ?></p>
 <?php
+
+		foreach( $this->files as $file ) {
+?>
+	<h3><code><?php echo $file->filename?></code></h3>
+	<pre><code class="language-<?php echo $file->filetype?>">&lt;?php
+<?php $file->render( $values )?>
+</code></pre>
+<?php
+		}
     }
 
 }
