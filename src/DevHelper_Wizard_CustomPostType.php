@@ -37,6 +37,14 @@ class DevHelper_Wizard_CustomPostType {
 
         // We need to remove "Add new wizard" link.
         add_action( 'admin_menu', array( 'DevHelper_Wizard_CustomPostType', 'adjust_admin_menu' ), 999 );
+
+        // Just show the message that post was successfully created
+        if( isset( $_GET['created_new'] ) ) {
+            DevHelper_Plugin::print_admin_notice(
+                __( 'New wizard was successfully inserted. [2]', DH_SLUG ),
+                'success', true
+            );
+        }
     }
 
     /**

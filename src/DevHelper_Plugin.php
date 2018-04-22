@@ -282,14 +282,6 @@ class DevHelper_Plugin {
     public static function admin_init() {
         register_setting( DH_SLUG, self::SETTINGS_KEY );
 
-        // Just show the message that post was successfully created
-        if( isset( $_GET['created_new'] ) ) {
-            DevHelper_Plugin::print_admin_notice(
-                __( 'New wizard was successfully inserted. [2]', DH_SLUG ),
-                'success', true
-            );
-        }
-
         self::check_environment();
         self::init_settings();
         self::screens_call_method( 'admin_init' );
