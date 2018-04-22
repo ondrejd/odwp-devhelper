@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 ?>
 <div class="wrap">
-    <h1><?php _e( 'Options for DevHelper', DH_SLUG ) ?></h1>
-    <form action="options.php" method="post"><?php
+    <h2><?php print $GLOBALS['title']; ?></h2>
+    <form action="options.php" method="POST"><?php
         settings_fields( DH_SLUG );
         do_settings_sections( DH_SLUG );
         submit_button();

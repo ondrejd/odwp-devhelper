@@ -11,6 +11,10 @@ if( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+if( ! trait_exists( 'DevHelper_Plugin_Settings_Trait' ) ) :
+    include( DH_PATH . 'src/DevHelper_Plugin_Settings_Trait.php' );
+endif;
+
 if( ! class_exists( 'DevHelper_Plugin' ) ) :
 
 /**
@@ -20,6 +24,7 @@ if( ! class_exists( 'DevHelper_Plugin' ) ) :
  * @since 0.1.0
  */
 class DevHelper_Plugin {
+    use DevHelper_Plugin_Settings_Trait;
 
     /**
      * @const string
@@ -40,12 +45,6 @@ class DevHelper_Plugin {
     public static $admin_screens = array();
 
     /**
-     * @var string
-     * @since 0.1.0
-     */
-    public static $options_page_hook;
-
-    /**
      * @internal Activates the plugin.
      * @return void
      * @since 0.1.0
@@ -64,59 +63,6 @@ class DevHelper_Plugin {
     }
 
     /**
-     * @return array Default values for settings of the plugin.
-     * @since 0.1.0
-     */
-    public static function get_default_options() {
-        return array(
-            'show_advanced_options' => true,
-            'generate_full_plugin' => false,
-        );
-    }
-
-    /**
-     * @return array Settings of the plugin.
-     * @since 0.1.0
-     */
-    public static function get_options() {
-        $defaults = self::get_default_options();
-        $options = get_option( self::SETTINGS_KEY, array() );
-        $update = false;
-
-        // Fill defaults for the options that are not set yet
-        foreach( $defaults as $key => $val ) {
-            if( ! array_key_exists( $key, $options ) ) {
-                $options[$key] = $val;
-                $update = true;
-            }
-        }
-
-        // Updates options if needed
-        if( $update === true) {
-            update_option( self::SETTINGS_KEY, $options );
-        }
-
-        return $options;
-    }
-
-    /**
-     * Returns value of option with given key.
-     * @param string $key Option's key.
-     * @param mixed $default Option's default value.
-     * @return mixed Option's value.
-     * @since 0.1.0
-     */
-    public static function get_option( $key, $default = null ) {
-        $options = self::get_options();
-
-        if( array_key_exists( $key, $options ) ) {
-            return $options[$key];
-        }
-
-        return $default;
-    }
-
-    /**
      * Initializes the plugin.
      * @return void
      * @since 0.1.0
@@ -128,6 +74,14 @@ class DevHelper_Plugin {
 
         add_action( 'init', [__CLASS__, 'init'] );
         add_action( 'admin_init', [__CLASS__, 'admin_init'] );
+
+        if ( ! empty( $GLOBALS['pagenow'] ) 
+             && ( 'options-general.php' === $GLOBALS['pagenow']
+             || 'options.php' === $GLOBALS['pagenow'] ) 
+        ) {
+            add_action( 'admin_init', [__CLASS__, 'register_settings'] );
+        }
+
         add_action( 'admin_menu', [__CLASS__, 'admin_menu'] );
         add_action( 'admin_bar_menu', [__CLASS__, 'admin_menu_bar'], 100 );
         add_action( 'plugins_loaded', [__CLASS__, 'plugins_loaded'] );
@@ -180,38 +134,6 @@ class DevHelper_Plugin {
      */
     public static function init_shortcodes() {
         //...
-    }
-
-    /**
-     * Initialize settings using <b>WordPress Settings API</b>.
-     * @link https://developer.wordpress.org/plugins/settings/settings-api/
-     * @return void
-     * @since 0.1.0
-     */
-    protected static function init_settings() {
-        $section1 = self::SETTINGS_KEY . '_section_1';
-        add_settings_section(
-                $section1,
-                __( 'Wizards options' ),
-                [__CLASS__, 'render_settings_section_1'],
-                DH_SLUG
-        );
-
-        add_settings_field(
-                'show_advanced_options',
-                __( 'Show advanced options', DH_SLUG ),
-                [__CLASS__, 'render_setting_show_advanced_options'],
-                DH_SLUG,
-                $section1
-        );
-
-        add_settings_field(
-                'generate_full_plugin',
-                __( 'Always generate full plugin', DH_SLUG ),
-                [__CLASS__, 'render_setting_generate_full_plugin'],
-                DH_SLUG,
-                $section1
-        );
     }
 
     /**
@@ -280,10 +202,7 @@ class DevHelper_Plugin {
      * @since 0.1.0
      */
     public static function admin_init() {
-        register_setting( DH_SLUG, self::SETTINGS_KEY );
-
         self::check_environment();
-        self::init_settings();
         self::screens_call_method( 'admin_init' );
         self::admin_init_widgets();
     }
@@ -432,37 +351,6 @@ class DevHelper_Plugin {
         if( file_exists( $css_path ) && is_readable( $css_path ) ) {
             wp_enqueue_style( DH_SLUG, plugins_url( $css_file, DH_FILE ) );
         }
-    }
-
-    /**
-     * @internal Renders the first settings section.
-     * @return void
-     * @since 0.1.0
-     */
-    public static function render_settings_section_1() {
-        echo self::load_template( 'setting-section_1' );
-    }
-
-    /**
-     * @internal Renders setting `show_advanced_options`.
-     * @return void
-     * @since 0.1.0
-     */
-    public static function render_setting_show_advanced_options() {
-        echo self::load_template( 'setting-show_advanced_options', [
-            'show_advanced_options' => self::get_option( 'show_advanced_options' ),
-        ] );
-    }
-
-    /**
-     * @internal Renders setting `generate_full_plugin`.
-     * @return void
-     * @since 0.1.0
-     */
-    public static function render_setting_generate_full_plugin() {
-        echo self::load_template( 'setting-generate_full_plugin', [
-            'generate_full_plugin' => self::get_option( 'generate_full_plugin' ),
-        ] );
     }
 
     /**
