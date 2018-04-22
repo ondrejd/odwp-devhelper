@@ -493,21 +493,24 @@ class DevHelper_Plugin {
      * @param boolean $dismissible (Optional.) Is notice dismissible?
      * @return void
      * @since 0.1.0
+     * @todo Using lambda function maybe overheads our minimal PHP version!
      */
     public static function print_admin_notice( $msg, $type = 'info', $dismissible = true ) {
-        $class = 'notice';
-
-        if( in_array( $type, ['error','info','success','warning'] ) ) {
-            $class .= ' notice-' . $type;
-        } else {
-            $class .= ' notice-info';
-        }
-
-        if( $dismissible === true) {
-            $class .= ' s-dismissible';
-        }
-
-        printf( '<div class="%s"><p>%s</p></div>', $class, $msg );
+        add_action( 'admin_notices', function() use ( $msg, $type, $dismissible ) {
+            $class = 'notice';
+    
+            if( in_array( $type, ['error','info','success','warning'] ) ) {
+                $class .= ' notice-' . $type;
+            } else {
+                $class .= ' notice-info';
+            }
+    
+            if( $dismissible === true) {
+                $class .= ' s-dismissible';
+            }
+    
+            printf( '<div class="%s"><p>%s</p></div>', $class, $msg );
+        } );
     }
 
     /**
