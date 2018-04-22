@@ -234,15 +234,7 @@ class DevHelper_Plugin {
      * @since 0.1.0
      */
     public static function admin_menu_bar( \WP_Admin_Bar $bar ) {
-        $bar->add_node( [
-            'id'     => 'odwpdh-adminbar_item',
-            'href'   => admin_url( 'tools.php?page=' . DH_SLUG . '-log' ),
-            'parent' => 'top-secondary',
-            'title'  => '<span class="ab-icon"></span>',
-            'meta'   => [
-                'title' => __( 'Show Debug Log Viewer', DH_SLUG ),
-            ],
-        ] );
+        //...
     }
 
     /**
