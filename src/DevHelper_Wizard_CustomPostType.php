@@ -80,14 +80,28 @@ class DevHelper_Wizard_CustomPostType {
     }
 
     /**
-     * Insert new item (from one of wizard forms).
+     * Insert new item (from one of wizard forms). 
+     * Given values SHOULD be already sanitized!
      * 
-     * @param array $args
-     * @return void
+     * @param array $values Wizard values from the submitted form.
+     * @return integer ID of the new post (wizard).
      * @since 0.1.0
+     * @todo Values for `comment_status`, `ping_status` and `post_status` should be taken from plugin options!
+     * @uses sanitize_title()
+     * @uses wp_insert_post()
      */
     public static function insert_new( $args ) {
-        //...
+
+        // Finalize new post options
+        $post_options = array(
+            'comment_status' => 'closed',
+            'ping_status' => 'closed',
+            'post_status' => 'publish',
+            'post_type' => self::SLUG,
+        );
+
+        // Create new post
+        return wp_insert_post( array_merge( $post_options, $args ) );
     }
 
     /**

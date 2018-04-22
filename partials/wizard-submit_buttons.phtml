@@ -16,6 +16,7 @@ if( ! defined( 'ABSPATH' ) ) {
 }
 
 ?>
-<input type="submit" name="wizard-submit1" value="<?php _e( 'Generate', DH_SLUG ); ?>" class="button button-primary">
-<input type="submit" name="wizard-submit2" value="<?php _e( 'Download', DH_SLUG ); ?>" class="button button-disabled" disabled="disabled">
-<input type="submit" name="wizard-submit3" value="<?php _e( 'Test', DH_SLUG ); ?>" class="button button-disabled" disabled="disabled">
+<input type="submit" name="wizard-submit1" value="<?php esc_attr_e( 'Generate', DH_SLUG ); ?>" title="<?php esc_attr_e( 'Regenerate source codes below.', DH_SLUG )?>" class="button">
+<input type="submit" name="wizard-submit2" value="<?php esc_attr_e( 'Save', DH_SLUG ); ?>" title="<?php esc_attr_e( 'Save wizard and clear entered values.', DH_SLUG )?>" class="button button-primary">
+<input type="submit" name="wizard-submit3" value="<?php esc_attr_e( 'Test', DH_SLUG ); ?>" title="<?php esc_attr_e( 'Test generated source codes in live WordPress environment.', DH_SLUG )?>" class="button button-disabled" disabled="disabled">
+<input type="submit" name="wizard-submit4" value="<?php esc_attr_e( 'Download', DH_SLUG ); ?>" title="<?php esc_attr_e( 'Download ZIP package with generated sources.', DH_SLUG )?>" class="button button-disabled" disabled="disabled">

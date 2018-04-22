@@ -63,6 +63,12 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 		// Process screen's form
 		$this->process_form();
 
+		// Process test submit
+		$this->process_test();
+
+		// Process download submit
+		$this->process_download();
+
 		// Finish screen constuction
 		parent::__construct( $screen );
 	}
@@ -85,6 +91,7 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 	 *
 	 * @return void
 	 * @since 0.1.0
+	 * @todo Check NONCE!
 	 */
 	public function process_form() {
 		$values = array();
@@ -112,7 +119,47 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 		$this->template->values = $values;
 
 		// Indicate that we should save wizard
-		$this->should_save = true;
+		if( isset( $_POST['wizard-submit2'] ) ) {
+			$this->should_save = true;
+		}
+	}
+
+	/**
+	 * Process test submit from wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 * @todo Check NONCE!
+	 */
+	public function process_test() {
+
+		// Check if we should process test
+		if( ! isset( $_POST['wizard-submit3'] ) ) {
+			return;
+		}
+
+		//...
+
+		$this->should_test = true;
+	}
+
+	/**
+	 * Process download submit from wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 * @todo Check NONCE!
+	 */
+	public function process_download() {
+
+		// Check if we should process download
+		if( ! isset( $_POST['wizard-submit4'] ) ) {
+			return;
+		}
+
+		//...
+
+		$this->should_download = true;
 	}
 
 	/**
@@ -120,6 +167,11 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 	 * 
 	 * @param array $args (Optional.) Arguments for rendered template.
 	 * @since 0.1.0
+	 * @uses admin_url()
+	 * @uses get_admin_url()
+	 * @uses get_current_user_id()
+	 * @uses sanitize_title()
+	 * @uses wp_redirect()
 	 */
 	public function render( $args = array() ) {
 
@@ -128,7 +180,45 @@ class DevHelper_Widget_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
             $args = array();
 		}
 
-		// ...
+		// Should we save new post?
+		if( $this->should_save === true ) {
+
+			// Prepare values for inserting new 
+			$title = sprintf( __( 'Widget "%1$s"', DH_SLUG ), $this->template->values['title'] );
+			$slug = sanitize_title( $title );
+			$args = array(
+				'post_author' => get_current_user_id(),
+				'post_title' => $title,
+				'post_name' => $slug,
+				'post_content' => json_encode( $this->template->values ),
+				// TODO We can also set 'post_category' (by the value from plugin options)!
+				// TODO We can also set 'tags_input' (by the value from plugin options)!
+				// TODO We can also set 'meta_input' (by the value from plugin options)!
+			);
+
+			// And insert that new post
+			$post_id = DevHelper_Wizard_CustomPostType::insert_new( $args );
+
+			if( $post_id <= 0 ) {
+				DevHelper_Plugin::print_admin_notice(
+					__( 'New wizard was not inserted! Try it again and in case of next failure contact administrator!', DH_SLUG ),
+					'wizard', true
+				);
+			} else {
+				DevHelper_Plugin::print_admin_notice(
+					sprintf(
+						__( 'New wizard was successfully inserted. (See %1$sall wizards%2$s)', DH_SLUG ),
+						'<a href="' . admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::SLUG ) . '">', '</a>'
+					),
+					'success', true
+				);
+
+				// TODO Maybe would be better redirect to page "Admin > Wizards > Finished"
+				//wp_redirect( admin_url( 'edit.php?post_type=' . DevHelper_Wizard_CustomPostType::SLUG ), 302 );
+				//exit();
+				$this->template->values = $this->template->get_defaults();
+			}
+		}
 
 		// Gather all arguments
 		$all_args = array_merge( $args, array(

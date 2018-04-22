@@ -64,6 +64,12 @@ class DevHelper_Table_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 		// Process screen's form
 		$this->process_form();
 
+		// Process test submit
+		$this->process_test();
+
+		// Process download submit
+		$this->process_download();
+
 		// Finish screen constuction
 		parent::__construct( $screen );
 	}
@@ -108,6 +114,7 @@ class DevHelper_Table_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 	 *
 	 * @return void
 	 * @since 0.1.0
+	 * @todo Check NONCE!
 	 */
 	public function process_form() {
 		$values = array();
@@ -127,6 +134,49 @@ class DevHelper_Table_Wizard_Screen extends DevHelper_Wizard_Screen_Prototype {
 
 		// Set values into the template
 		$this->template->values = $values;
+
+		// Indicate that we should save wizard
+		if( isset( $_POST['wizard-submit2'] ) ) {
+			$this->should_save = true;
+		}
+	}
+
+	/**
+	 * Process test submit from wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 * @todo Check NONCE!
+	 */
+	public function process_test() {
+
+		// Check if we should process test
+		if( ! isset( $_POST['wizard-submit3'] ) ) {
+			return;
+		}
+
+		//...
+
+		$this->should_test = true;
+	}
+
+	/**
+	 * Process download submit from wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 * @todo Check NONCE!
+	 */
+	public function process_download() {
+
+		// Check if we should process download
+		if( ! isset( $_POST['wizard-submit4'] ) ) {
+			return;
+		}
+
+		//...
+
+		$this->should_download = true;
 	}
 
 }

@@ -36,6 +36,18 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 	protected $should_save;
 
 	/**
+	 * @var boolean $should_test
+	 * @since 0.1.0
+	 */
+	protected $should_test;
+
+	/**
+	 * @var boolean $should_download
+	 * @since 0.1.0
+	 */
+	protected $should_download;
+
+	/**
 	 * Constructor.
 	 * 
 	 * @param \WP_Screen $screen
@@ -107,6 +119,22 @@ abstract class DevHelper_Wizard_Screen_Prototype extends DevHelper_Screen_Protot
 	 * @since 0.1.0
 	 */
 	abstract public function process_form();
+
+	/**
+	 * Process test submit from wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 */
+	abstract public function process_test();
+
+	/**
+	 * Process download submit from wizard's form.
+	 *
+	 * @return void
+	 * @since 0.1.0
+	 */
+	abstract public function process_download();
 
     /**
      * Action for `admin_menu` hook.
