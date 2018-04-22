@@ -68,7 +68,10 @@ class DevHelper_Plugin {
      * @since 0.1.0
      */
     public static function get_default_options() {
-        return array();
+        return array(
+            'show_advanced_options' => true,
+            'generate_full_plugin' => false,
+        );
     }
 
     /**
@@ -189,7 +192,29 @@ class DevHelper_Plugin {
      * @since 0.1.0
      */
     protected static function init_settings() {
-        //...
+        $section1 = self::SETTINGS_KEY . '_section_1';
+        add_settings_section(
+                $section1,
+                __( 'Wizards options' ),
+                [__CLASS__, 'render_settings_section_1'],
+                DH_SLUG
+        );
+
+        add_settings_field(
+                'show_advanced_options',
+                __( 'Show advanced options', DH_SLUG ),
+                [__CLASS__, 'render_setting_show_advanced_options'],
+                DH_SLUG,
+                $section1
+        );
+
+        add_settings_field(
+                'generate_full_plugin',
+                __( 'Always generate full plugin', DH_SLUG ),
+                [__CLASS__, 'render_setting_generate_full_plugin'],
+                DH_SLUG,
+                $section1
+        );
     }
 
     /**
@@ -200,12 +225,20 @@ class DevHelper_Plugin {
     protected static function init_screens() {
         include( DH_PATH . 'src/DevHelper_Screen_Prototype.php' );
         include( DH_PATH . 'src/DevHelper_Wizard_Screen_Prototype.php' );
+        include( DH_PATH . 'src/DevHelper_Options_Screen.php' );
         include( DH_PATH . 'src/DevHelper_CustomPostType_Wizard_Screen.php' );
         include( DH_PATH . 'src/DevHelper_DashboardWidget_Wizard_Screen.php' );
         include( DH_PATH . 'src/DevHelper_Table_Wizard_Screen.php' );
         include( DH_PATH . 'src/DevHelper_Plugin_Wizard_Screen.php' );
         include( DH_PATH . 'src/DevHelper_Theme_Wizard_Screen.php' );
         include( DH_PATH . 'src/DevHelper_Widget_Wizard_Screen.php' );
+
+        /**
+         * @var DevHelper_Options_Screen $options_screen
+         */
+        $options_screen = new DevHelper_Options_Screen();
+        self::$admin_screens[$options_screen->get_slug()] = $options_screen;
+
 
         /**
          * @var DevHelper_CustomPostType_Wizard_Screen $cpt_wizard_screen
@@ -418,19 +451,30 @@ class DevHelper_Plugin {
      * @since 0.1.0
      */
     public static function render_settings_section_1() {
-        //echo self::load_template( 'setting-section_1' );
+        echo self::load_template( 'setting-section_1' );
     }
 
     /**
-     * @internal Renders setting `debug_mode`.
+     * @internal Renders setting `show_advanced_options`.
      * @return void
      * @since 0.1.0
      */
-    /*public static function render_setting_debug_mode() {
-        echo self::load_template( 'setting-debug_mode', [
-            'debug_mode' => self::get_option( 'debug_mode' ),
+    public static function render_setting_show_advanced_options() {
+        echo self::load_template( 'setting-show_advanced_options', [
+            'show_advanced_options' => self::get_option( 'show_advanced_options' ),
         ] );
-    }*/
+    }
+
+    /**
+     * @internal Renders setting `generate_full_plugin`.
+     * @return void
+     * @since 0.1.0
+     */
+    public static function render_setting_generate_full_plugin() {
+        echo self::load_template( 'setting-generate_full_plugin', [
+            'generate_full_plugin' => self::get_option( 'generate_full_plugin' ),
+        ] );
+    }
 
     /**
      * @internal Uninstalls the plugin.

@@ -1,0 +1,23 @@
+<?php
+/**
+ * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
+ * @package odwp-devhelper
+ * @see DH_Plugin::admin_options_page()
+ * @since 0.1.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+?>
+<div class="wrap">
+    <h1><?php _e( 'Options for DevHelper', DH_SLUG ) ?></h1>
+    <form action="options.php" method="post"><?php
+        settings_fields( DH_SLUG );
+        do_settings_sections( DH_SLUG );
+        submit_button();
+    ?></form>
+</div>

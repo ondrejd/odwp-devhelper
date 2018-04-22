@@ -1,0 +1,23 @@
+<?php
+/**
+ * @author Ondřej Doněk, <ondrejd@gmail.com>
+ * @link https://github.com/ondrejd/odwp-devhelper for the canonical source repository
+ * @license https://www.gnu.org/licenses/gpl-3.0.en.html GNU General Public License 3.0
+ * @package odwp-devhelper
+ * @since 0.1.0
+ *
+ * Variables passed to the partial:
+ * 
+ * @var boolean $show_advanced_options
+ */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+?>
+<label for="odwpdh_settings_show_advanced_options">
+    <input type="checkbox" id="odwpdh_settings_show_advanced_options" name="odwpdh_settings[show_advanced_options]" <?php checked( $show_advanced_options ) ?>>
+    <?php _e( 'Show advanced options?', DH_SLUG ) ?>
+</label>
+<p class="description"><?php _e( 'If you check this option all wizards will contains advanced options section.', DH_SLUG ) ?></p>
