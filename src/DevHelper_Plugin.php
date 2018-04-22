@@ -150,9 +150,6 @@ class DevHelper_Plugin {
         // Initialize custom post types
         self::init_custom_post_types();
 
-        // We need to remove "Add new wizard" link.
-        add_action( 'admin_menu', array( 'DevHelper_Wizard_CustomPostType', 'adjust_admin_menu' ), 999 );
-
         // Initialize shortcodes
         self::init_shortcodes();
 

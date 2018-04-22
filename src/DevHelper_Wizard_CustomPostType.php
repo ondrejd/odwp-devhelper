@@ -28,6 +28,18 @@ class DevHelper_Wizard_CustomPostType {
     const SLUG = DH_SLUG . '-wizard';
 
     /**
+     * Constructor.
+     * 
+     * @author Ondřej Doněk, <ondrejd@gmail.com>
+     * @return void
+     */
+    public function __construct() {
+
+        // We need to remove "Add new wizard" link.
+        add_action( 'admin_menu', array( 'DevHelper_Wizard_CustomPostType', 'adjust_admin_menu' ), 999 );
+    }
+
+    /**
      * Initialize our custom post type.
      * 
      * @return void
